@@ -1,0 +1,88 @@
+<p style="text-align:justify;">This post is part of a series about Unity serialization. &nbsp;On this series&nbsp;of articles we will discuss&nbsp;a topic that is extremely &nbsp;important to Unity3D development: serialization. This subject may be a bit cloudy for beginners, but understanding it not only helps to figure out&nbsp;how the Unity engine works, but it can also become really handy during a game development process and assist you to build better solutions. We will concentrate our study on the following subjects:</p>
+
+<ul style="text-align:justify;">
+ 	<li>What is&nbsp;it? (Part 1)</li>
+ 	<li>How Unity does (Part 1)</li>
+ 	<li>Examples (Part 1)</li>
+ 	<li>Defining a Serializable Type (<a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-2-defining-a-serializable-type/">Part 2</a>)</li>
+ 	<li>Problems with Serialization (<a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-2-defining-a-serializable-type/">Part 2</a>)</li>
+ 	<li>Scriptable Objects (<a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-3-scriptable-objects/">Part 3</a>)</li>
+</ul>
+Fell free to navigate through the sections if you are comfortable with the previous concepts.
+<h3 style="text-align:justify;"><strong>What is it?</strong></h3>
+<p style="text-align:justify;">Among other <a href="https://msdn.microsoft.com/en-us/library/ms233843.aspx">definitions</a>, serialization is the process of converting the state an object to a set of bytes in order to store (or transmit) the object into memory, a database or a file. In another words: it's how you can save an object to restore its state for later use.</p>
+<p style="text-align:justify;">Let's say you have a Vector3 and you need to store it for future use. Which fields would you save into a file to restore its state? X, Y and Z, that's easy! Apply this rule for any object and if you serialize all the (important) data, you can reload the object exactly how it was before. We name the process of storing the state of the object as "serialization" and the reverse process of building an object out of a file "deserialization".</p>
+<p style="text-align:justify;">As we already read, this process is really useful to store and transmit data, so think about this: you have an online store deployed&nbsp;on your server, probably running a database manager application aside. Eventually, we need to store the data from memory into the disk (primary storage is&nbsp;volatile) and we do it by serializing our objects into database tables (which basically are files). The same process happens with every application that needs to store data into a disk, and computer games (and engines) are not an exception.</p>
+
+<h3 style="text-align:justify;"><strong>How Unity Does</strong></h3>
+<p style="text-align:justify;">Unity, as a Game Engine, needs to load a lot of stuff (scripts, prefabs, scenes) from the disk into the memory within&nbsp;application data. Maybe more important than that, Unity needs to move data between&nbsp;the native C++ side of the engine and the managed C# side. Even though we may think this task is strict to loading and storing assets processes, the serialization is used in many&nbsp;more situations than we think (like inspector window, reloading of editor code and instantiation among other scenarios). You can learn a bit more about Unity Serialization on their <a href="http://blogs.unity3d.com/2014/06/24/serialization-in-unity/">own blog</a>. I'd risk to say it's a mandatory read for developers.</p>
+<p style="text-align:justify;">The UnityEngine.Object class (which is serializable) provides us with the serialization resource in Unity:&nbsp;any other class than inherits from it - that includes MonoBehaviour, ScriptableObject (more on this later on the series), Shader, Sprite and basically everything in Unity - can also be serialized. Most of its uses are invisible and don't matter when developing a game, except for a&nbsp;major use: scripting. When you create scripts, you need to keep on mind which fields you want to serialize, and, to do so, your field <a href="http://blogs.unity3d.com/2014/06/24/serialization-in-unity/">must</a>:</p>
+
+<ul>
+ 	<li>Be public, or have [SerializeField] attribute</li>
+ 	<li>Not be static</li>
+ 	<li>Not be const</li>
+ 	<li>Not be readonly</li>
+ 	<li>The fieldtype needs to be of a type that we can serialize.</li>
+</ul>
+<p style="text-align:justify;">Which fieldtypes can we serialize? According to Unity's <a href="http://docs.unity3d.com/Manual/script-Serialization.html">documentation</a>:</p>
+
+<ul>
+ 	<li>Custom non abstract classes with [Serializable] attribute.</li>
+ 	<li>Custom structs with [Serializable] attribute. (New in Unity 4.5)</li>
+ 	<li>References to objects that derive from UntiyEngine.Object</li>
+ 	<li>Primitive data types (int,float,double,bool,string,etc)</li>
+ 	<li>Array of a fieldtype we can serialize</li>
+ 	<li>List of a fieldtype we can serialize</li>
+</ul>
+<p style="text-align:justify;">A really common data structure isn't serializable: Dictionaries, even if you declare them as public, and [SerializeField] atribute. So keep that in mind when developing a game.</p>
+<p style="text-align:justify;">Ok, this is a lot of information, so&nbsp;let's break it to a straightforward code example:</p>
+
+<h3><strong>Examples</strong></h3>
+Let's take the following code (MyBehaviour.cs) as an example:
+<pre><span style="font-family:Menlo;"><span style="color:#009695;">using</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">UnityEngine</span><span style="color:#444444;">;</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">MyBehaviour</span><span style="color:#444444;">&nbsp;:&nbsp;</span><span style="color:#3363a4;">MonoBehaviour</span>
+<span style="color:#444444;">{</span>
+  <span style="color:#444444;">[</span><span style="color:#3363a4;">SerializeField</span><span style="color:#444444;">]&nbsp;</span><span style="color:#009695;">private</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">x</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">3</span><span style="color:#444444;">;</span>
+  <span style="color:#444444;">[</span><span style="color:#3363a4;">SerializeField</span><span style="color:#444444;">]&nbsp;</span><span style="color:#009695;">private</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">float</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">y</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">5.6f</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">float</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">pi</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">3.1415f</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">private</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">mySecret</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">42</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#009695;">static</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">myStatic</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">10</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#009695;">const</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">myConst</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">22</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#009695;">readonly</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">myReadOnly</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">99</span><span style="color:#444444;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">int</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">MyProperty</span><span style="color:#444444;">&nbsp;{&nbsp;</span><span style="color:#009695;">get</span><span style="color:#444444;">&nbsp;{&nbsp;</span><span style="color:#009695;">return</span><span style="color:#444444;">&nbsp;</span><span style="color:#f57c00;">100</span><span style="color:#444444;">;&nbsp;}&nbsp;}</span></span>
+<span style="font-family:Menlo;"><span style="color:#444444;">}</span></span></pre>
+<p style="text-align:justify;">The only fields that are serialized are "x", "y" and "pi" because they are not static, const, readonly, a property or private with no [SerializeField] attribute. One way to show this is by taking a look at the script's inspector, which only shows us serialized&nbsp;fields (that can come handy):</p>
+<a href="https://sometimesicode.files.wordpress.com/2015/04/screen-shot-2015-04-08-at-10-48-08-pm.png"><img class="alignnone size-full wp-image-75" src="https://sometimesicode.files.wordpress.com/2015/04/screen-shot-2015-04-08-at-10-48-08-pm.png" alt="Screen Shot 2015-04-08 at 10.48.08 PM" width="274" height="91"></a>
+<p style="text-align:justify;">But there is a better way to show that the other fields were not serialized: by cloning the object. Remember I told you that the Instantiate method uses the Unity serialization process? So let's test it by adding the following method to our script:</p>
+
+<pre><span style="font-family:Menlo;"><span style="color:#009695;">private</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">void</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">Start</span><span style="color:#444444;">()</span>
+<span style="color:#444444;">{</span>
+<span><span style="font-family:Menlo;">  <span style="color:#3363a4;">Debug</span><span style="color:#444444;">.Log(</span><span style="color:#f57c00;">"</span><span style="color:#f57c00;">Pi:</span><span style="color:#f57c00;">"</span><span style="color:#444444;">&nbsp;+&nbsp;pi&nbsp;+&nbsp;</span><span style="color:#f57c00;">"</span><span style="color:#f57c00;">.&nbsp;MySecret:</span><span style="color:#f57c00;">"</span><span style="color:#444444;">&nbsp;+ mySecret +&nbsp;</span><span style="color:#f57c00;">"</span><span style="color:#f57c00;">.&nbsp;MyStatic:</span><span style="color:#f57c00;">"</span><span style="color:#444444;">&nbsp;+&nbsp;myStatic);</span></span></span><span style="color:#444444;"><span style="font-family:Menlo;">
+</span></span></span><span style="color:#444444;font-family:Menlo;font-size:1em;line-height:1.5em;">}</span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">private</span><span style="color:#444444;">&nbsp;</span><span style="color:#3363a4;">void</span><span style="color:#444444;">&nbsp;</span><span style="color:#444444;">Update</span><span style="color:#444444;">()</span>
+<span style="color:#444444;">{</span>
+  <span style="color:#009695;">if</span><span style="color:#444444;">&nbsp;(</span><span style="color:#3363a4;">Input</span><span style="color:#444444;">.</span><span style="color:#444444;">GetMouseButtonDown</span><span style="color:#444444;">(</span><span style="color:#f57c00;">0</span><span style="color:#444444;">))</span>
+  <span style="color:#444444;">{</span>
+    <span style="color:#444444;">pi</span><span style="color:#444444;">&nbsp;=&nbsp;-</span><span style="color:#f57c00;">4</span><span style="color:#444444;">;</span>
+    <span style="color:#444444;">mySecret</span><span style="color:#444444;">&nbsp;=&nbsp;-</span><span style="color:#f57c00;">11</span><span style="color:#444444;">;</span>
+    <span style="color:#444444;">myStatic</span><span style="color:#444444;">&nbsp;=&nbsp;</span><span style="color:#f57c00;">13</span><span style="color:#444444;">;</span>
+    <span style="color:#3363a4;">GameObject</span><span style="color:#444444;">.</span><span style="color:#444444;">Instantiate</span><span style="color:#444444;">(</span><span style="color:#444444;">gameObject</span><span style="color:#444444;">);</span>
+ <span style="color:#444444;">&nbsp;}</span>
+<span style="color:#444444;">}</span></span></pre>
+<p style="text-align:justify;">This method should modify the current object and create another object in the scene when the mouse's left button is pressed. A naive thought would be that since the second object is a clone of the first one, it should have the same value for "pi", "mySecret" and any other field as the first object, right? Well, it does for "pi", because it's a public field (hence it's serialized), but it doesn't for "mySecret": its value remains unchanged when the second Debug.Log() is executed:</p>
+<p style="text-align:justify;"><img class="alignnone size-full wp-image-450" src="https://sometimesicode.files.wordpress.com/2015/04/screen-shot-2016-11-03-at-3-47-32-pm.png" alt="screen-shot-2016-11-03-at-3-47-32-pm" width="240" height="64"></p>
+<p style="text-align:justify;">The field "mySecret" can't be serialized because it's a private field with no [SerializeField] attribute (which is the only circumstance&nbsp;a private fields will be serialized*).</p>
+<p style="text-align:justify;">*:&nbsp;Private fields are serialized in some circumstances in the Unity Editor and that can lead us to some problems we will discuss later on the next&nbsp;article on the "Problems" session. (<a href="http://blogs.unity3d.com/2012/10/25/unity-serialization/">source</a>)</p>
+<p style="text-align:justify;">Curiously, the value of "myStatic" changes in both objects, but&nbsp;does that mean static fields are serializable? The answer is no. Even though its behavior leads us to conclude that, remember that static fields belong to the class, and not to an instance of it. That said, if we, per example,&nbsp;create a new object and add a MyBehaviour script to it in play mode (Using "GameObject &gt; Create Empty" in the menu), "myStatic" will have the same value as the other objects, although it isn't a copy of any other object. However, note that the "pi" variable has its original value.</p>
+<p style="text-align:justify;"><img class="alignnone size-full wp-image-454" src="https://sometimesicode.files.wordpress.com/2015/04/screen-shot-2016-11-03-at-3-51-03-pm.png" alt="screen-shot-2016-11-03-at-3-51-03-pm" width="243" height="99"></p>
+<p style="text-align:justify;">This proves&nbsp;what the Unity documentation tells us about how can we make a field of a serializable type be serialized. This works with most Unity objects, including MonoBehaviours, but what if I don't want to define a MonoBehaviour and I still want to create a Serializable type? In other words, how can I define a Serializable type?</p>
+<p style="text-align:justify;"><a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-2-defining-a-serializable-type/">On the next article</a> we will find out how to declare our own serializable types and how to treat problems that can come along with it.</p>
+<p style="text-align:justify;">Fell free to write&nbsp;me any suggestions, errors, complements or just to say hi on the comments section :)</p>
+<strong>Source:
+</strong><a href="http://blogs.unity3d.com/2014/06/24/serialization-in-unity/">Serialization in Unity</a> by Lucas Meijer (mandatory read)
+<a style="line-height:1.5;" href="http://blogs.unity3d.com/2012/10/25/unity-serialization/">Unity Serialization Best Practices</a><span style="line-height:1.5;"> by Tim Cooper
+</span><a style="line-height:1.5;" href="http://docs.unity3d.com/Manual/class-ScriptableObject.html">ScriptableObject
+</a><a href="https://msdn.microsoft.com/en-us/library/ms233843.aspx">Serialization</a> (C# and Visual Basic)
