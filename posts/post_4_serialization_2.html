@@ -1,0 +1,111 @@
+<p style="text-align:justify;">This post is part of a series about Unity serialization. Click <a href="https://sometimesicode.wordpress.com/2015/04/11/unity-serialization-part-1-how-it-works-and-examples/">here</a> for part 1: how it works and examples.</p>
+<p style="text-align:justify;">On the <a href="https://sometimesicode.wordpress.com/2015/04/11/unity-serialization-part-1-how-it-works-and-examples/">last article</a>, we discussed about serialization concepts and how Unity&nbsp;implements it, learning which types can be serialized and which cannot. But what if we want to define our own type? How can I make it serializable so I can keep its&nbsp;data stored?</p>
+
+<h3 style="text-align:justify;"><strong>Understanding the problem</strong></h3>
+<p style="text-align:justify;">Let's choose a (slight <a href="https://play.google.com/store/apps/details?id=cc.lumentech.operacaoabaporu&amp;hl=en">biased</a>) model to implement as our&nbsp;example: a script to keep all the data&nbsp;to an investigation game which contains numerous cities, each one containing several places. Sounds pretty easy and straightforward, so let's do it naively by creating&nbsp;MonoBehaviours: one for the database, one for the cities and one for the places. That should work:</p>
+
+<pre style="text-align:justify;"><span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MyDatabase</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MonoBehaviour</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">List</span><span style="color:#333333;">&lt;</span><span style="color:#3364a4;">City</span><span style="color:#333333;">&gt;</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">cities</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">City</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MonoBehaviour</span>
+<span style="color:#333333;">{</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">List</span><span style="color:#333333;">&lt;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&gt;</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">places</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MonoBehaviour</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span></pre>
+<p style="text-align:justify;">There, done! But wait a second, something's wrong: I can't just create an instance of a MonoBehaviour, it should be attached to a GameObject and I don't want to create a one&nbsp;to each instance of a city or place. Something is wrong conceptually. It happens that we can't think of that data as behaviors, because they are not. They are simply objects, just&nbsp;like good old object-oriented programming. So let's go ahead and take the MonoBehaviour inheritance from the City and Place classes.</p>
+
+<pre><span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">City</span>
+<span style="color:#333333;">{</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">List</span><span style="color:#333333;">&lt;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&gt;</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">places</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span></pre>
+<p style="text-align:justify;">Now let's add the MyDatabase script to an object in the scene. Something is wrong again: I can't see the list of cities in the inspector even though the field is public and should be serialized (therefore shown in the inspector).</p>
+<p style="text-align:justify;"><a href="https://sometimesicode.files.wordpress.com/2015/09/screen-shot-2015-09-20-at-7-47-14-pm.png"><img class="alignnone size-full wp-image-133" src="https://sometimesicode.files.wordpress.com/2015/09/screen-shot-2015-09-20-at-7-47-14-pm.png" alt="Screen Shot 2015-09-20 at 7.47.14 PM" width="300" height="39"></a></p>
+
+<h3 style="text-align:justify;"><strong>Defining a Serializable Type</strong></h3>
+<p style="text-align:justify;">That happens because we didn't define our type as serializable, so Unity won't serialize&nbsp;it. We never faced that problem before because we usually deal with classes that inherit from Unity.Object (Collider, RigidBody, Animation, MonoBehaviour...), which is a serializable type. There is an easy way to do it:&nbsp;add&nbsp;the [System.Serializable] modifier to the class:</p>
+
+<pre style="text-align:justify;"><span style="font-family:Menlo;"><span style="color:#333333;">[</span><span style="color:#333333;">System</span><span style="color:#333333;">.</span><span style="color:#3364a4;">Serializable</span><span style="color:#333333;">]</span>
+<span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">City</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">List</span><span style="color:#333333;">&lt;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&gt;</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">places</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+<span style="font-family:Menlo;"><span style="color:#333333;">
+[</span><span style="color:#333333;">System</span><span style="color:#333333;">.</span><span style="color:#3364a4;">Serializable</span><span style="color:#333333;">]
+</span></span><span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Place</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span></pre>
+That gives us the expected result:
+<p style="text-align:justify;"><a href="https://sometimesicode.files.wordpress.com/2015/09/screen-shot-2015-09-20-at-7-52-02-pm.png"><img class="alignnone size-full wp-image-135" src="https://sometimesicode.files.wordpress.com/2015/09/screen-shot-2015-09-20-at-7-52-02-pm.png" alt="Screen Shot 2015-09-20 at 7.52.02 PM" width="300" height="183"></a></p>
+<p style="text-align:justify;">By simply adding that modifier, we mark our class as serializable and solve our problem. The same process is also required when dealing with structs (serializable since&nbsp;Unity 4.5). In addition, Unity also serializes lists and arrays of serializable types by default.</p>
+
+<h3 style="text-align:justify;"><strong>Problems with that approach</strong></h3>
+<p style="text-align:justify;">Although this looks like a great solution, there are a few problems with it. The first (but not biggest) is that even though MyDatabase only stores data, it still is a MonoBehaviour and needs a GameObject to exist. Ideally, it should be an asset that only holds data, but we can't simply take the MonoBehaviour inheritance off the class, otherwise we wouldn't have a way to serialize it. What if there was a serializable type just like MonoBehaviour that doesn't need a GameObject to live on? Keep that in mind.&nbsp;The other problems doesn't&nbsp;involve data-storing objects only like the first one, but are also valid.</p>
+<p style="text-align:justify;">The second&nbsp;problem involves polymorphism and happens when a class inherits from a user-defined serialized class. Even though it's intuitive that fields from both classes should be serialized regardless, that doesn't happen. Let's use the same example as Unity blog does: animals.</p>
+
+<pre style="text-align:justify;"><span style="font-family:Menlo;"><span style="color:#333333;">[</span><span style="color:#333333;">System</span><span style="color:#333333;">.</span><span style="color:#3364a4;">Serializable</span><span style="color:#333333;">]</span>
+<span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Animal</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+<span style="color:#009695;">  public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">name</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#333333;">[</span><span style="color:#333333;">System</span><span style="color:#333333;">.</span><span style="color:#3364a4;">Serializable</span><span style="color:#333333;">]</span>
+<span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Dog</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Animal</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">string</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">breed</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span>
+
+<span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">PolymorphismExample</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MonoBehaviour</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">Animal</span><span style="color:#333333;">[]</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">animals</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span></span></pre>
+<p style="text-align:justify;">Even though both Animal and Dog classes are serializable and Dog inherits from Animal, if we add a dog to our list of animals in PolymorphismExample, they will be serialized as Animals, losing the Dog type and consequently its fields. What if&nbsp;user-defined classes supported polymorphism? Again, keep that in mind.</p>
+<p style="text-align:justify;">The third problem is related to decoupled references, which is a fancy name to something really simple. Imagine you have the same Animal example as the problem above and you add 3 animals to your array, but all of them point to the same object. Due to how Unity's serialization works, these references are decoupled and they are serialized as three different objects, hence changes made to any of those three objects won't affect the other two. Unity simply forgets that those objects point to the same reference, which can be devastating to systems that keep complex relation between objects of that class.</p>
+<p style="text-align:justify;">The decoupling problem&nbsp;happens because these fields (primitives and user-defined) are serialized "in line" since&nbsp;they are actually part of the MonoBehaviour's serialization data and not a data object itself. With&nbsp;objects that derive from Unity.Object though, the fields are serialized as actual references to the object, and not "in line" like custom classes. What if we could use a class that derives from Unity.Object, serializes the objects as references and maintains complex relations between our objects?</p>
+<p style="text-align:justify;">The last problem is related to recursive declarations, which can generate cycles. Consider this example:</p>
+
+<pre style="text-align:justify;"><span style="font-family:Menlo;"><span style="color:#333333;">[</span><span style="color:#3364a4;">Serializable</span><span style="color:#333333;">]</span>
+<span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">DepthClass</span><span style="color:#333333;">&nbsp;&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">List</span><span style="color:#333333;">&lt;</span><span style="color:#3364a4;">DepthClass</span><span style="color:#333333;">&gt;</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">depthObjects</span><span style="color:#333333;">;</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">}</span></span></pre>
+And a MonoBehaviour that holds a reference to an instance of it:
+<pre><span style="font-family:Menlo;"><span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#009695;">class</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">DepthTest</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">:</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">MonoBehaviour</span><span style="color:#333333;">&nbsp;</span>
+<span style="color:#333333;">{</span>
+  <span style="color:#009695;">public</span><span style="color:#333333;">&nbsp;</span><span style="color:#3364a4;">DepthClass</span><span style="color:#333333;">&nbsp;</span><span style="color:#333333;">test</span><span style="color:#333333;">;</span>
+<span style="color:#333333;">}</span><span style="color:#333333;">&nbsp;</span></span></pre>
+<p style="text-align:justify;">How many allocations will be done to serialize an uninitialized&nbsp;"DepthTest" script? The intuitive answer would be 1 - a null reference - but it happens that the Unity serializer doesn't support null references of custom classes so&nbsp;it creates an empty object&nbsp;and serializes it instead (this is transparent to the user). And since this object is created and it has a reference to a list of objects of its own type, it&nbsp;creates a cycle in the serialization process that should go on forever. To prevent this cycle (for real, it's not a joke) the Unity guys picked the - magical -&nbsp;limit of 7 depth levels and after reaching that level, the serializer will assume that a cycle was defined and will stop serializing fields of custom classes. What if we could use a type that supports null in the serialization pipeline?</p>
+<p style="text-align:justify;">Each problem described above has a potential solution and It turns out that all four&nbsp;can be fixed with the same resource: ScriptableObjects. It's not an extremely elegant or ideal solution, but it's the closest we get from one. Since it's a fairly long subject, Scriptable Objects are described in depth on <a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-3-scriptable-objects/">my next article</a>. For now, let's just acknowledge that those problems have a common way out&nbsp;and if you believe you may face one of those, take a look into it.</p>
+
+<h3 style="text-align:justify;"><strong>Modifiers and Serialization</strong></h3>
+<p style="text-align:justify;">Finally, let's summarize the modifiers involved in serialization.</p>
+
+<ul>
+ 	<li style="text-align:justify;">Use [System.Serializable] on a class or struct definition if you want it to be serialized;</li>
+ 	<li style="text-align:justify;">Publics fields are serialized by default, but only if its type is serializable (constants, static and readonly fields are not serialized);</li>
+ 	<li style="text-align:justify;">Use [SerializeField] if you wish to serialize a private&nbsp;field;</li>
+ 	<li style="text-align:justify;">Use [NonSerialized] if you want to avoid serialization on a public field;</li>
+ 	<li style="text-align:justify;">Use [HideInInspector] if you want to serialize but not expose the field in the inspector;</li>
+</ul>
+<h3 style="text-align:justify;"><strong>Conclusion</strong></h3>
+<p style="text-align:justify;">In this blog post we learnt how to define our own serializable types and&nbsp;acknowledged some problems that can emerge by doing it. <a href="https://sometimesicode.wordpress.com/2015/10/22/unity-serialization-part-3-scriptable-objects/">On the next article</a>, we will dive deep into a resource that can work out those problems: ScriptableObjects.</p>
+
+<h3 style="text-align:justify;"><strong>Reference</strong></h3>
+<p style="text-align:justify;"><a href="http://docs.unity3d.com/Manual/script-Serialization.html">Unity Manual: Script Serialization
+</a><a href="http://blogs.unity3d.com/2014/06/24/serialization-in-unity/">Unity Blog: Serialization in Unity
+</a><a href="http://blogs.unity3d.com/2012/10/25/unity-serialization/">Unity Blog: Unity Serialization</a><a href="http://blogs.unity3d.com/2014/06/24/serialization-in-unity/">
+</a><a href="https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/scriptable-objects">Unity Tutorials: ScriptableObject</a></p>
