@@ -6,4 +6,6 @@
     {{ post.title }}
   </h1>      
 {% endif %}
+{% assign page = post %}
+{%- include post_meta.html -%}
 <div class="entry-content">{{ content }}</div>
