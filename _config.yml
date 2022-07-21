@@ -51,7 +51,7 @@ kramdown:
 collections:
   posts:
     output: true
-    permalink: /:year/:month/:day/:title
+    permalink: /:year/:month/:day/:title/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
