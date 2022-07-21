@@ -143,7 +143,7 @@ Even though currying and partial application are concepts that are related, they
 
 If you have any comments, suggestions, corrections (especially corrections), please fell free to leave a comments below.
 
-# **Sources:**
+# **Sources**
 
 [Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp)  
 [What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application)  
