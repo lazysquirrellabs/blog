@@ -21,6 +21,7 @@ navigation:
 post1: /blog/2014/02/19/how-does-unity-export-to-so-many-platforms
 post2: /blog/2014/12/22/how-does-unity-work-under-the-hood
 post3: /blog/2015/04/11/unity-serialization-part-1-how-it-works-and-examples
+post4: /blog/2015/10/22/unity-serialization-part-2-defining-a-serializable-type
 post7: /blog/2017/10/26/fp-currying-vs-partial-application
 
 # Build settings
