@@ -105,7 +105,7 @@ Curiously, the value of `myStatic` changes in both objects, but does that mean s
 
 This proves what the Unity documentation tells us about how can we make a field of a serializable type be serialized. This works with most Unity objects, including `MonoBehaviour`, but what if I don’t want to define a `MonoBehaviour` and I still want to create a `Serializable` type? In other words, how can I define a `Serializable` type?
 
-[On the next article]({{ site.post5 }}) we will find out how to declare our own serializable types and how to treat problems that can come along with it. Fell free to write me any suggestions, errors, complements or just to say hi on the comments section 🙂
+[On the next article]({{ site.post5 }}) we will find out how to declare our own serializable types and how to treat problems that can come along with it. Fell free to write me any suggestions, errors, complements or just to say hi on the comments section. 🙂
 
 # **Sources**
 

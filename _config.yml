@@ -14,6 +14,8 @@ navigation:
   url: /archive/
 - text: About
   url: https://matheusamazonas.net
+- text: Portfolio
+  url: https://matheusamazonas.net/portfolio
 
 # Posts
 post1: /blog/2014/02/19/how-does-unity-export-to-so-many-platforms
