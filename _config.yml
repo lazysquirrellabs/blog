@@ -42,4 +42,6 @@ navigation:
 - text: About
   url: https://matheusamazonas.net
 
+# Posts
+post1: /blog/2014/02/19/how-does-unity-export-to-so-many-platforms
 post7: /blog/2017/10/26/fp-currying-vs-partial-application

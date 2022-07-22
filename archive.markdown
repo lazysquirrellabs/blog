@@ -7,7 +7,7 @@ permalink: /archive/
 Here are the blogs posts so far. I write mainly about game development. During my masters, I got quite interested in functional programming and it’s my main interest outside my working area.
 
 # Game Development
-- How does Unity export to so many platforms?
+- [How does Unity export to so many platforms?]({{ site.post1 }})
 - How does Unity3D scripting work under the hood?
 - Unity Serialization Series
 	- Part 1: How it works and examples
@@ -24,4 +24,4 @@ Here are the blogs posts so far. I write mainly about game development. During m
 
 
 ## Functional Programming
-- <a href="{{ site.post7 }}">FP: Currying vs. Partial Application</a>
+- [FP: Currying vs. Partial Application]({{ site.post7 }})
