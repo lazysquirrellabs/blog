@@ -16,7 +16,7 @@ This post is part of a series about Unity serialization.  On this series of arti
 
 Fell free to navigate through the sections if you are comfortable with the previous concepts.
 
-# **What is it?**
+# What is it?
 
 Among other [definitions](https://msdn.microsoft.com/en-us/library/ms233843.aspx), serialization is the process of converting the state an object to a set of bytes in order to store (or transmit) the object into memory, a database or a file. In another words: it’s how you can save an object to restore its state for later use.
 
@@ -24,7 +24,7 @@ Let’s say you have a Vector3 and you need to store it for future use. Which fi
 
 As we already read, this process is really useful to store and transmit data, so think about this: you have an online store deployed on your server, probably running a database manager application aside. Eventually, we need to store the data from memory into the disk (primary storage is volatile) and we do it by serializing our objects into database tables (which basically are files). The same process happens with every application that needs to store data into a disk, and computer games (and engines) are not an exception.
 
-# **How Unity does**
+# How Unity does
 
 Unity, as a Game Engine, needs to load a lot of stuff (scripts, prefabs, scenes) from the disk into the memory within application data. Maybe more important than that, Unity needs to move data between the native C++ side of the engine and the managed C# side. Even though we may think this task is strict to loading and storing assets processes, the serialization is used in many more situations than we think (like inspector window, reloading of editor code and instantiation among other scenarios). You can learn a bit more about Unity Serialization on their [own blog](http://blogs.unity3d.com/2014/06/24/serialization-in-unity/). I’d risk to say it’s a mandatory read for developers.
 
@@ -49,7 +49,7 @@ A really common data structure isn’t serializable: dictionaries, even if you d
 
 Ok, this is a lot of information, so let’s break it to a straightforward code example:
 
-# **Examples**
+# Examples
 
 Let’s take the following code (`MyBehaviour.cs`) as an example:
 
@@ -107,7 +107,7 @@ This proves what the Unity documentation tells us about how can we make a field 
 
 [On the next article]({{ site.post5 }}) we will find out how to declare our own serializable types and how to treat problems that can come along with it. Fell free to write me any suggestions, errors, complements or just to say hi on the comments section. 🙂
 
-# **Sources**
+# Sources
 
 - [Serialization in Unity](http://blogs.unity3d.com/2014/06/24/serialization-in-unity/) by Lucas Meijer (mandatory read)
 - [Unity Serialization Best Practices](http://blogs.unity3d.com/2012/10/25/unity-serialization/) by Tim Cooper
