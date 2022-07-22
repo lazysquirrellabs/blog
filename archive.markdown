@@ -10,7 +10,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - [How does Unity export to so many platforms?]({{ site.post1 }})
 - [How does Unity3D scripting work under the hood?]({{ site.post2 }})
 - Unity Serialization Series
-	- Part 1: How it works and examples
+	- [Part 1: How it works and examples]({{ site.post3 }})
 	- Part 2: Defining a Serializable type
 	- Part 3: Scriptable Objects
 - Android 6 (Marshmallow) permissions and Unity

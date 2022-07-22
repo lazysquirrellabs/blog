@@ -146,7 +146,7 @@ If you have any comments, suggestions, corrections (especially corrections), ple
 
 # **Sources**
 
-[Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp)  
-[What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application)  
-[Currying and Partial Application](https://www.schoolofhaskell.com/user/EFulmer/currying-and-partial-application)  
-[Learn You a Haskell for Great Good!: Higher order functions](http://learnyouahaskell.com/higher-order-functions)
+- [Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp)  
+- [What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application)  
+- [Currying and Partial Application](https://www.schoolofhaskell.com/user/EFulmer/currying-and-partial-application)  
+- [Learn You a Haskell for Great Good!: Higher order functions](http://learnyouahaskell.com/higher-order-functions)
