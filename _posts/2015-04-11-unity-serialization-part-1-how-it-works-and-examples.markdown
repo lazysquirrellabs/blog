@@ -67,7 +67,7 @@ public class MyBehaviour : MonoBehaviour
 }
 ```
 
-The only fields that are serialized are `x`, y and `pi` because they are not `static`, `const`, r`eadonly`, a property or private with no `SerializeField` attribute. One way to show this is by taking a look at the script’s inspector, which only shows us serialized fields (that can come handy):
+The only fields that are serialized are `x`, y and `pi` because they are not `static`, `const`, `readonly`, a property or private field with no `SerializeField` attribute. One way to show this is by taking a look at the script’s inspector, which only shows us serialized fields (that can come handy):
 
 ![{{ site.post_images }}/post3/screen-shot-2015-04-08-at-10-48-08-pm.png?w=750]({{ site.post_images }}/post3/screen-shot-2015-04-08-at-10-48-08-pm.png?w=750)
 
