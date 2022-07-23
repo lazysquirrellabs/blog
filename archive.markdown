@@ -19,7 +19,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 	- How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE
 - [C#’s Finalizer/Destructor Trap]({{ site.post9 }})
 - [Unity’s Scripting Duality and Object Destruction]({{ site.post10 }})
-- Null Check and Equality in Unity
+- [Null Check and Equality in Unity]({{ site.post11 }})
 - When software internationalization isn’t just about UI: a tale of how a parsing error c- rashed our game
 
 
