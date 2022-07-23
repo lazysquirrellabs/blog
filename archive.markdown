@@ -17,7 +17,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - Voedingscentrum Postmortem Series
 	- [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality]({{ site.post8 }})
 	- How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE
-- C#’s Finalizer/Destructor Trap
+- [C#’s Finalizer/Destructor Trap]({{ site.post9 }})
 - Unity’s Scripting Duality and Object Destruction
 - Null Check and Equality in Unity
 - When software internationalization isn’t just about UI: a tale of how a parsing error c- rashed our game
