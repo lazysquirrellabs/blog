@@ -79,8 +79,18 @@ figure > img {
 
 figcaption {
   font-size: $small-font-size;
+  text-align: center;
+  display: block;
 }
 
+figure > p {
+  margin-bottom: 0px;
+}
+
+img.wide {
+  width: 100%;
+  height: auto;
+}
 
 
 /**
