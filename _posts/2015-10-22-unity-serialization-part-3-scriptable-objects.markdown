@@ -100,7 +100,7 @@ We can also use Scriptable Objects as assets instead of scene objects and the ef
 
 # Polymorphism
 
-We face a serialization problem when using polymorphism and custom serializable classes: an instance of a derived class is serialized as an instance of the base class. Let’s use the example the Unity Documentation [does](http://docs.unity3d.com/Manual/script-Serialization.html): animals. See the example:
+We face a serialization problem when using polymorphism and custom serializable classes: an instance of a derived class is serialized as an instance of the base class. Let’s use the example the Unity Documentation [does](http://docs.unity3d.com/Manual/script-Serialization.html){:target="_blank"}: animals. See the example:
 
 ```csharp
 [System.Serializable]
@@ -215,7 +215,7 @@ public class ScriptableExample : MonoBehaviour
 
 This example is analogue to the previous one, so run it and observe the console. Even after hitting play, stopping the game and disabling the script, we get “True” as output, which means that the dog is still a `Dog` and it was serialized as one, keeping the polymorphism intact. Therefore, Scriptable Objects solve the second problem introduced in the last blog post: polymorphism and user-defined classes. This might not be the best solution ever when dealing with serialized polymorphic code (we can’t use constructors anymore and inspecting the objects is a pain) but it may be necessary in some situations.
 
-In addition, a fix to this polymorphism serialization problem has been extremely [requested](http://feedback.unity3d.com/suggestions/serialization-of-polymorphic-dat) by the community in the last years and haven’t been solved it.
+In addition, a fix to this polymorphism serialization problem has been extremely [requested](http://feedback.unity3d.com/suggestions/serialization-of-polymorphic-dat){:target="_blank"} by the community in the last years and haven’t been solved it.
 
 # Serialization depth limit (or no support for null)
 
@@ -234,7 +234,7 @@ This code looks harmless, but it’s not, as seen on the error thrown (on previo
 > Serialization depth limit exceeded at ‘DepthClass’. There may be an object composition cycle in one or more of your serialized classes.
 > 
 
-Let’s understand why. Let’s take a look at the `depthObjects` variable and try to figure out how it would be serialized in Unity if it’s an empty list. The naive thought would say that if it should be serialized as null, like any other field, but it’s not. It happens that Unity doesn’t support null serialization for custom classes (like it does for instances of `UnityObject`) and that object will be serialized as en empty instance – which is transparent to the user. On top of that, each of those empty instances has its own `depthObjects` variable, which would be serialized as another empty instance, creating a cycle that would never end, therefore crashing Unity. To avoid that, [the folks](http://docs.unity3d.com/Manual/script-Serialization.html) at Unity Technologies set a limit (7 levels) for serialization depth, which means that after 7 levels of depth, Unity will assume that it hit a cycle and will stop the serialization at that point. Seven levels of serialization can sound like too much, but for some problems, it might be necessary.
+Let’s understand why. Let’s take a look at the `depthObjects` variable and try to figure out how it would be serialized in Unity if it’s an empty list. The naive thought would say that if it should be serialized as null, like any other field, but it’s not. It happens that Unity doesn’t support null serialization for custom classes (like it does for instances of `UnityObject`) and that object will be serialized as en empty instance – which is transparent to the user. On top of that, each of those empty instances has its own `depthObjects` variable, which would be serialized as another empty instance, creating a cycle that would never end, therefore crashing Unity. To avoid that, [the folks](http://docs.unity3d.com/Manual/script-Serialization.html){:target="_blank"} at Unity Technologies set a limit (7 levels) for serialization depth, which means that after 7 levels of depth, Unity will assume that it hit a cycle and will stop the serialization at that point. Seven levels of serialization can sound like too much, but for some problems, it might be necessary.
 
 Given that, always think twice before serializing any field that has recursive declarations. If it’s not really necessary to serialize it, don’t! But if you really want to use 7 or more levels, or you really need to serialize it, you should use Scriptable Objects. Since Scriptable Objects do support null serialization, this problem simply vanishes:
 
@@ -250,7 +250,7 @@ And this simple change should get rid of the error and let you use more than 7 d
 
 # Data can be shared among objects
 
-This problem (although not listed on the previous article) is exactly the same discussed in the Unity [documentation](http://docs.unity3d.com/Manual/class-ScriptableObject.html) about Scriptable Objects. If you store an array of integers that occupies about 4MB in a prefab and you instantiate that prefab 10 times, you would have a copy of the array in each prefab’s instance, occupying a total of 40MB. That happens because the array lives on the script itself, and copying the prefab copies the script, hence the array.
+This problem (although not listed on the previous article) is exactly the same discussed in the Unity [documentation](http://docs.unity3d.com/Manual/class-ScriptableObject.html){:target="_blank"} about Scriptable Objects. If you store an array of integers that occupies about 4MB in a prefab and you instantiate that prefab 10 times, you would have a copy of the array in each prefab’s instance, occupying a total of 40MB. That happens because the array lives on the script itself, and copying the prefab copies the script, hence the array.
 
 If instead of declaring the array on the prefab’s script you had a reference to a `ScriptableObject` which contains the array, all the instances would point to the same data. Therefore, 10 instances of that prefab would store 10 references to the same object (and not the actual data), occupying about 4MB only. Not only that substantially saves memory, but changes made to the array from any of the instances will affect the others, maintaining database consistency.
 

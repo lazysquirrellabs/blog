@@ -11,7 +11,7 @@ On the [last article]({{site.post3 }}), we discussed about serialization concept
 
 # Understanding the problem
 
-Let’s choose a (slight [biased](https://play.google.com/store/apps/details?id=cc.lumentech.operacaoabaporu&hl=en)) model to implement as our example: a script to keep all the data to an investigation game which contains numerous cities, each one containing several places. Sounds pretty easy and straightforward, so let’s do it naively by creating `MonoBehaviours`: one for the database, one for the cities and one for the places. That should work:
+Let’s choose a (slight [biased](https://play.google.com/store/apps/details?id=cc.lumentech.operacaoabaporu&hl=en){:target="_blank"}) model to implement as our example: a script to keep all the data to an investigation game which contains numerous cities, each one containing several places. Sounds pretty easy and straightforward, so let’s do it naively by creating `MonoBehaviours`: one for the database, one for the cities and one for the places. That should work:
 
 ```csharp
 public class MyDatabase : MonoBehaviour
@@ -145,7 +145,7 @@ In this blog post we learnt how to define our own serializable types and acknowl
 
 # Reference
 
-- [Unity Manual: Script Serialization](http://docs.unity3d.com/Manual/script-Serialization.html)
-- [Unity Blog: Serialization in Unity](http://blogs.unity3d.com/2014/06/24/serialization-in-unity/)
-- [Unity Blog: Unity Serialization](http://blogs.unity3d.com/2012/10/25/unity-serialization/)
-- [Unity Tutorials: ScriptableObject](https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/scriptable-objects)
+- [Unity Manual: Script Serialization](http://docs.unity3d.com/Manual/script-Serialization.html){:target="_blank"}
+- [Unity Blog: Serialization in Unity](http://blogs.unity3d.com/2014/06/24/serialization-in-unity/){:target="_blank"}
+- [Unity Blog: Unity Serialization](http://blogs.unity3d.com/2012/10/25/unity-serialization/){:target="_blank"}
+- [Unity Tutorials: ScriptableObject](https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/scriptable-objects){:target="_blank"}

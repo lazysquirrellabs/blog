@@ -26,7 +26,7 @@ def mult_pow_c(x):
     return lambda y: lambda z: x ** y * z
 ```
 
-Let’s analyze this pice of code for a minute. The function `mult_pow_c(x)` takes one argument and will always return a lambda, which is… a function! The returned function takes exactly one argument – `z` – and returns another lambda. This last lambda, again, takes one argument and returns the result. Note that the outer variables `x` and `y` are part of the inner function’s closure and can be accessed by it. As you noticed, we did exactly what the definition of currying said two paragraphs ago: we turned a function that takes many arguments into a series of nested functions, each one taking exactly one argument. To put it in a more formal way, currying transforms a function of N-*[arity](https://en.wikipedia.org/wiki/Arity)* into N functions of 1-*arity*.
+Let’s analyze this pice of code for a minute. The function `mult_pow_c(x)` takes one argument and will always return a lambda, which is… a function! The returned function takes exactly one argument – `z` – and returns another lambda. This last lambda, again, takes one argument and returns the result. Note that the outer variables `x` and `y` are part of the inner function’s closure and can be accessed by it. As you noticed, we did exactly what the definition of currying said two paragraphs ago: we turned a function that takes many arguments into a series of nested functions, each one taking exactly one argument. To put it in a more formal way, currying transforms a function of N-*[arity](https://en.wikipedia.org/wiki/Arity){:target="_blank"}* into N functions of 1-*arity*.
 
 Let’s now try to use these two functions and see how their application differ. The first function call uses the *uncurried* version and the second one the *curried* version.
 
@@ -63,7 +63,7 @@ def double(x):
     return mult(2,x)
 ```
 
-Notice that the `double` is defined in terms of `mult`. This is a pattern that we’ve seen before and some call it “wrapper functions”. Another good example are the functions `pow` (power) and `square` (^2). We use previously implemented functionality and we fix one of the parameters to create a new function. This is also known as [partially applying](https://en.wikipedia.org/wiki/Partial_application) a function, simple like that. Given the original function, we limit its expressiveness by tying some of its parameters. For example, take the `*` operator (multiplication): initially, its image (the set of possible outcomes) includes all the integers, but when we partially apply it, by tying the first argument to 2 (\*2), we reduce the function’s expressiveness by limiting its image to even numbers.
+Notice that the `double` is defined in terms of `mult`. This is a pattern that we’ve seen before and some call it “wrapper functions”. Another good example are the functions `pow` (power) and `square` (^2). We use previously implemented functionality and we fix one of the parameters to create a new function. This is also known as [partially applying](https://en.wikipedia.org/wiki/Partial_application){:target="_blank"} a function, simple like that. Given the original function, we limit its expressiveness by tying some of its parameters. For example, take the `*` operator (multiplication): initially, its image (the set of possible outcomes) includes all the integers, but when we partially apply it, by tying the first argument to 2 (\*2), we reduce the function’s expressiveness by limiting its image to even numbers.
 
 So that’s partial application. On a formal way, partially applying a function to X arguments is the process of transforming a N-arity function into a (N-X)-arity one by means of tying X arguments to values.
 
@@ -84,7 +84,7 @@ print(mult_pow(2))
 
 That might seem logical for a Python (Or C, C++, Java…) programmer, but it makes currying – something that as we’re going to see, is extremely powerful – a manual, programmer-dependent task.
 
-The twist is that – unlike in imperative languages – in most functional languages, **functions are curried by default**. This might go by as a simple detail, but it has big consequences, as we’re going to see later. In [Haskell](https://www.haskell.org/) or [Clean](http://clean.cs.ru.nl/Clean), every function is curried by default. There’s no way of escaping out of it. As a consequence, every function that takes N arguments (where N > 0) is actually a function that takes one argument and returns a function that takes N-1 arguments, just like we did on our first Python currying example (`mult_pow_c`). In addition, we get that for free: there is no need for any special implementation, syntax or annotation. That, aligned with [higher-order functions](http://learnyouahaskell.com/higher-order-functions) gives us a great toolset to play with functions.
+The twist is that – unlike in imperative languages – in most functional languages, **functions are curried by default**. This might go by as a simple detail, but it has big consequences, as we’re going to see later. In [Haskell](https://www.haskell.org/){:target="_blank"} or [Clean](http://clean.cs.ru.nl/Clean){:target="_blank"}, every function is curried by default. There’s no way of escaping out of it. As a consequence, every function that takes N arguments (where N > 0) is actually a function that takes one argument and returns a function that takes N-1 arguments, just like we did on our first Python currying example (`mult_pow_c`). In addition, we get that for free: there is no need for any special implementation, syntax or annotation. That, aligned with [higher-order functions](http://learnyouahaskell.com/higher-order-functions){:target="_blank"} gives us a great toolset to play with functions.
 
 Partial application in such languages becomes so easy **because** of default currying. As we saw in the Python examples, partially applying a function isn’t as trivial as in a functional language.
 
@@ -146,7 +146,7 @@ If you have any comments, suggestions, corrections (especially corrections), ple
 
 # Sources
 
-- [Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp)  
-- [What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application)  
-- [Currying and Partial Application](https://www.schoolofhaskell.com/user/EFulmer/currying-and-partial-application)  
-- [Learn You a Haskell for Great Good!: Higher order functions](http://learnyouahaskell.com/higher-order-functions)
+- [Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp){:target="_blank"}  
+- [What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application){:target="_blank"}  
+- [Currying and Partial Application](https://www.schoolofhaskell.com/user/EFulmer/currying-and-partial-application){:target="_blank"}  
+- [Learn You a Haskell for Great Good!: Higher order functions](http://learnyouahaskell.com/higher-order-functions){:target="_blank"}
