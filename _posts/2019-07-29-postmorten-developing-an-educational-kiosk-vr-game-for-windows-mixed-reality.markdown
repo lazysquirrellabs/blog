@@ -15,12 +15,14 @@ The project was commissioned by [Voedingscentrum](https://www.voedingscentrum.nl
 
 The game was planned as a fun, educacional VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
 
-![/blog/assets/images/post8/smikkel.png](/blog/assets/images/post8/smikkel.png){:class="img-right"}
+![/blog/assets/images/post8/smikkel.png](/blog/assets/images/post8/smikkel.png)
+{:class="img-right"}
 
 A robot waiter teaches the players about the game mechanics and its main loop: for each meal the player chooses, Smikkel comes to the dinner table and you feed it by choosing, grabbing and placing food items (served by the waiter) on a plate. Once all the food items of a specific meal are chosen (between 2 and 6 items), Smikkel eats the food and its mood, energy levels and appearance change according to the food items you fed him. Following, playtime starts and the player can interact with Smikkel by petting it and throwing balls so it can fetch them. During playtime, it should be evident that the food Smikkel ate affected its behavior. Additionally, the waiter displays a report showing the selected food items and gives the user feedback on the chosen food.
 {: .text-justify}
 
-![/blog/assets/images/post8/waiter.png](/blog/assets/images/post8/waiter.png){:class="img-left"}
+![/blog/assets/images/post8/waiter.png](/blog/assets/images/post8/waiter.png)
+{:class="img-left"}
 
 Once playtime finishes, the feeding loop starts again. Once all the meal loops are over, the waiter gives a final feedback, announces that the experience is over and instructs the player to remove their VR headset. During the entire experience, spectators can watch the gameplay through a TV.
 
@@ -75,7 +77,8 @@ The Leap Motion was meant to replace the WMR controllers as interaction devices 
 
 Whilst migrating to the Leap Motion solution, it was clear the one of the game’s key interactions was far from ideal: throwing balls. Previously, the user could grab balls using the WMR controller’s trigger button and throw them by releasing it, using a bezier curve as an indicator of where the ball would land. Naturally, we thought that when using your hands, the user could simply grab the ball and instinctively throw it. It sounded like the obvious design choice. Although, during internal playtests, an instinctive throw was never successful and the ball would always drop during the movement. The reason became evident: a natural ball throw usually requires a backwards arm movement, bringing the player’s hands outside of the Leap Motion tracking area.
 
-![/blog/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png](/blog/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png){:class="img-right"}
+![/blog/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png](/blog/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png)
+{:class="img-right"}
 
 In order to execute a successful throw, the user had to keep their hands in the tracking area during the entire movement, which did not look natural whatsoever. We overcame this obstacle by changing the ball throwing design and adding a ball cannon which throws balls inserted into its feeder. After some external playtests, we added some visual clues to the ball cannon (on the right) and it was clear that the ball throwing problem was solved. Children are naturally attracted to the cannon and the visual cues make its purpose obvious.
 {: .text-justify}
