@@ -12,7 +12,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - Unity Serialization Series
 	- [Part 1: How it works and examples]({{ site.post3 }})
 	- [Part 2: Defining a Serializable type]({{ site.post4 }})
-	- Part 3: Scriptable Objects
+	- [Part 3: Scriptable Objects]({{ site.post5 }})
 - Android 6 (Marshmallow) permissions and Unity
 - Voedingscentrum Postmortem Series
 	- [Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality
