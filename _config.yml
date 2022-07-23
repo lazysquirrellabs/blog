@@ -25,6 +25,7 @@ post4: /blog/2015/10/22/unity-serialization-part-2-defining-a-serializable-type
 post5: /blog/2015/10/22/unity-serialization-part-3-scriptable-objects
 post6: /blog/2016/07/09/android-6-marshmallow-permissions-and-unity
 post7: /blog/2017/10/26/fp-currying-vs-partial-application
+post8: /blog/2019/07/29/postmorten-developing-an-educational-kiosk-vr-game-for-windows-mixed-reality
 
 # Build settings
 remote_theme: jekyll/minima

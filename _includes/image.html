@@ -4,11 +4,13 @@
 {% if include.align %}
 <p align="{{ include.align }}">
 {% endif %}
-<img class="{% if include.class %}{{ include.class }}{% endif %}" src="{{ include.url }}" width="{{ include.width }}" height="{{ include.height }}">
+<img class="{% if include.class %}{{ include.class }}{% endif %}" src="{{ include.url }}">
 {% if include.caption %}
 <figcaption>{{ include.description }}</figcaption>
+{% endif %}
 {% if include.align %}
 </p>
 {% endif %}
+{% if include.caption %}
 </figure>
 {% endif %}

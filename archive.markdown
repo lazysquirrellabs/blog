@@ -15,7 +15,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 	- [Part 3: Scriptable Objects]({{ site.post5 }})
 - [Android 6 (Marshmallow) permissions and Unity]({{ site.post6}})
 - Voedingscentrum Postmortem Series
-	- [Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality
+	- [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality]({{ site.post8 }})
 	- How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE
 - C#’s Finalizer/Destructor Trap
 - Unity’s Scripting Duality and Object Destruction
