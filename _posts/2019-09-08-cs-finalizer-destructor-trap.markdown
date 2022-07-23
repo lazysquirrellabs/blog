@@ -129,7 +129,7 @@ public class ExampleBehaviour : MonoBehaviour
 
 A new Unity scene is created and only 2 objects are added to it: one containing an `ExampleButton` (called MyButtonGameObject) and one containing an `ExampleBehaviour` (called MyBehaviourGameObject). Whenever the scene is played, MyBehaviourGameObject’s `Awake` method is invoked and the `_object`variable is assigned, as expected. Inside `ExampleClass` constructor, the event subscription is executed, as expected. Nothing unusual so far.
 
-![/blog/assets/images/post9/screenshot-2019-09-08-at-17.33.41.png](/blog/assets/images/post9/screenshot-2019-09-08-at-17.33.41.png)
+![{{ site.post_images }}/post9/screenshot-2019-09-08-at-17.33.41.png]({{ site.post_images }}/post9/screenshot-2019-09-08-at-17.33.41.png)
 
 Then, because of some design decision, the MyBehaviourGameObject object is destroyed along the application lifetime. We realize that we might have to do some cleanup because `_object` should unsubscribe from `_button`‘s `OnClick`event. But then we come to the conclusion that it actually should be alright and that no additional cleanup should be necessary. Whenever MyBehaviourGameObject gets destroyed, the garbage collector will collect its `ExampleBehaviour` script. Since `_object` only belongs to MyBehaviourGameObject, it should be collected as well, which should trigger its finalizer and unsubscribe from the events.
 
