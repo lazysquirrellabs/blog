@@ -16,7 +16,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - [Android 6 (Marshmallow) permissions and Unity]({{ site.post6}})
 - Voedingscentrum Postmortem Series
 	- [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality]({{ site.post8 }})
-	- How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE
+	- [How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE]({{ site.post13 }})
 - [C#’s Finalizer/Destructor Trap]({{ site.post9 }})
 - [Unity’s Scripting Duality and Object Destruction]({{ site.post10 }})
 - [Null Check and Equality in Unity]({{ site.post11 }})
