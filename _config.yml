@@ -40,6 +40,8 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
 
+enableComments: true
+
 minima:
   skin: dark
   social_links:
