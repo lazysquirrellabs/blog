@@ -1,11 +1,18 @@
-<h1 class="entry-title">
-    <a href="{{ root_url }}{{ page.url }}">{{ page.title }}</a>
-</h1>
-{% if post.title %}
-  <h1 class="post-title">
-    {{ post.title }}
-  </h1>      
-{% endif %}
-{% assign page = post %}
-{%- include post_meta.html -%}
-<div class="entry-content">{{ content }}</div>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ post.title | escape }}</h1>
+    {% assign page = post %}
+    {%- include post_meta.html -%}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
