@@ -1,0 +1,21 @@
+<div class="pager">
+   <ul class="pagination">
+      {%- if post.previous -%}
+      <li><a href="{{site.baseurl}}/{{ post.previous.url }}" class="previous-page">Previous</a></li>
+      {%- else %}
+      <li>
+         <div class="pager-edge">Previous</div>
+      </li>
+      {%- endif %}
+      <li>
+         <div class="current-page">{{ paginator.page }}</div>
+      </li>
+      {%- if post.next -%}
+      <li><a href="{{site.baseurl}}/{{ post.next.url  }}" class="next-page">Next</a></li>
+      {%- else %}
+      <li>
+         <div class="pager-edge">Next</div>
+      </li>
+      {%- endif %}
+   </ul>
+</div>
