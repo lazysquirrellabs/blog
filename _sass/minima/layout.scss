@@ -303,7 +303,6 @@
     a {
       display: block;
       padding: $spacing-unit / 4;
-      border: 1px solid $border-color-01;
       &:hover { border-color: $border-color-02 }
     }
   }
@@ -322,6 +321,7 @@
       min-width: 41px;
       text-align: center;
       box-sizing: border-box;
+      border: 1px solid $border-color-01;
     }
     div {
       display: block;

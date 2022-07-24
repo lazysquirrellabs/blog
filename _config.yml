@@ -3,7 +3,9 @@ subtitle: Matheus Amazonas' blog
 description: Sometimes I play, sometimes I surf, sometimes I even code.
 baseurl: "/blog"
 url: "https://matheusamazonas.net"
-github_username:  matheusamazonas
+author:
+  name: Matheus Amazonas
+  email: "matheus.amazonas@gmail.com"
 
 # Site data
 post_images: /blog/assets/images
@@ -40,6 +42,11 @@ plugins:
 
 minima:
   skin: dark
+  social_links:
+    github: matheusamazonas
+    linkedin: matheusamazonas
+    youtube_channel: UCiCD4qB_TAvFBYOWPmHCfPg
+    youtube_channel_name: Matheus Amazonas
 
 markdown: kramdown
 highlighter: rouge
