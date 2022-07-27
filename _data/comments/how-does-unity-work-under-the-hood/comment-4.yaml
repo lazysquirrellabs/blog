@@ -1,0 +1,8 @@
+_parent: '/blog/2014/12/22/how-does-unity-work-under-the-hood'
+replying_to: ''
+message: |
+  Why don’t unity provide C scripting interface instead of C# scripting.  
+  This would reduce all this Wrapper and stuff?
+name: Puttaraju R
+email:
+date: '2016-08-04T13:46'
