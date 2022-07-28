@@ -1,6 +1,11 @@
 _parent: '/blog/2014/02/19/how-does-unity-export-to-so-many-platforms/'
 replying_to: ''
-message: 'Thank you for your post! I want to write a little game, just to play a bit in app development (I´m still stuck on desktop in my job) and so I try to choose a technology, that exports to ios, android and my dear legacy, dying out windows phone. I thought about doing a little web app until I fount out that unity isn´t only a game engine, but a real development platform. Was really curious about how it works… I think I´ll give it a try!'
-name: Jessica
+message: |
+  Hi Matheus
+
+  Great post that one you made here !! Now that I know that the trick is made by Mono finally all the pieces start to be in place in my mind. I was really curious about how Unity was managing the C# code in the background
+
+  Thanks for your research !!
+name: Charro
 email: 
-date: '2017-06-15T18:06'
+date: '2017-04-05T07:15'
