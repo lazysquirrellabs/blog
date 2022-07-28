@@ -1,0 +1,6 @@
+_parent: '/blog/2015/04/11/unity-serialization-part-1-how-it-works-and-examples/'
+replying_to: ''
+message: 'Nice intro. For me, though, it’s missing the key part, showing the serialization of that class. serializer.serialize(file, MyBehavior) or whatever it should be in Unity. Looking forward to the next article.'
+name: Ramcat
+email: 
+date: '2015-04-16T16:21'
