@@ -24,23 +24,6 @@
     </div>
   </fieldset>
 
-  <fieldset>
-    <div class="textfield">
-      <label for="comment-form-email">E-mail
-        <input class="textfield__input" name="fields[email]" type="email" id="comment-form-email" placeholder="Your email (optional, used only to send comments.)"/>
-      </label>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <div class="notify-me">
-      <label for="comment-form-reply">
-        <input type="checkbox" id="comment-form-reply" name="options[subscribe]" value="email">
-      </label>
-      Send me an email when someone comments.
-    </div>
-  </fieldset>
-
     <fieldset>
     <div class="textfield">
       <label for="hp">
@@ -50,12 +33,7 @@
   </fieldset>
 
   <fieldset>
-    <!--div class="g-recaptcha" data-sitekey="{{ site.reCaptcha.siteKey }}" data-theme="dark"></div-->
-    <div id="reCaptcha"></div>
-  </fieldset>
-
-  <fieldset>
-    <button class="button" id="comment-form-submit"> <!-- add id for Spinner -->
+    <button class="button" id="comment-form-submit"> 
       Submit
     </button>
   </fieldset>
@@ -67,17 +45,3 @@
 <p>Comments are held for moderation. There will be a delay before they appear.<br>
 Comments may include <a href="https://commonmark.org/help/" rel="nofollow"><strong>Markdown</strong></a>.<br>
 </small>
-
-<script>
-function showReCaptcha() {
-  var node = document.createElement("div");
-  node.setAttribute('class', 'g-recaptcha');
-  node.setAttribute('data-sitekey', '{{ site.reCaptcha.siteKey }}');
-  if (window.matchMedia && 
-      window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      node.setAttribute('data-theme', "dark");
-  }
-  document.getElementById("reCaptcha").appendChild(node);
-}
-showReCaptcha();
-</script>
