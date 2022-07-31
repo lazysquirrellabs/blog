@@ -1,0 +1,16 @@
+_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
+replying_to: '3'
+message: |
+  Hi onebook,
+
+  Valid questions! I’d have to dig deeper into these but I believe that when you hit “play”, the scene is deserialized from what’s saved into disk, hence loaded into memory. If the scene is not the one saved into disk, I believe Unity serializes it and then deserializes it right after, to reuse the pipeline used for saved scenes (and to keep the original intact). That serialized version of an unsaved scene, though, may be discarded after you hit “stop”.
+
+  When in Editor mode, changes in the scene won’t be serialized until you saved the scene (or hit play, like explained on the paragraph above).
+
+  Does that make sense?
+
+  Thank you for the question.
+
+name: Matheus Amazonas
+email: 
+date: '2017-06-26T08:26'
