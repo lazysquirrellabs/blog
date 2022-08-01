@@ -22,6 +22,9 @@ comments:
   # request.
   branch: "feature-comments"
 
+  # Text to use as the commit message or pull request title. Accepts placeholders.
+  commitMessage: "Comment from {fields.name} on {options.slug}"
+
   # (*) REQUIRED
   #
   # Destination path (filename) for the data files. Accepts placeholders.
