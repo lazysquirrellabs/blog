@@ -69,4 +69,4 @@ collections:
     output: true
     permalink: /:year/:month/:day/:title/
 
-staticman_url: https://matheus-blog-comments.herokuapp.com/v2/entry/matheusamazonas/blog/feature-comments/comments
+staticman_url: https://matheus-blog-comments.herokuapp.com/v2/entry/matheusamazonas/blog/master/comments
