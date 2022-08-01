@@ -40,6 +40,8 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
 
+enableComments: true
+
 minima:
   skin: dark
   social_links:
@@ -66,3 +68,5 @@ collections:
   posts:
     output: true
     permalink: /:year/:month/:day/:title/
+
+staticman_url: https://matheus-blog-comments.herokuapp.com/v2/entry/matheusamazonas/blog/feature-comments/comments

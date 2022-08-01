@@ -1,0 +1,12 @@
+_id: 5
+_parent: '/blog/2014/02/19/how-does-unity-export-to-so-many-platforms/'
+replying_to: ''
+message: |
+  Hi Matheus
+
+  Great post that one you made here !! Now that I know that the trick is made by Mono finally all the pieces start to be in place in my mind. I was really curious about how Unity was managing the C# code in the background
+
+  Thanks for your research !!
+name: Charro
+email: 
+date: '2017-04-05T07:15'

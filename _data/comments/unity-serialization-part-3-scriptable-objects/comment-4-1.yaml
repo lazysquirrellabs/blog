@@ -1,0 +1,14 @@
+_id: 4-1
+_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
+replying_to: '4'
+message: |
+  Hi Telecaster. Thank you for the comment. Sorry for taking so long to reply, I was on vacation.
+  
+  Serialization is definitely an answer for your problem, specifically ScriptableObjects. They’re perfect to just store and manipulate some data. Another option would be using actual database solutions, like SQLite. I haven’t used it in depth before, but it definitely works. A quick “sqlite unity” Google search might help you.
+  
+  I am not aware, though, about the advantages and disadvantages of each method and unfortunately I lack free time to help you with that. If you find some info, please share it here, I’d love to learn about it.
+  
+  Matheus
+name: Matheus Amazonas
+email: 
+date: '2017-09-14T11:24'
