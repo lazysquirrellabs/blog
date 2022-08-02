@@ -15,14 +15,11 @@ The project was commissioned by [Voedingscentrum](https://www.voedingscentrum.nl
 
 The game was planned as a fun, educacional VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
 
-![{{ site.post_images }}/post8/smikkel.png]({{ site.post_images }}/post8/smikkel.png)
-{:class="img-right"}
+![{{ site.post_images }}/post8/waiter.png]({{ site.post_images }}/post8/waiter.png)   ![{{ site.post_images }}/post8/smikkel.png]({{ site.post_images }}/post8/smikkel.png)
+{:align="center"}
 
 A robot waiter teaches the players about the game mechanics and its main loop: for each meal the player chooses, Smikkel comes to the dinner table and you feed it by choosing, grabbing and placing food items (served by the waiter) on a plate. Once all the food items of a specific meal are chosen (between 2 and 6 items), Smikkel eats the food and its mood, energy levels and appearance change according to the food items you fed him. Following, playtime starts and the player can interact with Smikkel by petting it and throwing balls so it can fetch them. During playtime, it should be evident that the food Smikkel ate affected its behavior. Additionally, the waiter displays a report showing the selected food items and gives the user feedback on the chosen food.
 {: .text-justify}
-
-![{{ site.post_images }}/post8/waiter.png]({{ site.post_images }}/post8/waiter.png)
-{:class="img-left"}
 
 Once playtime finishes, the feeding loop starts again. Once all the meal loops are over, the waiter gives a final feedback, announces that the experience is over and instructs the player to remove their VR headset. During the entire experience, spectators can watch the gameplay through a TV.
 
