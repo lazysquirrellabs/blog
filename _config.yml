@@ -74,4 +74,4 @@ collections:
     permalink: /:year/:month/:day/:title/
 
 #Staticman
-staticman_url: https://matheus-blog-comments.herokuapp.com/v2/entry/matheusamazonas/blog/master/comments
+staticman_url: https://matheus-blog-comments.fly.dev/v2/entry/matheusamazonas/blog/master/comments
