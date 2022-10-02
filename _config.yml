@@ -34,6 +34,7 @@ post10: /blog/2020/04/01/unitys-scripting-duality
 post11: /blog/2020/04/01/null-check-and-equality-in-unity
 post12: /blog/2021/04/14/when-software-internationalization-isnt-just-about-ui-a-tale-of-how-a-parsing-error-crashed-our-game
 post13: /blog/2021/08/05/how-windows-mixed-realitys-poor-reliability-forced-a-kiosk-game-switch-to-htc-vive
+post14: /blog/2022/09/10/finally-a-proper-gdd
 
 # Build settings
 remote_theme: jekyll/minima
