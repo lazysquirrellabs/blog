@@ -24,7 +24,8 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - [Finally, a proper Game Design Document (whatever that means)]({{ site.post14 }})
 - [Game testing made easier: decoupling code]({{ site.post15 }})
 - Terraced Terrain Generator Series
-	- [Terraced Terrain Generator's performance improvements]({{ site.post16 }})
+	- [Terraced Terrain Generator development report]({{ site.post15 }})
+	- [Terraced Terrain Generator performance improvements]({{ site.post16 }})
 
 # Functional Programming
 - [FP: Currying vs. partial application]({{ site.post7 }})
