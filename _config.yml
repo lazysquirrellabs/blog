@@ -37,7 +37,7 @@ post13: /blog/2021/08/05/how-windows-mixed-realitys-poor-reliability-forced-a-ki
 post14: /blog/2022/09/10/finally-a-proper-gdd
 
 # Build settings
-remote_theme: jekyll/minima
+remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
