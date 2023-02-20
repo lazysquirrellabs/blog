@@ -26,6 +26,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - Terraced Terrain Generator Series
 	- [Terraced Terrain Generator development report]({{ site.post15 }})
 - Terraced Terrain Generator series
+	- [Developing a Terraced Terrain Generator]({{ site.post15 }})
 	- [Terraced Terrain Generator performance improvements]({{ site.post16 }})
 
 # Functional Programming
