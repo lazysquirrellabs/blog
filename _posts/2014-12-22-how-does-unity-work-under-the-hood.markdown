@@ -1,17 +1,17 @@
 ---
 layout: post
-title:  "How does Unity3D scripting work under the hood?"
+title:  "How does Unity scripting work under the hood?"
 date:   2014/12/22 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-On the [previous post]({{ site.post1 }}){:target="_blank"} we learnt how Unity exports to so many platforms. Now let’s talk about a subject that can sound unnecessary at first, but helped (at least me) a lot on the process of understanding how Unity works. We all know [Unity3D](http://unity3d.com/){:target="_blank"} is an engine, but how it really works? In this post we’ll learn about:
+On the [previous post]({{ site.post1 }}){:target="_blank"} we learnt how Unity exports to so many platforms. Now let’s talk about a subject that can sound unnecessary at first, but helped (at least me) a lot on the process of understanding how Unity works. We all know [Unity](http://unity3d.com/){:target="_blank"} is an engine, but how it really works? In this post we’ll learn about:
 
-- How Unity3D Engine is implemented
+- How Unity Engine is implemented
 - How we access the engine code
 - Wrappers
 - How to use your own Mono library inside Unity
-- Unity3D Engine vs Unity3D Editor
+- Unity Engine vs Unity Editor
 
 We’ve always been told that managed programming languages are slow compared to native code, even though some managed languages are reaching great performance. We know that Java and C# are great for web development, non-critical systems and mobile apps. But when it comes to high performance (a pit where realistic graphics always fall) we all know these guys can’t do a lot for us. Although the Unity game world is fulfilled with 2D or simple graphics games, it’s capable of delivering [stunning](http://www.youtube.com/watch?v=qbP7Z4btVvc){:target="_blank"} and [realistic](http://forum.unity3d.com/threads/9842-First-Unity-Game-screen-shots-(New-Level){:target="_blank"}) [worlds](http://thegolfclubgame.com/) and [scenes](http://www.navalaction.com/){:target="_blank"}.
 
@@ -35,6 +35,6 @@ Summing up, the Unity Engine is a C\C++ set of libraries that help us to run gam
 
 Last but not least, the Unity Engine itself (native portion) runs in plenty of devices because it was compiled to all of those devices: check the Unity installation folder and you can see the dlls to every platform the engine exports to. So with this thought, we complete the ~~circle of life~~ circle of execution on a Unity game: the Unity Engine’s core was written in C\C++ and runs on every platform the engine targets. We can interact with that code through C# wrappers, which runs on the Mono virtual machine. Lastly, the Mono project by its nature (bringing C# to other platforms) gives us the environment to run C# applications on our devices.
 
-That closes our discussion about how the Unity3D Engine works greatly on so many platforms with amazing performance and easy programming.
+That closes our discussion about how the Unity Engine works greatly on so many platforms with amazing performance and easy programming.
 
 **Important update** (September, 2015): Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/){:target="_blank"}

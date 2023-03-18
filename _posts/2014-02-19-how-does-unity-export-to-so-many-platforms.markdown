@@ -5,11 +5,11 @@ date:   2014-02-19 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-So for my first article I picked a not so simple theme, but one that has been extremely intriguing to me lately. This week a friend, during a talk about game development and Unity3D, asked me: *“How does Unity export to so many and different platforms?”* I started to think and formulate my answer, struggled and I couldn’t really answer why. I never really thought about it. So I started researching about it.
+So for my first article I picked a not so simple theme, but one that has been extremely intriguing to me lately. This week a friend, during a talk about game development and Unity, asked me: *“How does Unity export to so many and different platforms?”* I started to think and formulate my answer, struggled and I couldn’t really answer why. I never really thought about it. So I started researching about it.
 
 # Intro
 
-[Unity3D](http://unity3d.com/){:target="_blank"} is probably the most famous Game Development Engine on the market. It’s user friendly (15 y.o. kids can use it after a few tutorials, trust me), it’s available for both Windows and MacOS X (a Linux port is on experimental phase)  and finally and the most important in this article: it can export to basically any existing device. I’m not kidding, check the list at their [website](http://unity3d.com/unity/multiplatform){:target="_blank"}:
+[Unity](http://unity3d.com/){:target="_blank"} is probably the most famous Game Development Engine on the market. It’s user friendly (15 y.o. kids can use it after a few tutorials, trust me), it’s available for both Windows and MacOS X (a Linux port is on experimental phase)  and finally and the most important in this article: it can export to basically any existing device. I’m not kidding, check the list at their [website](http://unity3d.com/unity/multiplatform){:target="_blank"}:
 
 - iOS
 - Android
@@ -31,9 +31,9 @@ So for my first article I picked a not so simple theme, but one that has been ex
 - Gear VR
 - Oculus Rift
 
-It’s a legit myriad of devices and environments. If you don’t know Unity3D and want to give a try, the free version lets you export to Mac OX, Linux, Windows, iOS, Android, BlackBerry, Web Player, SamsungTV, WebGL, Tizen and Windows Phone. It’s pretty awesome, try it! (unfortunately I’m not making money by advertising, I just truly think it’s awesome).
+It’s a legit myriad of devices and environments. If you don’t know Unity and want to give a try, the free version lets you export to Mac OX, Linux, Windows, iOS, Android, BlackBerry, Web Player, SamsungTV, WebGL, Tizen and Windows Phone. It’s pretty awesome, try it! (unfortunately I’m not making money by advertising, I just truly think it’s awesome).
 
-**Update:** As pointed by Jashan in the comments section, I focused only on scripting in this article, so I decided to write a bit about how Unity3D exports other features to so many platforms. As you will notice whilst reading the next paragraphs, although Unity Technologies does a great job with Unity3D, it relies on several companies to help them to bring some features into it. When a new platform is announced, the UT developers check if every single one of these features are supported by one of their partners, and if so, the time dedicated to support it is reduced drastically. Now let’s take a look at some of the main features.
+**Update:** As pointed by Jashan in the comments section, I focused only on scripting in this article, so I decided to write a bit about how Unity exports other features to so many platforms. As you will notice whilst reading the next paragraphs, although Unity Technologies does a great job with Unity, it relies on several companies to help them to bring some features into it. When a new platform is announced, the UT developers check if every single one of these features are supported by one of their partners, and if so, the time dedicated to support it is reduced drastically. Now let’s take a look at some of the main features.
 
 # Graphics
 
@@ -78,4 +78,4 @@ So this is it boys and girls. Mono is the savior here. He provides the .NET Fram
 
 (September, 2015): Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/){:target="_blank"}
 
-What to read next? I wrote a new post about how Unity3D works under the hood and how our code interacts with the engine code [here]({{ site.post2 }}){:target="_blank"}.
+What to read next? I wrote a new post about how Unity works under the hood and how our code interacts with the engine code [here]({{ site.post2 }}){:target="_blank"}.
