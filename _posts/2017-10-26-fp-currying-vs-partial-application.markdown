@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "FP: Currying vs. Partial application"
+title:  "FP: Currying vs. partial application"
 date:   2017-10-26 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update

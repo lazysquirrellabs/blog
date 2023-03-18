@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity Serialization Part 3: Scriptable Objects"
+title:  "Unity serialization part 3: Scriptable Objects"
 date:   2015/10/22 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update

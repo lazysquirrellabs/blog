@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity Serialization Part 1: How it works and examples"
+title:  "Unity serialization part 1: How it works and examples"
 date:   2015/04/11 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
