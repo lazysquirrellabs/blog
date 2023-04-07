@@ -62,7 +62,12 @@ main {
   display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
 }
 
-
+/**
+ * Details (foldables)
+ */
+details {
+    margin: 20px 0 0 20px; 
+}
 
 /**
  * Images

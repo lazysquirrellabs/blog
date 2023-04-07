@@ -5,6 +5,8 @@ date:   2023/04/07 17:07:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
+{::options parse_block_html="true" /}
+
 In this article, I discuss and analyze the development of my last project as a Game Developer at Fantazm: *Parker - the Game*, an online multiplayer turn-based team strategy game. After a quick introduction of the project, its biggest challenges are presented. Then, we focus on the positive side of the project, discussing its successful aspects and the bets that paid off. Following, we analyze elements that didn't play out as expected, lessons learned and how we could have improved both the development and the delivery processes. Finally, I wrap it up with the conclusion.
 
 *Disclaimer*: I was the only developer working in the project, so this postmortem is highly based on my experiences and opinion.
@@ -141,39 +143,45 @@ One of the aspects that convinced me to use .NET on the servers was the possibil
 
 Once again, most (or close to none) of the game projects I've worked in the past implemented automated tests. I was aware of the benefits automated tests could bring, but I also knew that implementing them could be quite challenging. In the end, I was able to implement a small test suite (277 automated tests) that proved to be extremely valuable. These are the topics I would like to highlight from my experience of using automated tests in this project.
 
-### Code decoupling
-
+<details open>
+  <summary><h3 style="display:inline">Code decoupling</h3></summary>
 Writing automated tests for video games can be quite challenging due to their interactive nature. In this project, I leveraged the decoupling of game logic and interactive code to let me write more and better automated tests. I described the technique and the experience in a [separate blog post](https://matheusamazonas.net/blog/2023/03/29/decoupling-code).
+</details>
 
-### TDD sneak peek
-
+<details open>
+  <summary><h3 style="display:inline">TDD sneak peek</h3></summary>
 I wanted to give Test-driven Development a try and started working on features by writing the automated tests before spending some time actually implementing them. This proved to be a good practice because:
 
 - It forced me to write more automated tests. If the tests come before the feature, it's less likely they will be left for later in development—and then forgotten. More tests led to a better and more stable game.
 - It made me question feature specification and rethink design decisions earlier in the process. The act of writing the tests revealed some design flaws that would otherwise be noticed later in development, possibly during playtest.
+</details>
 
-### Regression bugs
-
+<details open>
+  <summary><h3 style="display:inline">Regression bugs</h3></summary>
 In a nutshell, regressions bugs are bugs that broke a featured that used to work correctly. If the feature in question was sufficiently covered by automated tests, the regression bug could be easily spotted and eliminated before being committed. As a consequence, the number of regression bugs found during playtests was considerably low. Most of the ones we've encountered affected portions of the codebase that were not covered by automated tests, like the UI.
+</details>
 
-### Better commit history
-
+<details open>
+  <summary><h3 style="display:inline">Better commit history</h3></summary>
 I adopted the habit of running most of the test suite before committing code. Doing so unearthed some bugs that would've made to the git history otherwise. In the end, not only the repository was cleaner (because there were less revert and bug fix commits), but it was also more stable; even feature branches.
+</details>
 
-### Build automation
-
+<details open>
+  <summary><h3 style="display:inline">Build automation</h3></summary>
 Although I was the only developer working on the project, I decided to make use of Continuous Integration with Unity Cloud Build. Automated tests were added to the build pipeline and builds would fail if tests did. The project benefited from this addition in the following ways:
 
-- Only builds that passed all tests were used for playtests, increasing the number of bugs found earlier****—****during development—rather than later, during the test sessions.
+- Only builds that passed all tests were used for playtests, increasing the number of bugs found earlier—during development—rather than later, during the test sessions.
 - Tests that took long to execute and that would be skipped when developing and committing a feature could be executed regularly without blocking the developer's work.
+</details>
 
-### Game logic isn't everything
-
+<details open>
+  <summary><h3 style="display:inline">Game logic isn't everything</h3></summary>
 When I decided to write automated tests in this project, I had game logic in mind. In the end, most of the test suite focused on that aspect of the codebase, but others naturally popped up during development. Here are some:
 
 - **Serialization**. The game is played online, thus messages must be sent over the network. All messages needed to be serialized on one side and deserialized on the other one (byte representation, not textual). Automated tests proved to be a crucial tool that often exposed serialization bugs.
 - **Networking**. Unfortunately, testing serialization isn't enough to improve the quality of the networking solution. Given the multithreaded nature of the server application, thread-safety is something to keep under constant consideration. Automated tests uncovered some bugs that were hard to reproduce without them due to timing limitations. Additionally, these tests aided us with profiling our server's performance.
 - **Database**. The game was only as good as its content, and database integrity and consistency was essential. Once again, automated tests came to the rescue and helped us with keeping our database healthy, even along multiple changes performed during the development cycle.
+</details>
 
 # What went wrong
 
