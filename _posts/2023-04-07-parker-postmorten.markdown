@@ -13,7 +13,7 @@ In this article, I discuss and analyze the development of my last project as a G
 
 # Introduction
 
-The project was commissioned by [Event Creators](https://www.eventcreators.nl), a company specialized in events, for their client [Parker](https://www.parker.com/portal/site/PARKER/menuitem.223a4a3cce02eb6315731910237ad1ca/?vgnextoid=c883f1069475e210VgnVCM10000048021dacRCRD&vgnextfmt=NL&vgnextfmt=NL)—an industrial equipment supplier. The game was designed to be played on company events.
+The project was commissioned by [Event Creators](https://www.eventcreators.nl){:target="_blank"}, a company specialized in events, for their client [Parker](https://www.parker.com/portal/site/PARKER/menuitem.223a4a3cce02eb6315731910237ad1ca/?vgnextoid=c883f1069475e210VgnVCM10000048021dacRCRD&vgnextfmt=NL&vgnextfmt=NL){:target="_blank"}—an industrial equipment supplier. The game was designed to be played on company events.
 
 This project was a “first” for me in two aspects:
 
@@ -107,7 +107,7 @@ In the end, the promises were fulfilled. The development experience was as smoot
 
 Although the target was platform was web browsers and WebGL, early prototypes were developed and tested in the Unity editor only. By that time, the groundwork for the networking solution were laid, completely based on TCP sockets. This was my first WebGL game and if you have some experience developing web browser games you might have already spotted the obvious mistake I've made: popular web browsers don't support standard network sockets (e.g. TCP and UDP) due to security limitations—which I completely understand.
 
-After some research, I discovered Web Sockets and how they could be used as replacements for regular network sockets. I chose an implementation that was compatible with Unity ([Native WebSockets](https://github.com/endel/NativeWebSocket)) and gave it a try. It took me some time to get used to how Web sockets differed from traditional ones, but in the end I was able to get it working with our codebase. Once we fully transitioned to Web Sockets, we were ready to continue development. In the end, Native WebSockets proved to be exactly what we were looking for: a reliable replacement for traditional network sockets.
+After some research, I discovered Web Sockets and how they could be used as replacements for regular network sockets. I chose an implementation that was compatible with Unity ([Native WebSockets](https://github.com/endel/NativeWebSocket){:target="_blank"}) and gave it a try. It took me some time to get used to how Web sockets differed from traditional ones, but in the end I was able to get it working with our codebase. Once we fully transitioned to Web Sockets, we were ready to continue development. In the end, Native WebSockets proved to be exactly what we were looking for: a reliable replacement for traditional network sockets.
 
 ## Amazon Web Services: EC2 and S3
 
@@ -129,7 +129,7 @@ Being the project's only developer put me in a unique position: for the first ti
 
 ## Game Design Document
 
-Even though some say GDDs an essential part of the development process, most of the projects I’ve worked on didn’t use one during the entire development of the game (or at all). For this project, I decided to write and maintain a GDD from start to finish. I described this experience in a [separate blog post](https://matheusamazonas.net/blog/2022/09/10/finally-a-proper-gdd).
+Even though some say GDDs an essential part of the development process, most of the projects I’ve worked on didn’t use one during the entire development of the game (or at all). For this project, I decided to write and maintain a GDD from start to finish. I described this experience in a [separate blog post](https://matheusamazonas.net/blog/2022/09/10/finally-a-proper-gdd){:target="_blank"}.
 
 ## Sharing code
 
@@ -145,7 +145,7 @@ Once again, most (or close to none) of the game projects I've worked in the past
 
 <details open>
   <summary><h3 style="display:inline">Code decoupling</h3></summary>
-Writing automated tests for video games can be quite challenging due to their interactive nature. In this project, I leveraged the decoupling of game logic and interactive code to let me write more and better automated tests. I described the technique and the experience in a [separate blog post](https://matheusamazonas.net/blog/2023/03/29/decoupling-code).
+Writing automated tests for video games can be quite challenging due to their interactive nature. In this project, I leveraged the decoupling of game logic and interactive code to let me write more and better automated tests. I described the technique and the experience in a [separate blog post](https://matheusamazonas.net/blog/2023/03/29/decoupling-code){:target="_blank"}.
 </details>
 
 <details open>
@@ -189,7 +189,7 @@ Once again, just like any software development project, some aspects of the deve
 
 ## WebGL templates and Unity Cloud Build
 
-Unity offers a nice way to customize the webpage that shall contain a WebGL game: [WebGL templates](https://docs.unity3d.com/Manual/webgl-templates.html). We decided to use this feature to deliver a customized experience with a design that matched our client's brand design. It worked as expected on local builds, but the template wasn't applied on cloud builds. At first, I thought we were missing something, like some setting we forgot to enable. Turns out this behavior is by design: Unity Cloud Build ignores the project's WebGL template so Unity can use their own template to host the game themselves (a feature we didn't need and didn't want to use). In practical terms, it meant that we were able to use Cloud Build for development and internal test builds, but not for production ones. This problem still persists to this day, despite [users repeatedly requesting changes](https://forum.unity.com/threads/webgl-template.363057/).
+Unity offers a nice way to customize the webpage that shall contain a WebGL game: [WebGL templates](https://docs.unity3d.com/Manual/webgl-templates.html){:target="_blank"}. We decided to use this feature to deliver a customized experience with a design that matched our client's brand design. It worked as expected on local builds, but the template wasn't applied on cloud builds. At first, I thought we were missing something, like some setting we forgot to enable. Turns out this behavior is by design: Unity Cloud Build ignores the project's WebGL template so Unity can use their own template to host the game themselves (a feature we didn't need and didn't want to use). In practical terms, it meant that we were able to use Cloud Build for development and internal test builds, but not for production ones. This problem still persists to this day, despite [users repeatedly requesting changes](https://forum.unity.com/threads/webgl-template.363057/){:target="_blank"}.
 
 ## Shared code and git submodules
 
