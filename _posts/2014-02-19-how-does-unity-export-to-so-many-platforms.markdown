@@ -72,7 +72,7 @@ Now let’s go to the main question: how does my Android device runs a game that
 
 This brings other question: a Mono developed app attaches the whole framework to itself? The answer can be found in the same website: unused classes in the framework are stripped during linking. So the only portions of the framework that are bundled and put into your app are the ones you use. If you want to read more about how it works on the Xamarin products, visit the [Developer Center](http://docs.xamarin.com/guides/cross-platform/application_fundamentals/building_cross_platform_applications/part_1_-_understanding_the_xamarin_mobile_platform/){:target="_blank"}.
 
-So this is it boys and girls. Mono is the savior here. He provides the .NET Framework to Unity Games. This is why you can code using C# and run the game at so many platforms. I think this is it for my first post here. I hope I can keep the blog updated with more thoughts that have been concerning me. If you like, if you don’t, if there’s an error or even if you think this is total BS, please leave a comment.
+So this is it boys and girls. Mono is the savior here. It provides the .NET Framework to Unity Games. This is why you can code using C# and run the game at so many platforms. I think this is it for my first post here. I hope I can keep the blog updated with more thoughts that have been concerning me. If you like, if you don’t, if there’s an error or even if you think this is total BS, please leave a comment.
 
 # Important update
 
