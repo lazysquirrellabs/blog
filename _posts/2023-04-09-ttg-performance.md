@@ -30,7 +30,7 @@ With that in mind, two solutions were considered:
 - Generate the terrain so fast that it doesn't substantially drop the frame rate.
 - Generate the terrain in another thread, freeing the main one to process and render the game.
 
-Although the first approach seems ideal, it's both extremely hard to implement and also subjective to the nature of the application using the generator. It's hard because there is only much that could be improved in the terrain generation ****—**** there is no “make this super fast” magical button. It's subjective because it's hard to answer the question “How was is fast enough?”. Maybe it's fast enough for my example project with a target 30 FPS. But what if the target frame rate of the application is 120 FPS? With these challenges in mind, I decided to focus my efforts on the second option: asynchronous terrain generation using a separate thread. 
+Although the first approach seems ideal, it's both extremely hard to implement and also subjective to the nature of the application using the generator. It's hard because there is only much that could be improved in the terrain generation—there is no “make this super fast” magical button. It's subjective because it's hard to answer the question “How was is fast enough?”. Maybe it's fast enough for my example project with a target 30 FPS. But what if the target frame rate of the application is 120 FPS? With these challenges in mind, I decided to focus my efforts on the second option: asynchronous terrain generation using a separate thread. 
 
 ## Multithreading
 
@@ -48,7 +48,7 @@ Due to Unity's lack of vanilla multithreading support, its API (including the `M
 
 The key to solve this problem is in the previous subsection: avoid using the Unity API (particularly the `Mesh` class) during most of the terrain generation and delay the creation of the `Mesh` instance until it's absolutely necessary. In the end, the heavyweight calculations can be moved to a separate thread and, once they're over, we can switch back to the main thread and create the `Mesh` instance using the data from the generation process. In fact, the only calls that will execute in the main thread are `mesh.SetVertices`, `mesh.SetIndices` and `mesh.RecalculateNormals`. Everything else runs on a separate thread.
 
-The strategy described above allowed terrain generation — particularly bigger, more detailed ones — to run without substantially dropping the application's frame rate. In the end, terrain generation runs in the background and can definitely be used in VR games and applications.
+The strategy described above allowed terrain generation—particularly bigger, more detailed ones—to run without substantially dropping the application's frame rate. In the end, terrain generation runs in the background and can definitely be used in VR games and applications.
 
 ## Async isn't panacea
 
@@ -62,7 +62,7 @@ After some deeper investigation, that hunch was proved right. The generation’s
 
 In the context of real-time applications, this behavior is simply unacceptable. The higher the vertex count is, the longer the CPU and graphics card will take to render a frame, the lower the frame rate is and the poorer the user experiences the application. Two strategies to eliminate this behavior were considered:
 
-- Brush up the mesh after creation, eliminating vertices that are substantially closely together — also known as vertex welding.
+- Brush up the mesh after creation, eliminating vertices that are substantially closely together—also known as vertex welding.
 - Modify the fragmentation algorithm so it never adds duplicated vertices to start with.
 
 ## The fix
@@ -72,7 +72,7 @@ The second strategy was chosen for 2 reasons:
 - Instead of fixing an undesired behavior late in the process, it eliminates the behavior entirely.
 - The other strategy would increase the processing power required to generate the terrain, while reducing the vertex count early in the process had to potential to reduce the processing requirements.
 
-Once the strategy was chosen, I started implementing it. I chose to use a `Dictionary` to keep track of all vertices used in intermediate mesh data — not only during fragmentation. The vertices (`Vector3`) were used as dictionary keys and their index in the mesh vertex array was used as the dictionary values. By doing so, it is guaranteed that no duplicates of a given vertex are present in the dictionary. 
+Once the strategy was chosen, I started implementing it. I chose to use a `Dictionary` to keep track of all vertices used in intermediate mesh data—not only during fragmentation. The vertices (`Vector3`) were used as dictionary keys and their index in the mesh vertex array was used as the dictionary values. By doing so, it is guaranteed that no duplicates of a given vertex are present in the dictionary. 
 
 Although this strategy was easy to implement, it could potentially introduce some undesired aspects:
 
@@ -111,7 +111,7 @@ If a language like C++ (which doesn't manage the memory for you) was being used,
 
 Well, it ends up that creating a terrain generates a lot of garbage and the garbage collector is almost guaranteed to run right after the terrain is generated. In some cases this wouldn't pose a problem (specially because we're talking about a terrain generation tool), but I wanted to keep garbage generation to a minimum. Part of this problem was solved by the vertex duplicate elimination described above (less vertices means less data and generated garbage), but there was still room for improvement.
 
-But how can we reach C++'s level of memory control in Unity with C#? The Unity [Collections](https://docs.unity3d.com/Packages/com.unity.collections@1.4/manual/index.html){:target="_blank"} package provides some unmanaged data structures that can be used in managed C# code — you just need to manage their lifetime. Among the data structures that this package contains are `NativeList`, `NativeArray` and `NativeHashMap`, which provide C# wrappers to unmanaged lists, arrays and dictionaries, respectively. After some time looking into the package documentation and learning how to properly create and dispose these structures, I was ready to put them into action. They were used as replacements for vanilla types such as `List`, array and `Dictionary` in terrain generation code.
+But how can we reach C++'s level of memory control in Unity with C#? The Unity [Collections](https://docs.unity3d.com/Packages/com.unity.collections@1.4/manual/index.html){:target="_blank"} package provides some unmanaged data structures that can be used in managed C# code—you just need to manage their lifetime. Among the data structures that this package contains are `NativeList`, `NativeArray` and `NativeHashMap`, which provide C# wrappers to unmanaged lists, arrays and dictionaries, respectively. After some time looking into the package documentation and learning how to properly create and dispose these structures, I was ready to put them into action. They were used as replacements for vanilla types such as `List`, array and `Dictionary` in terrain generation code.
 
 Then, similarly to the subsection above, tests were performed to quantity the impact of the changes on the memory allocated by the garbage collector and on the generation duration. The test results are displayed below, where the “Before” column contains results obtained before native constructs were added, and the “After” column contains results measured after their addition.
 
