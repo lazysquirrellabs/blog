@@ -58,7 +58,7 @@ Finally, there is one aspect of the asynchronous, multithreaded solution worth p
 
 The generated terrains were great, but when looking up close, their vertex count seemed high. It's hard to judge whether generated meshes have “too many vertices”, because the generation algorithm doesn't randomly places unnecessary triangles. But still, the thought that those generated terrains contained too many vertices did not leave my mind.
 
-After some deeper investigation, that hunch was proved right. The generation’s fragmentation phase was creating vertex duplicates when fragmenting triangles and that became more evident the higher the fragmentation depth. This behavior was being propagated at each fragmentation pass, widening the computational power requirement between depth values. In the worst case scenario, a vertex could be duplicated $3^d$ times, where $d$ is the depth. For a depth of 5, that's 242 duplicates of the same vertex.
+After some deeper investigation, that hunch was proved right. The generation’s fragmentation phase was creating vertex duplicates when fragmenting triangles and that became more evident the higher the fragmentation depth. This behavior was being propagated at each fragmentation pass, widening the computational power requirement between depth values. In the worst case scenario, a vertex could be duplicated 3&#08319; times, where *n* is the depth. For a depth of 5, that's 242 duplicates of the same vertex.
 
 In the context of real-time applications, this behavior is simply unacceptable. The higher the vertex count is, the longer the CPU and graphics card will take to render a frame, the lower the frame rate is and the poorer the user experiences the application. Two strategies to eliminate this behavior were considered:
 
