@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Null Check and Equality in Unity"
+title:  "Null check and equality in Unity"
 date:   2020/04/01 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update

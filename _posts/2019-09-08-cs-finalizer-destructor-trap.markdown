@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "C#’s Finalizer/Destructor Trap"
+title:  "C#’s finalizer/destructor trap"
 date:   2019/09/08 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update

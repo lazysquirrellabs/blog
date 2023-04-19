@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unity’s Scripting Duality and Object Destruction"
+title:  "Unity’s scripting duality and object destruction"
 date:   2020/04/01 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
