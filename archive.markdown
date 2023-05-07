@@ -23,6 +23,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - [When software internationalization isn’t just about UI: a tale of how a parsing error crashed our game]({{ site.post12 }})
 - [Finally, a proper Game Design Document (whatever that means)]({{ site.post14 }})
 - [Game testing made easier: decoupling code]({{ site.post15 }})
+- [[Postmorten] Parker - the game]({{ site.post16 }})
 - Terraced Terrain Generator series
 	- [Developing a Terraced Terrain Generator]({{ site.post17 }})
 	- [Terraced Terrain Generator performance improvements]({{ site.post18 }})
