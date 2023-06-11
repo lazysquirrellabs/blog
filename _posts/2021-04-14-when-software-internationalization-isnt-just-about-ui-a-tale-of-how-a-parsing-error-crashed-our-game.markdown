@@ -23,7 +23,7 @@ Data. Whenever a game starts, the client application will generate the world and
 
 # Back to ground zero
 
-> *Disclaimer*: for the sake of simplicity, some implementation details are hidden and/or modified.
+> **Disclaimer**: for the sake of simplicity, some implementation details are hidden and/or modified.
 {: .callout }
 
 So far, we had concluded that the bug was caused neither by assets, nor by code nor by corrupted data. What were we left with? Engine bug? All the other mini games ran fine, so it was not likely. At this point we took a step back, stopped analyzing the technical aspects and looked at the game. Which aspects of the gameplay could get out of control to the point which it would consume memory non-stop? It was a simple “connect the dots” game, where the dots formed a sine wave that connected 2 points in space. Depending on the player’s movement capabilities, these 2 points could be closer or farther apart. The spacing between the dots was constant, therefore the sine wave had to be constructed dynamically.
