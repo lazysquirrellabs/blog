@@ -185,7 +185,19 @@ blockquote {
   }
 }
 
-
+/**
+ * Callouts
+ */
+.callout {
+  padding-left: $spacing-unit / 2;
+  @include relative-font-size(1);
+  background: rgb(37, 37, 37);
+  border-left: 0;
+  font-style: normal;
+  color: $text-color;
+  border-radius: 3px;
+  padding: 15px 20px;
+}
 
 /**
  * Code formatting
