@@ -74,8 +74,8 @@ This brings other question: a Mono developed app attaches the whole framework to
 
 So this is it boys and girls. Mono is the savior here. It provides the .NET Framework to Unity Games. This is why you can code using C# and run the game at so many platforms. I think this is it for my first post here. I hope I can keep the blog updated with more thoughts that have been concerning me. If you like, if you don’t, if there’s an error or even if you think this is total BS, please leave a comment.
 
-# Important update
-
-(September, 2015): Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/){:target="_blank"}
+> **Important update (September, 2015)** ⚠️  
+> Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/){: target="_blank"}
+{: .callout }
 
 What to read next? I wrote a new post about how Unity works under the hood and how our code interacts with the engine code [here]({{ site.post2 }}){:target="_blank"}.

@@ -30,7 +30,8 @@ public class MusicPlayer
 }
 ```
 
-*Disclaimer*: even though destructors and finalizers are [two different things](https://blogs.msdn.microsoft.com/ericlippert/2010/01/21/whats-the-difference-between-a-destructor-and-a-finalizer/){:target="_blank"}, C#’s spec treats them as the same. If you’re acquainted with both definitions, the C#’s mechanism discussed in this article is actually a finalizer. Also, if you come from a C++ background, even though C#’s syntax for finalizers resembles C++’s syntax, keep in mind that they’re not the same. C++ destructors are called explicitly (and deterministically) by the user whereas C#’s finalizers are called implicitly (and nondeterministically) by the garbage collector.
+> *Disclaimer*: even though destructors and finalizers are [two different things](https://blogs.msdn.microsoft.com/ericlippert/2010/01/21/whats-the-difference-between-a-destructor-and-a-finalizer/){:target="_blank"}, C#’s spec treats them as the same. If you’re acquainted with both definitions, the C#’s mechanism discussed in this article is actually a finalizer. Also, if you come from a C++ background, even though C#’s syntax for finalizers resembles C++’s syntax, keep in mind that they’re not the same. C++ destructors are called explicitly (and deterministically) by the user whereas C#’s finalizers are called implicitly (and nondeterministically) by the garbage collector.
+{: .callout }
 
 # A quick intro to Unity’s MonoBehaviour
 

@@ -10,6 +10,7 @@ categories: jekyll update
 In this article, I discuss and analyze the development of my last project as a Game Developer at Fantazm: *Parker - the Game*, an online multiplayer turn-based team strategy game. After a quick introduction of the project, its biggest challenges are presented. Then, we focus on the positive side of the project, discussing its successful aspects and the bets that paid off. Following, we analyze elements that didn't play out as expected, lessons learned and how we could have improved both the development and the delivery processes. Finally, I wrap it up with the conclusion.
 
 *Disclaimer*: I was the only developer working in the project, so this postmortem is highly based on my experiences and opinion.
+{: .callout }
 
 # Introduction
 

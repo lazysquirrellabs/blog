@@ -7,7 +7,8 @@ categories: jekyll update
 ---
 In a [previous article]({{ site.post8 }}){:target="_blank"}, I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution and we are happy we did it. Here’s the story behind that shift.
 
-**Disclaimer***:* Most of the events described in this article happened before the COVID-19 pandemic hit the Netherlands and the different testing stages happened either before the restrictions started, or after most of them had been lifted.
+> **Disclaimer***:* Most of the events described in this article happened before the COVID-19 pandemic hit the Netherlands and the different testing stages happened either before the restrictions started, or after most of them had been lifted.
+{: .callout }
 
 # A small summary
 
@@ -34,7 +35,7 @@ We expected the switch to be a long and cumbersome process but – as described 
 A platform switch often hides unexpected problems that we never anticipate when planning it. Although we were prepared for many surprises when developing the new version for the VIVE and SteamVR, the switch was easier than we feared.
 
 > *A quick recap on the technical aspects of the development process: the application was developed using the Unity engine and Virtual Reality Toolkit ([VRTK](https://vrtoolkit.readme.io/){:target="_blank"}).*
-> 
+{: .callout }
 
 VRTK proved to be a wise choice made early in development because it supported both WMR and SteamVR platforms with their Unity plugin. Thus, the platform migration wasn’t expected to be as troublesome as it could have been. But another early development decision made the transition almost seamless. WMR lacked some advanced settings – like kiosk mode and custom idling timeout – that were crucial for our application. When looking for solutions for these demands, we discovered that we could run WMR applications on top of SteamVR with the help of a WMR plugin for SteamVR available on the Steam store. By doing so, we could have access to more advanced settings in the SteamVR dashboard while still using WMR hardware. We tested this solution and it met our needs at the time so we kept it in the game.
 
