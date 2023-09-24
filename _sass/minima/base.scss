@@ -70,6 +70,13 @@ details {
 }
 
 /**
+ * Summary (foldables)
+ */
+summary::-webkit-details-marker {
+    margin-right: 0px; 
+}
+
+/**
  * Images
  */
 img {
