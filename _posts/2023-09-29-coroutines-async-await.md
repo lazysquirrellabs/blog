@@ -5,6 +5,8 @@ date:   2023/09/29 16:53:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
+{::options parse_block_html="true" /}
+
 # Introduction
 
 This article aims to contrast two different strategies for writing asynchronous C# code in Unity projects: Unity's Coroutines and C#'s asynchronous programming model via `async`/`await`/`Task`. We start by quickly introducing both concepts. Following, we discuss how game developers have a different relationship with asynchronous operations. Then, we describe several differences between the two approaches. Next, an alternative to C#'s vanilla `Task` class is presented. Finally, the conclusion wraps the article up.
@@ -142,7 +144,7 @@ This distinction might seem obvious, but it has some impact on how game develope
 
 Even though both strategies are capable of modeling asynchronous operations, there are some important differences between them. This section presents the ones I judge most important, split into different aspects and in no particular order.
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Availability</h3></summary>
 
 Unlike C#'s [Task-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap){:target="_blank"} (TAP) and its `async`, `await` and `Task`, Unity's Coroutine is not a language/runtime feature. Instead, it's part of Unity's API and runtime. The methods used for Coroutine management (i.e., `StartCoroutine`, `StopCoroutine`, etc) are part of the `MonoBehaviour` [class](https://docs.unity3d.com/ScriptReference/MonoBehaviour.StartCoroutine.html){:target="_blank"}. In addition, a Coroutine is directly tied to the `MonoBehaviour` that started it. 
@@ -152,7 +154,7 @@ This means that Coroutines can only run in instances of classes that inherit fro
 C#'s TAP (Task-based Asynchronous Pattern) and its types (e.g., `Task`), on the other hand, can be used in any class, turning it into a default choice for non-`MonoBehaviour` classes.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Outcome accessibility</h3></summary>
 
 Coroutines return an instance of `IEnumerator`, which will be used by Unity's runtime to run and manage the Coroutine. Consequently, we can't use Coroutines to return some value without reverting to other old-school asynchronous strategies like callbacks—which won't actually return a value, just perform an operation at a given point, without any guarantees.
@@ -168,7 +170,7 @@ bool success = await TryToDoSometing();
 ```
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Stopping and cancellation</h3></summary>
 
 Both Coroutines and `Task` offer mechanisms to stop asynchronous operations. The `MonoBehaviour` class offers the following methods for stopping Coroutines:
@@ -184,7 +186,7 @@ In C#'s TAP, we don't say a task was stopped, we say it was *canceled*, and [can
 Although the `Task` approach to stopping/cancellation isn't as simple as the Coroutine one, it is much more powerful. Once tamed, it becomes particularly useful in more complex scenarios with multiple nested levels of asynchronous calls.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Lifetime management</h3></summary>
 
 A Coroutine is tightly coupled to the `MonoBehaviour` that started it. If its `MonoBehaviour` is destroyed, the Coroutine stops automatically. A Coroutine will also stop running (not pause!) whenever the game object that holds its `MonoBehaviour` is disabled. Re-enabling the game object will not resume the Coroutine. At the same time, disabling the script instance that started the Coroutine has no effect on its lifetime. Even though this behavior might seem handy at times (it protects developers who forget to stop a Coroutine), it might have some [undesired effects](https://forum.unity.com/threads/fixed-coroutine-issue-coroutine-stopped-for-no-reason.329317/#post-5018075){:target="_blank"}, particularly when disabling game objects. Even worse, there is no way to avoid this automatic stopping.
@@ -194,7 +196,7 @@ A Coroutine is tightly coupled to the `MonoBehaviour` that started it. If its `M
 Even though C#'s TAP's approach requires manual lifetime management, it doesn't hide potential surprises, and it offers more flexibility than Coroutine's approach. Additionally, the explicit task cancellation calls serve as documentation about the exact circumstances under which asynchronous operations should stop running. Finally, TAP's cancellation token approach offers granular control over the order in which tasks are canceled.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Error handling</h3></summary>
 
 C#'s error handling mechanism composed of runtime exceptions, `try`/`catch`/`finally` blocks and execution flow interruptions are a great tool in a developer's arsenal. 
@@ -235,7 +237,7 @@ private async Task RunComposedAsync()
 If `MoveTargetAsync` throws an `ArithmeticException`, it will be caught. In the end, there are no limitations to error handling when using TAP constructs, including the `await` keyword. In fact, not only is error handling fully compatible with C#'s TAP, but the entire `Task` cancellation workflow is [based on exception handling](https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-cancellation){:target="_blank"}.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Multithreading support</h3></summary>
 
 Multithreading is a great way of leveraging the multicore capability of modern processors to improve performance, and its proper use might lead to major performance gains in video games.  As [some](https://gamedev.stackexchange.com/questions/91900/event-error-can-only-be-called-from-the-main-thread){:target="_blank"} of [you](https://www.reddit.com/r/unity_tutorials/comments/ipfwvv/how_to_fix_get_transform_can_only_be_called_in/){:target="_blank"} [might](https://stackoverflow.com/questions/53916533/setactive-can-only-be-called-from-the-main-thread){:target="_blank"} [know](https://forum.unity.com/threads/can-only-be-called-from-the-main-thread.622948/){:target="_blank"}, Unity isn't exactly friendly towards multithreaded code and offers an alternative to C#'s vanilla threads for multithreading solutions: the [Job System](https://docs.unity3d.com/Manual/JobSystemOverview.html){:target="_blank"}. In this section, I would not like to focus on C#'s threads versus Unity's jobs discussion. Each tool has its merits, and there's enough to talk about to fill up its own blog post.
@@ -263,7 +265,7 @@ var success = await Task.Run(DownloadAndDecompressImage);
 Task cancellation, error handling, outcome accessibility… all the points discussed so far are also supported in a multithreaded context. In the end, C#'s TAP has a clear edge over Unity's Coroutines when it comes to handling the asynchronous nature of multithreaded code.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Fire and forget</h3></summary>
 
 Although waiting for asynchronous operations is essential to working with them, there are some scenarios in which it's not interesting to do so. For example, displaying a fireworks animation once the player scores and not waiting for its completion to perform any other action. This category of asynchronous operations is often referred to as “fire and forget”.
@@ -280,7 +282,7 @@ Unlike Coroutines, tasks that were started by a `MonoBehaviour` instance will no
 Ultimately, the convenience of Coroutines when it comes to starting and stopping “fire and forget” asynchronous operations is clearly superior. At the same time, the fact that Coroutines automatically stop when their game object is disabled might be a liability. C#'s TAP offers more control over the game object disabling scenario, but is evidently less convenient when it comes to starting and stopping tasks. With that said, check the session on UniTask later in this post to see how a new player brings that convenience back to C#'s TAP in Unity.
 </details>
 
-<details open markdown="1">
+<details open >
   <summary><h3 style="display:inline">Memory allocation</h3></summary>
 
 We must keep an eye on allocated memory whenever developing games in a programming language that provides automatic memory management via a Garbage Collector (GC) like C#. We benefit from keeping GC allocations as low as possible in two ways. First, the overall application's memory usage is reduced—often a marginal gain, considering that assets usually take up most of a game's memory footprint. Second, and more importantly, it reduces the frequency with which the GC collects garbage; an operation that takes a considerable amount of time and that often causes performance drops.
