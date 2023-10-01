@@ -39,6 +39,7 @@ post15: /blog/2023/03/29/decoupling-code
 post16: /blog/2023/04/07/parker-postmorten
 post17: /blog/2023/04/08/ttg
 post18: /blog/2023/04/09/ttg-performance
+post19: /blog/2023/09/29/coroutines-async-await
 
 # Build settings
 remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf

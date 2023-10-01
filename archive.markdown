@@ -27,6 +27,7 @@ Here are the blogs posts so far. I write mainly about game development. During m
 - Terraced Terrain Generator series
 	- [Developing a Terraced Terrain Generator]({{ site.post17 }}) (Apr. 2023)
 	- [Terraced Terrain Generator performance improvements]({{ site.post18 }}) (Apr. 2023)
+- [Asynchronous programming in Unity: Coroutines vs. async/await]( {{ site.post19 }}) (Sep. 2023)
 
 # Functional Programming
 - [FP: Currying vs. partial application]({{ site.post7 }}) (Oct. 2017)
