@@ -7,8 +7,6 @@ categories: jekyll update
 ---
 {::options parse_block_html="true" /}
 
-# Introduction
-
 This article aims to contrast two different strategies for writing asynchronous C# code in Unity projects: Unity's Coroutines and C#'s asynchronous programming model via `async`/`await`/`Task`. We start by quickly introducing both concepts. Following, we discuss how game developers have a different relationship with asynchronous operations. Then, we describe several differences between the two approaches. Next, an alternative to C#'s vanilla `Task` class is presented. Finally, the conclusion wraps the article up.
 
 > ℹ️ If you are familiar with Coroutines and `async`/`await` and you're just looking for the differences between them, jump to the [Coroutines vs. async/await](#coroutines-vs-asyncawait) section.
