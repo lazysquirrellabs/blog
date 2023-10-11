@@ -309,6 +309,9 @@ await Task.Delay(1); // In milliseconds
 
 The allocation cost of both Coroutines and Tasks might seem nitpicking, but it is wise to consider the fact that these constructs might be used in loops with lifetimes that might span across several frames. We should also consider that, given the asynchronous nature of games we've discussed before, an application might have several Coroutines or Tasks running simultaneously. The allocation cost accumulates over time and might cause frequent performance drops caused by garbage collection.
 
+> ℹ️ Even though `ValueTask<T>` (another TAP [type](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.valuetask-1?view=net-7.0){:target="_blank"}) might reduce heap allocations when an asynchronous method completes synchronously, the gains might be marginal at best, and harmful at worst. Check Haerion's thread in the comment section for a short discussion on the subject.
+{: .callout }
+
 Fortunately, an alternative to C#'s `Task` aims to reduce this performance overhead: UniTask. We will dive into this solution in the next section.
 </details>
 
