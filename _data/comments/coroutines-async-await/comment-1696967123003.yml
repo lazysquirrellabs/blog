@@ -15,16 +15,15 @@ message: >-
   And indeed, there are some scenarios in which a Task will not allocate on the
   heap. For example, if a method returns a Task but completes synchronously. It
   might also be the case for some tasks with a return value that is easily
-  enumerable (e.g., Task<bool>). Source:
-  https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask.
+  enumerable (e.g., Task&lt;bool&gt;). [Source](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask){:target="_blank"}.
 
 
-  ValueTask (or ValueTask<T>) might be handy in methods that return Task (or
-  Task<T>) and may complete synchronously. In those cases, it will might save
+  ValueTask (or ValueTask&lt;T&gt;) might be handy in methods that return Task (or
+  Task&lt;T&gt;) and may complete synchronously. In those cases, it will might save
   the heap allocation. But given the runtime caching of some Task instances
   (explained on the link in the paragraph above), it might not be advantageous
   as well. That's particularly true for the non-generic Task (due to
-  Task.CompletedTask).
+  `Task.CompletedTask`).
 
 
   If the method that returns a ValueTask completed asynchronously, the heap
