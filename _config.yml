@@ -19,7 +19,6 @@ navigation:
   url: https://matheusamazonas.net/portfolio
 
 # Posts
-post_images: /assets/images
 post1: /2014/02/19/how-does-unity-export-to-so-many-platforms
 post2: /2014/12/22/how-does-unity-work-under-the-hood
 post3: /2015/04/11/unity-serialization-part-1-how-it-works-and-examples

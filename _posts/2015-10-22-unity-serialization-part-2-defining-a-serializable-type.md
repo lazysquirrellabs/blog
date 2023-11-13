@@ -48,7 +48,7 @@ public class Place
 
 Now let’s add the `MyDatabase` script to an object in the scene. Something is wrong again: I can’t see the list of cities in the inspector even though the field is public and should be serialized (therefore shown in the inspector).
 
-![{{ site.post_images }}/post4/screen-shot-2015-09-20-at-7-47-14-pm.png?w=750]({{ site.post_images }}/post4/screen-shot-2015-09-20-at-7-47-14-pm.png?w=750)
+![](/assets/images/post4/screen-shot-2015-09-20-at-7-47-14-pm.png)
 
 # Defining a Serializable Type
 
@@ -70,8 +70,7 @@ public class Place
 ```
 
 That gives us the expected result:
-
-![{{ site.post_images }}/post4/screen-shot-2015-09-20-at-7-52-02-pm.png?w=750]({{ site.post_images }}/post4/screen-shot-2015-09-20-at-7-52-02-pm.png?w=750)
+![](/assets/images/post4/screen-shot-2015-09-20-at-7-52-02-pm.png)
 
 By simply adding that modifier, we mark our class as serializable and solve our problem. The same process is also required when dealing with structs (serializable since Unity 4.5). In addition, Unity also serializes lists and arrays of serializable types by default.
 

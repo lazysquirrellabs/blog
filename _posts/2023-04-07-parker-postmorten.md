@@ -35,7 +35,7 @@ Companies are divided into five departments:
 - Engineering.
 - Finances.
 
-![The company view, where players manage their company and its departments.]({{ site.post_images }}/post16/factory.png)
+![The company view, where players manage their company and its departments.](/assets/images/post16/factory.png)
 
 The company view, where players manage their company and its departments.
 
@@ -48,7 +48,7 @@ At the beginning of each calendar year (which is a game turn), players need to m
 - Department budgeting: the amount of money each department will have available for upgrades in the next year.
 - Pricing choice in the Boardroom—a special type of department without upgrades, meant for corporate decisions. There, they choose the price point for their product based on past market reports on sales volume and average price, calculated on all teams’ performance.
 
-![The world view, where teams can see basic information about their competitors.]({{ site.post_images }}/post16/world.png)
+![The world view, where teams can see basic information about their competitors.](/assets/images/post16/world.png)
 
 The world view, where teams can see basic information about their competitors.
 

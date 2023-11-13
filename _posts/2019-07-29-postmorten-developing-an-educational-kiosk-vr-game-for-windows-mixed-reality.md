@@ -15,7 +15,7 @@ The project was commissioned by [Voedingscentrum](https://www.voedingscentrum.nl
 
 The game was planned as a fun, educacional VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
 
-![{{ site.post_images }}/post8/waiter.png]({{ site.post_images }}/post8/waiter.png)   ![{{ site.post_images }}/post8/smikkel.png]({{ site.post_images }}/post8/smikkel.png)
+![/assets/images/post8/waiter.png](/assets/images/post8/waiter.png)   ![/assets/images/post8/smikkel.png](/assets/images/post8/smikkel.png)
 {:align="center"}
 
 A robot waiter teaches the players about the game mechanics and its main loop: for each meal the player chooses, Smikkel comes to the dinner table and you feed it by choosing, grabbing and placing food items (served by the waiter) on a plate. Once all the food items of a specific meal are chosen (between 2 and 6 items), Smikkel eats the food and its mood, energy levels and appearance change according to the food items you fed him. Following, playtime starts and the player can interact with Smikkel by petting it and throwing balls so it can fetch them. During playtime, it should be evident that the food Smikkel ate affected its behavior. Additionally, the waiter displays a report showing the selected food items and gives the user feedback on the chosen food.
@@ -37,10 +37,8 @@ Prototyping started as early as May of 2018 and the last version of the game was
 
 The VR experience was meant to be installed in Dutch museums. Besides the VR headset and controllers, walls with game art, a grass carpet and a TV (for spectators) would be installed to add a fun, immersive and inviting environment. By design, the experience should work unsupervised and require low maintenance. Windows Mixed Reality (hereafter referred as WMR) was chosen as the target platform because it offers the features we sought (VR headset with controllers and inside-out tracking) at an affordable price.
 
-{% capture t_description %}
-Me playing the first setup of VoedingscentrumVR at <a href="https://rijksmuseumboerhaave.nl" target="_blank">Boerhaave</a> museum in Leiden, the Netherlands. <a href="https://www.facebook.com/voedingscentrum/photos/a.10150983607945481/10161161378380481/?type=1&theater" target="_blank">Source</a>: Voedingscentrum Facebook page.
-{% endcapture %}
-{% include image.html class="wide" url="/blog/assets/images/post8/48415118_10161161378390481_3020615091566411776_o.jpg" align="center" description=t_description caption="true"%}
+![](/assets/images/post8/48415118_10161161378390481_3020615091566411776_o.jpg)
+*Me playing the first setup of VoedingscentrumVR at [Boerhaave](https://rijksmuseumboerhaave.nl) museum in Leiden, the Netherlands. [Source](https://www.facebook.com/voedingscentrum/photos/a.10150983607945481/10161161378380481/?type=1&theater).*
 
 ## Development environment
 
@@ -74,7 +72,7 @@ The Leap Motion was meant to replace the WMR controllers as interaction devices 
 
 Whilst migrating to the Leap Motion solution, it was clear the one of the game’s key interactions was far from ideal: throwing balls. Previously, the user could grab balls using the WMR controller’s trigger button and throw them by releasing it, using a bezier curve as an indicator of where the ball would land. Naturally, we thought that when using your hands, the user could simply grab the ball and instinctively throw it. It sounded like the obvious design choice. Although, during internal playtests, an instinctive throw was never successful and the ball would always drop during the movement. The reason became evident: a natural ball throw usually requires a backwards arm movement, bringing the player’s hands outside of the Leap Motion tracking area.
 
-![{{ site.post_images }}/post8/screenshot-2019-07-07-at-17.11.39.png]({{ site.post_images }}/post8/screenshot-2019-07-07-at-17.11.39.png)
+![/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png](/assets/images/post8/screenshot-2019-07-07-at-17.11.39.png)
 {:class="img-right"}
 
 In order to execute a successful throw, the user had to keep their hands in the tracking area during the entire movement, which did not look natural whatsoever. We overcame this obstacle by changing the ball throwing design and adding a ball cannon which throws balls inserted into its feeder. After some external playtests, we added some visual clues to the ball cannon (on the right) and it was clear that the ball throwing problem was solved. Children are naturally attracted to the cannon and the visual cues make its purpose obvious.

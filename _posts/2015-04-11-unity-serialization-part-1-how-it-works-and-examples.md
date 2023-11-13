@@ -69,7 +69,7 @@ public class MyBehaviour : MonoBehaviour
 
 The only fields that are serialized are `x`, y and `pi` because they are not `static`, `const`, `readonly`, a property or private field with no `SerializeField` attribute. One way to show this is by taking a look at the script’s inspector, which only shows us serialized fields (that can come handy):
 
-![{{ site.post_images }}/post3/screen-shot-2015-04-08-at-10-48-08-pm.png?w=750]({{ site.post_images }}/post3/screen-shot-2015-04-08-at-10-48-08-pm.png?w=750){:target="_blank"}
+![](/assets/images/post3/screen-shot-2015-04-08-at-10-48-08-pm.png)
 
 But there is a better way to show that the other fields were not serialized: by cloning the object. Remember I told you that the Instantiate method uses the Unity serialization process? So let’s test it by adding the following method to our script:
 
@@ -93,7 +93,7 @@ private void Update()
 
 This method should modify the current object and create another object in the scene when the mouse’s left button is pressed. A naive thought would be that since the second object is a clone of the first one, it should have the same value for `pi`, `mySecret` and any other field as the first object, right? Well, it does for `pi`, because it’s a public field (hence it’s serialized), but it doesn’t for `mySecret`: its value remains unchanged when the second `Debug.Log` is executed:
 
-![{{ site.post_images }}/post3/screen-shot-2016-11-03-at-3-47-32-pm.png?w=750]({{ site.post_images }}/post3/screen-shot-2016-11-03-at-3-47-32-pm.png?w=750){:target="_blank"}
+![](/assets/images/post3/screen-shot-2016-11-03-at-3-47-32-pm.png)
 
 The field `mySecret` can’t be serialized because it’s a private field with no `SerializeField` attribute (which is the only circumstance a private fields will be serialized\*).
 
@@ -101,7 +101,7 @@ The field `mySecret` can’t be serialized because it’s a private field with n
 
 Curiously, the value of `myStatic` changes in both objects, but does that mean static fields are serializable? The answer is no. Even though its behavior leads us to conclude that, remember that static fields belong to the class, and not to an instance of it. That said, if we, per example, create a new object and add a `MyBehaviour` script to it in play mode (Using `GameObject > Create Empty` in the menu), `myStatic` will have the same value as the other objects, although it isn’t a copy of any other object. However, note that the `pi` field has its original value.
 
-![{{ site.post_images }}/post3/screen-shot-2016-11-03-at-3-51-03-pm.png?w=750]({{ site.post_images }}/post3/screen-shot-2016-11-03-at-3-51-03-pm.png?w=750){:target="_blank"}
+![](/assets/images/post3/screen-shot-2016-11-03-at-3-51-03-pm.png)
 
 This proves what the Unity documentation tells us about how can we make a field of a serializable type be serialized. This works with most Unity objects, including `MonoBehaviour`, but what if I don’t want to define a `MonoBehaviour` and I still want to create a `Serializable` type? In other words, how can I define a `Serializable` type?
 
