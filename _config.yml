@@ -44,6 +44,7 @@ remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
+  - jekyll-target-blank
 
 enableComments: true
 
