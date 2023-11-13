@@ -2,8 +2,7 @@
 title: Sometimes I Code
 subtitle: Matheus Amazonas' blog
 description: Sometimes I play, sometimes I surf, sometimes I even code.
-baseurl: "/blog"
-url: "https://matheusamazonas.net"
+url: "https://blog.matheusamazonas.net"
 author:
   name: Matheus Amazonas
   email: "matheus.amazonas@gmail.com"
@@ -20,26 +19,26 @@ navigation:
   url: https://matheusamazonas.net/portfolio
 
 # Posts
-post_images: /blog/assets/images
-post1: /blog/2014/02/19/how-does-unity-export-to-so-many-platforms
-post2: /blog/2014/12/22/how-does-unity-work-under-the-hood
-post3: /blog/2015/04/11/unity-serialization-part-1-how-it-works-and-examples
-post4: /blog/2015/10/22/unity-serialization-part-2-defining-a-serializable-type
-post5: /blog/2015/10/22/unity-serialization-part-3-scriptable-objects
-post6: /blog/2016/07/09/android-6-marshmallow-permissions-and-unity
-post7: /blog/2017/10/26/fp-currying-vs-partial-application
-post8: /blog/2019/07/29/postmorten-developing-an-educational-kiosk-vr-game-for-windows-mixed-reality
-post9: /blog/2019/09/08/cs-finalizer-destructor-trap
-post10: /blog/2020/04/01/unitys-scripting-duality
-post11: /blog/2020/04/01/null-check-and-equality-in-unity
-post12: /blog/2021/04/14/when-software-internationalization-isnt-just-about-ui-a-tale-of-how-a-parsing-error-crashed-our-game
-post13: /blog/2021/08/05/how-windows-mixed-realitys-poor-reliability-forced-a-kiosk-game-switch-to-htc-vive
-post14: /blog/2022/09/10/finally-a-proper-gdd
-post15: /blog/2023/03/29/decoupling-code
-post16: /blog/2023/04/07/parker-postmorten
-post17: /blog/2023/04/08/ttg
-post18: /blog/2023/04/09/ttg-performance
-post19: /blog/2023/09/29/coroutines-async-await
+post_images: /assets/images
+post1: /2014/02/19/how-does-unity-export-to-so-many-platforms
+post2: /2014/12/22/how-does-unity-work-under-the-hood
+post3: /2015/04/11/unity-serialization-part-1-how-it-works-and-examples
+post4: /2015/10/22/unity-serialization-part-2-defining-a-serializable-type
+post5: /2015/10/22/unity-serialization-part-3-scriptable-objects
+post6: /2016/07/09/android-6-marshmallow-permissions-and-unity
+post7: /2017/10/26/fp-currying-vs-partial-application
+post8: /2019/07/29/postmorten-developing-an-educational-kiosk-vr-game-for-windows-mixed-reality
+post9: /2019/09/08/cs-finalizer-destructor-trap
+post10: /2020/04/01/unitys-scripting-duality
+post11: /2020/04/01/null-check-and-equality-in-unity
+post12: /2021/04/14/when-software-internationalization-isnt-just-about-ui-a-tale-of-how-a-parsing-error-crashed-our-game
+post13: /2021/08/05/how-windows-mixed-realitys-poor-reliability-forced-a-kiosk-game-switch-to-htc-vive
+post14: /2022/09/10/finally-a-proper-gdd
+post15: /2023/03/29/decoupling-code
+post16: /2023/04/07/parker-postmorten
+post17: /2023/04/08/ttg
+post18: /2023/04/09/ttg-performance
+post19: /2023/09/29/coroutines-async-await
 
 # Build settings
 remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf
