@@ -82,6 +82,9 @@ summary::-webkit-details-marker {
 img {
   max-width: 100%;
   vertical-align: middle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .img-right {
