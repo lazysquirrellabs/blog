@@ -9,7 +9,7 @@ Let’s talk about C#’s finalizers (also called destructors in C#) and how a c
 
 # Finalizers
 
-A [finalizer](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/destructors){:target="_blank"} is a method that is called whenever an instance of a class is being garbage-collected. It is used for cleanup, commonly to release resources. The code below contains an example class for a music player, where its destructor closes an open file. Note that finalizers always start with a tilde and can’t have any parameters.
+A [finalizer](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/destructors) is a method that is called whenever an instance of a class is being garbage-collected. It is used for cleanup, commonly to release resources. The code below contains an example class for a music player, where its destructor closes an open file. Note that finalizers always start with a tilde and can’t have any parameters.
 
 ```csharp
 public class MusicPlayer
@@ -30,7 +30,7 @@ public class MusicPlayer
 }
 ```
 
-> **Disclaimer**: even though destructors and finalizers are [two different things](https://blogs.msdn.microsoft.com/ericlippert/2010/01/21/whats-the-difference-between-a-destructor-and-a-finalizer/){:target="_blank"}, C#’s spec treats them as the same. If you’re acquainted with both definitions, the C#’s mechanism discussed in this article is actually a finalizer. Also, if you come from a C++ background, even though C#’s syntax for finalizers resembles C++’s syntax, keep in mind that they’re not the same. C++ destructors are called explicitly (and deterministically) by the user whereas C#’s finalizers are called implicitly (and nondeterministically) by the garbage collector.
+> **Disclaimer**: even though destructors and finalizers are [two different things](https://blogs.msdn.microsoft.com/ericlippert/2010/01/21/whats-the-difference-between-a-destructor-and-a-finalizer/), C#’s spec treats them as the same. If you’re acquainted with both definitions, the C#’s mechanism discussed in this article is actually a finalizer. Also, if you come from a C++ background, even though C#’s syntax for finalizers resembles C++’s syntax, keep in mind that they’re not the same. C++ destructors are called explicitly (and deterministically) by the user whereas C#’s finalizers are called implicitly (and nondeterministically) by the garbage collector.
 {: .callout }
 
 # A quick intro to Unity’s MonoBehaviour
@@ -195,12 +195,12 @@ There’s another trap regarding finalizers that is not related to the one descr
 
 First – as usual – Unity engine code can not be called from a separate thread. Calling something as simple as `_foo.gameObject` will throw a `UnityEngine.UnityException` with the message “*get_gameObject can only be called from the main thread*“.
 
-Second, Unity will not catch and log exceptions running on separate threads. Therefore, any exceptions thrown inside finalizers (like the one described above) or in any separate thread might fly under the radar and never get acknowledged by the developers. There are two possible fixes for this problem. One is the obvious: catch the exceptions inside the thread itself. Another one can be used for user-defined threads (and thus is not applicable to GC threads): [use](https://stackoverflow.com/a/5983851){:target="_blank"} `Task` instead of `Thread` to start a new thread with exception handling support.
+Second, Unity will not catch and log exceptions running on separate threads. Therefore, any exceptions thrown inside finalizers (like the one described above) or in any separate thread might fly under the radar and never get acknowledged by the developers. There are two possible fixes for this problem. One is the obvious: catch the exceptions inside the thread itself. Another one can be used for user-defined threads (and thus is not applicable to GC threads): [use](https://stackoverflow.com/a/5983851) `Task` instead of `Thread` to start a new thread with exception handling support.
 
 # Conclusion
 
 Whenever using C# finalizers, keep in mind that they will only get called when no references to their respective objects are left, including references to instance methods. Therefore, using finalizers to unsubscribe from events and to remove delegate references might lead to unwanted behavior. As an alternative, create a cleanup method and explicitly call it whenever necessary.
 
-As a good practice, try to use finalizers for what they are good for: freeing resources. For other usages, don’t rely on them and explicitly invoke cleanup methods. Some even say that pure finalizers should avoided and the [disposable](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose){:target="_blank"} pattern should be used instead.
+As a good practice, try to use finalizers for what they are good for: freeing resources. For other usages, don’t rely on them and explicitly invoke cleanup methods. Some even say that pure finalizers should avoided and the [disposable](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose) pattern should be used instead.
 
 That’s all for today. As usual, feel free to leave a comment with corrections, questions, criticism or compliments. See you next time!

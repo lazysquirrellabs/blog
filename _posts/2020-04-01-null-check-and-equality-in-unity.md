@@ -99,7 +99,7 @@ public class Coordinates
 
 In addition to checking the parameter for a null reference, it is necessary to cast it into `Coordinates` before actually checking for equality. It is also worth noting that the `==` operator can check both parameters for null values, while `Equals` only checks its only parameter. If the object we are calling `Equals` on is `null`, a `NullReferenceException` will be thrown.
 
-If you want to dive deeper into C#’s equality tools, you might want to check [this article](https://coding.abel.nu/2014/09/net-and-equals/){:target="_blank"} out.
+If you want to dive deeper into C#’s equality tools, you might want to check [this article](https://coding.abel.nu/2014/09/net-and-equals/) out.
 
 # Equality in Unity
 
@@ -126,7 +126,7 @@ And later on, we check the `ExampleBehaviour` instance for equality against null
 Debug.Log(example == null);
 ```
 
-The log statement above will print “true“. At first, that might seem obvious because we just destroyed that instance, but as I explained on [my previous article]({{ site.post10 }}){:target="_blank"}, the instance’s reference is *not* null and it was not garbage-collected yet. In fact, it won’t be garbage-collected until the scope it has been defined still exists. What Unity’s custom `==` operator does in this scenario is to check if the underlying entity has been destroyed, which in this case is true. This behavior helps programmers identifying objects that have been destroyed but still hold a valid reference.
+The log statement above will print “true“. At first, that might seem obvious because we just destroyed that instance, but as I explained on [my previous article]({{ site.post10 }}), the instance’s reference is *not* null and it was not garbage-collected yet. In fact, it won’t be garbage-collected until the scope it has been defined still exists. What Unity’s custom `==` operator does in this scenario is to check if the underlying entity has been destroyed, which in this case is true. This behavior helps programmers identifying objects that have been destroyed but still hold a valid reference.
 
 ## Other similar operators
 
@@ -193,7 +193,7 @@ That’s it for today. As always, feel free to leave a comment with questions, c
 
 # Source
 
-- [Passion for Coding: .NET == and .Equals()](https://coding.abel.nu/2014/09/net-and-equals/){:target="_blank"}
-- [Unity Blog: Custom == operator, should we keep it?](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/){:target="_blank"}
-- [Rider: Avoid null comparisons against UnityEngine.Object subclasses](https://github.com/JetBrains/resharper-unity/wiki/Avoid-null-comparisons-against-UnityEngine.Object-subclasses){:target="_blank"}
-- [Rider: Possible unintended bypass of lifetime check of underlying Unity engine object](https://github.com/JetBrains/resharper-unity/wiki/Possible-unintended-bypass-of-lifetime-check-of-underlying-Unity-engine-object){:target="_blank"}
+- [Passion for Coding: .NET == and .Equals()](https://coding.abel.nu/2014/09/net-and-equals/)
+- [Unity Blog: Custom == operator, should we keep it?](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/)
+- [Rider: Avoid null comparisons against UnityEngine.Object subclasses](https://github.com/JetBrains/resharper-unity/wiki/Avoid-null-comparisons-against-UnityEngine.Object-subclasses)
+- [Rider: Possible unintended bypass of lifetime check of underlying Unity engine object](https://github.com/JetBrains/resharper-unity/wiki/Possible-unintended-bypass-of-lifetime-check-of-underlying-Unity-engine-object)

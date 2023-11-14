@@ -5,7 +5,7 @@ date:   2016/07/09 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-While working on [Overclock](http://sky.vu/oc){:target="_blank"}, our team faced a new problem with Android 6 (Marshmallow): all permissions were requested when the app launches the first time instead of when the user downloads the app. Not only that, but the permissions are requested individually and not altogether like it used to be, which showed us some permissions we didn’t even notice were there. After some research, we found some answers and some problems and I’ll list them here to hopefully help some developers in the future.
+While working on [Overclock](http://sky.vu/oc), our team faced a new problem with Android 6 (Marshmallow): all permissions were requested when the app launches the first time instead of when the user downloads the app. Not only that, but the permissions are requested individually and not altogether like it used to be, which showed us some permissions we didn’t even notice were there. After some research, we found some answers and some problems and I’ll list them here to hopefully help some developers in the future.
 
 This article will talk about Android 6 permission changes, how Unity adds some of them based on your API requests, how the engine requests them and which changes should be made to this system.
 
@@ -13,7 +13,7 @@ This article will talk about Android 6 permission changes, how Unity adds some o
 
 Starting on Android 6, user permissions are requested during run time rather than during installation. According to Google, the change streamlines the installation and update process and allows fine tuning of the app’s functionalities: since the permissions are requested individually, the user can allow some and deny others. For example: a user can grant location privilegies but deny camera permission and the app may function seamlessly. Before the update, given that all the permissions were displayed grouped before installation, denying them would cancel the installation.
 
-The Android Support Library provides us with methods of checking, requesting and dealing with permissions request responses. You can check more about it [here](http://developer.android.com/training/permissions/requesting.html){:target="_blank"}.
+The Android Support Library provides us with methods of checking, requesting and dealing with permissions request responses. You can check more about it [here](http://developer.android.com/training/permissions/requesting.html).
 
 # A bit about Android permissions 
 
@@ -21,7 +21,7 @@ In order to fully understand the problem, we must learn a bit more about Android
 
 ## Protection Levels
 
-System permission are divided into two protection levels: normal and dangerous. Normal permissions usually request data or resources out of the app’s sandbox but that shouldn’t harm the user’s privacy or other apps, e.g., time zone permission. You can take a look at the list of normal permission [here](http://developer.android.com/guide/topics/security/normal-permissions.html){:target="_blank"}. Dangerous permissions request either data or resources that may affect the user’s privacy of the execution of other apps, e.g., read the phone’s contact list and manage phone calls. Normal permissions are automatically granted without user prompt, while dangerous permissions require user authorization.
+System permission are divided into two protection levels: normal and dangerous. Normal permissions usually request data or resources out of the app’s sandbox but that shouldn’t harm the user’s privacy or other apps, e.g., time zone permission. You can take a look at the list of normal permission [here](http://developer.android.com/guide/topics/security/normal-permissions.html). Dangerous permissions request either data or resources that may affect the user’s privacy of the execution of other apps, e.g., read the phone’s contact list and manage phone calls. Normal permissions are automatically granted without user prompt, while dangerous permissions require user authorization.
 
 ## Permission Groups
 
@@ -66,7 +66,7 @@ After some digging, we found out that Unity doesn’t provide a way of doing tha
 
 ## Non-official workaround
 
-Since Unity lacks a solution for this problem, we sought an alternative solution. We can’t control when Unity requests the permission, but we can use another tools ([1](https://www.assetstore.unity3d.com/en/#!/content/62735){:target="_blank"}, [2](http://stackoverflow.com/questions/35027043/implementing-android-6-0-permissions-in-unity3d/){:target="_blank"}) to do that, totally bypassing Unity. Those tools let us work with the Android 6 permission model inside Unity. One extra step to implement that is to tell Unity to stop requesting the permissions when the app launches. We can do that easily by adding the following line to the AndroidManifest.xml file:
+Since Unity lacks a solution for this problem, we sought an alternative solution. We can’t control when Unity requests the permission, but we can use another tools ([1](https://www.assetstore.unity3d.com/en/#!/content/62735), [2](http://stackoverflow.com/questions/35027043/implementing-android-6-0-permissions-in-unity3d/)) to do that, totally bypassing Unity. Those tools let us work with the Android 6 permission model inside Unity. One extra step to implement that is to tell Unity to stop requesting the permissions when the app launches. We can do that easily by adding the following line to the AndroidManifest.xml file:
 
 ```xml
 <meta-data android:name=“unityplayer.SkipPermissionsDialog”android:value=“true”/>
@@ -74,10 +74,10 @@ Since Unity lacks a solution for this problem, we sought an alternative solution
 
 #  Conclusion: What Unity should do 
 
-The final fix for this problem would be an official solution from Unity: an API that implements the Android Marshmallow (6.0) permission model, giving us control over runtime permission requests. Our team wasn’t the first one to bump into this problem and won’t be the last, and there is a [Unity Feedback topic](https://feedback.unity3d.com/suggestions/add-android-m-6-dot-0-permission-model-support){:target="_blank"} currently open that addresses this very same problem. If you feel affected by this, please vote for it.
+The final fix for this problem would be an official solution from Unity: an API that implements the Android Marshmallow (6.0) permission model, giving us control over runtime permission requests. Our team wasn’t the first one to bump into this problem and won’t be the last, and there is a [Unity Feedback topic](https://feedback.unity3d.com/suggestions/add-android-m-6-dot-0-permission-model-support) currently open that addresses this very same problem. If you feel affected by this, please vote for it.
 
 # Reference
 
-- [Android Developers - Request app permissions](http://developer.android.com/training/permissions/requesting.html){:target="_blank"}
-- [Android Developers - Permissions on Android](http://developer.android.com/guide/topics/security/permissions.html){:target="_blank"}
-- [Unity Answers - Disable permission dialog in Unity 5](http://answers.unity3d.com/questions/1152724/disable-permission-dialog-in-unity-5.html){:target="_blank"}
+- [Android Developers - Request app permissions](http://developer.android.com/training/permissions/requesting.html)
+- [Android Developers - Permissions on Android](http://developer.android.com/guide/topics/security/permissions.html)
+- [Unity Answers - Disable permission dialog in Unity 5](http://answers.unity3d.com/questions/1152724/disable-permission-dialog-in-unity-5.html)

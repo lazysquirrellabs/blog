@@ -5,7 +5,7 @@ date:   2023/04/09 11:10:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains in Unity. For more info about TTG, check its [website](http://ttg.matheusamazonas.net){:target="_blank"}, [repository](https://github.com/matheusamazonas/TTG){:target="_blank"} and a [detailed explanation on its development process]({{ site.post17 }}){:target="_blank"}.
+This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains in Unity. For more info about TTG, check its [website](http://ttg.matheusamazonas.net), [repository](https://github.com/matheusamazonas/TTG) and a [detailed explanation on its development process]({{ site.post17 }}).
 
 # Things could be better
 
@@ -111,7 +111,7 @@ If a language like C++ (which doesn't manage the memory for you) was being used,
 
 Well, it ends up that creating a terrain generates a lot of garbage and the garbage collector is almost guaranteed to run right after the terrain is generated. In some cases this wouldn't pose a problem (specially because we're talking about a terrain generation tool), but I wanted to keep garbage generation to a minimum. Part of this problem was solved by the vertex duplicate elimination described above (less vertices means less data and generated garbage), but there was still room for improvement.
 
-But how can we reach C++'s level of memory control in Unity with C#? The Unity [Collections](https://docs.unity3d.com/Packages/com.unity.collections@1.4/manual/index.html){:target="_blank"} package provides some unmanaged data structures that can be used in managed C# code—you just need to manage their lifetime. Among the data structures that this package contains are `NativeList`, `NativeArray` and `NativeHashMap`, which provide C# wrappers to unmanaged lists, arrays and dictionaries, respectively. After some time looking into the package documentation and learning how to properly create and dispose these structures, I was ready to put them into action. They were used as replacements for vanilla types such as `List`, array and `Dictionary` in terrain generation code.
+But how can we reach C++'s level of memory control in Unity with C#? The Unity [Collections](https://docs.unity3d.com/Packages/com.unity.collections@1.4/manual/index.html) package provides some unmanaged data structures that can be used in managed C# code—you just need to manage their lifetime. Among the data structures that this package contains are `NativeList`, `NativeArray` and `NativeHashMap`, which provide C# wrappers to unmanaged lists, arrays and dictionaries, respectively. After some time looking into the package documentation and learning how to properly create and dispose these structures, I was ready to put them into action. They were used as replacements for vanilla types such as `List`, array and `Dictionary` in terrain generation code.
 
 Then, similarly to the subsection above, tests were performed to quantity the impact of the changes on the memory allocated by the garbage collector and on the generation duration. The test results are displayed below, where the “Before” column contains results obtained before native constructs were added, and the “After” column contains results measured after their addition.
 

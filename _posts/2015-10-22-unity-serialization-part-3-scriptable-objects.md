@@ -5,9 +5,9 @@ date:   2015/10/22 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This post is part of a series about Unity serialization. Click [here]({{ site.post3 }}){:target="_blank"} for part 1: how it works and examples or click [here]({{ site.post4 }}){:target="_blank"} for part 2: defining a serializable type.
+This post is part of a series about Unity serialization. Click [here]({{ site.post3 }}) for part 1: how it works and examples or click [here]({{ site.post4 }}) for part 2: defining a serializable type.
 
-On the [last article]({{ site.post4 }}){:target="_blank"}, we learnt how we can define our own serializable types and discovered some problems that can emerge from it. One solution (although not ideal) to our problems is Scriptable Objects. These objects have two major uses: saving and storing data in the Editor and saving and storing data as an asset. According to the documentation, they are optimized and can store huge portions of data. There are a few singularities about Scriptable Objects and we will discuss them on the following paragraphs.
+On the [last article]({{ site.post4 }}), we learnt how we can define our own serializable types and discovered some problems that can emerge from it. One solution (although not ideal) to our problems is Scriptable Objects. These objects have two major uses: saving and storing data in the Editor and saving and storing data as an asset. According to the documentation, they are optimized and can store huge portions of data. There are a few singularities about Scriptable Objects and we will discuss them on the following paragraphs.
 
 # Defining and Creating
 
@@ -30,11 +30,11 @@ public class MyDatabase : ScriptableObject
 }
 ```
 
-By marking your `ScriptableObject` with this modifier, a menu item will be created in the `Asset/Create` menu. Easy like that, this should create an Asset called `New My Database` in the Assets folder and it can be referenced by any `MonoBehaviour` just like any other type derived from `Unity.Obejct`. By doing this, we solve the first problem present on the previous blog [post]({{ site.post4 }}){:target="_blank"}: databases should be assets and not `MonoBehaviour`. Now let’s learn how Scriptable Objects act differently from custom serializable classes in Unity.
+By marking your `ScriptableObject` with this modifier, a menu item will be created in the `Asset/Create` menu. Easy like that, this should create an Asset called `New My Database` in the Assets folder and it can be referenced by any `MonoBehaviour` just like any other type derived from `Unity.Obejct`. By doing this, we solve the first problem present on the previous blog [post]({{ site.post4 }}): databases should be assets and not `MonoBehaviour`. Now let’s learn how Scriptable Objects act differently from custom serializable classes in Unity.
 
 # Objects are stored as references, not copies
 
-Consider the example from the previous [post]({{ site.post4 }}){:target="_blank"} and think about this: if a `MonoBehaviour` has two references to the same `City` object, how will they get serialized? How does the change made in one affect the other? The answer to these questions is slightly counterintuitive:  they are decoupled and serialized separately, hence changing one’s value won’t change the other’s. Let’s see an example using a `MonoBehaviour` that executes in edit mode just to make things easier:
+Consider the example from the previous [post]({{ site.post4 }}) and think about this: if a `MonoBehaviour` has two references to the same `City` object, how will they get serialized? How does the change made in one affect the other? The answer to these questions is slightly counterintuitive:  they are decoupled and serialized separately, hence changing one’s value won’t change the other’s. Let’s see an example using a `MonoBehaviour` that executes in edit mode just to make things easier:
 
 ```csharp
 [ExecuteInEditMode]
@@ -100,7 +100,7 @@ We can also use Scriptable Objects as assets instead of scene objects and the ef
 
 # Polymorphism
 
-We face a serialization problem when using polymorphism and custom serializable classes: an instance of a derived class is serialized as an instance of the base class. Let’s use the example the Unity Documentation [does](http://docs.unity3d.com/Manual/script-Serialization.html){:target="_blank"}: animals. See the example:
+We face a serialization problem when using polymorphism and custom serializable classes: an instance of a derived class is serialized as an instance of the base class. Let’s use the example the Unity Documentation [does](http://docs.unity3d.com/Manual/script-Serialization.html): animals. See the example:
 
 ```csharp
 [System.Serializable]
@@ -215,7 +215,7 @@ public class ScriptableExample : MonoBehaviour
 
 This example is analogue to the previous one, so run it and observe the console. Even after hitting play, stopping the game and disabling the script, we get “True” as output, which means that the dog is still a `Dog` and it was serialized as one, keeping the polymorphism intact. Therefore, Scriptable Objects solve the second problem introduced in the last blog post: polymorphism and user-defined classes. This might not be the best solution ever when dealing with serialized polymorphic code (we can’t use constructors anymore and inspecting the objects is a pain) but it may be necessary in some situations.
 
-In addition, a fix to this polymorphism serialization problem has been extremely [requested](http://feedback.unity3d.com/suggestions/serialization-of-polymorphic-dat){:target="_blank"} by the community in the last years and haven’t been solved it.
+In addition, a fix to this polymorphism serialization problem has been extremely [requested](http://feedback.unity3d.com/suggestions/serialization-of-polymorphic-dat) by the community in the last years and haven’t been solved it.
 
 # Serialization depth limit (or no support for null)
 
@@ -234,7 +234,7 @@ This code looks harmless, but it’s not, as seen on the error thrown (on previo
 > Serialization depth limit exceeded at ‘DepthClass’. There may be an object composition cycle in one or more of your serialized classes.
 > 
 
-Let’s understand why. Let’s take a look at the `depthObjects` variable and try to figure out how it would be serialized in Unity if it’s an empty list. The naive thought would say that if it should be serialized as null, like any other field, but it’s not. It happens that Unity doesn’t support null serialization for custom classes (like it does for instances of `UnityObject`) and that object will be serialized as en empty instance – which is transparent to the user. On top of that, each of those empty instances has its own `depthObjects` variable, which would be serialized as another empty instance, creating a cycle that would never end, therefore crashing Unity. To avoid that, [the folks](http://docs.unity3d.com/Manual/script-Serialization.html){:target="_blank"} at Unity Technologies set a limit (7 levels) for serialization depth, which means that after 7 levels of depth, Unity will assume that it hit a cycle and will stop the serialization at that point. Seven levels of serialization can sound like too much, but for some problems, it might be necessary.
+Let’s understand why. Let’s take a look at the `depthObjects` variable and try to figure out how it would be serialized in Unity if it’s an empty list. The naive thought would say that if it should be serialized as null, like any other field, but it’s not. It happens that Unity doesn’t support null serialization for custom classes (like it does for instances of `UnityObject`) and that object will be serialized as en empty instance – which is transparent to the user. On top of that, each of those empty instances has its own `depthObjects` variable, which would be serialized as another empty instance, creating a cycle that would never end, therefore crashing Unity. To avoid that, [the folks](http://docs.unity3d.com/Manual/script-Serialization.html) at Unity Technologies set a limit (7 levels) for serialization depth, which means that after 7 levels of depth, Unity will assume that it hit a cycle and will stop the serialization at that point. Seven levels of serialization can sound like too much, but for some problems, it might be necessary.
 
 Given that, always think twice before serializing any field that has recursive declarations. If it’s not really necessary to serialize it, don’t! But if you really want to use 7 or more levels, or you really need to serialize it, you should use Scriptable Objects. Since Scriptable Objects do support null serialization, this problem simply vanishes:
 
@@ -250,7 +250,7 @@ And this simple change should get rid of the error and let you use more than 7 d
 
 # Data can be shared among objects
 
-This problem (although not listed on the previous article) is exactly the same discussed in the Unity [documentation](http://docs.unity3d.com/Manual/class-ScriptableObject.html){:target="_blank"} about Scriptable Objects. If you store an array of integers that occupies about 4MB in a prefab and you instantiate that prefab 10 times, you would have a copy of the array in each prefab’s instance, occupying a total of 40MB. That happens because the array lives on the script itself, and copying the prefab copies the script, hence the array.
+This problem (although not listed on the previous article) is exactly the same discussed in the Unity [documentation](http://docs.unity3d.com/Manual/class-ScriptableObject.html) about Scriptable Objects. If you store an array of integers that occupies about 4MB in a prefab and you instantiate that prefab 10 times, you would have a copy of the array in each prefab’s instance, occupying a total of 40MB. That happens because the array lives on the script itself, and copying the prefab copies the script, hence the array.
 
 If instead of declaring the array on the prefab’s script you had a reference to a `ScriptableObject` which contains the array, all the instances would point to the same data. Therefore, 10 instances of that prefab would store 10 references to the same object (and not the actual data), occupying about 4MB only. Not only that substantially saves memory, but changes made to the array from any of the instances will affect the others, maintaining database consistency.
 
@@ -283,4 +283,4 @@ Those are not really convincing, but I personally rather have a `ScriptableObjec
 
 # Conclusion
 
-In this article we learnt how to solve some problems (most of them described on the [last]({{ site.post4 }}){:target="_blank"} article) that may emerge when dealing with custom serialized types and Unity serialization. Even though some problems can be solved by using Scriptable Objects, this solution is far form ideal.
+In this article we learnt how to solve some problems (most of them described on the [last]({{ site.post4 }}) article) that may emerge when dealing with custom serialized types and Unity serialization. Even though some problems can be solved by using Scriptable Objects, this solution is far form ideal.
