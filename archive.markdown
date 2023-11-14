@@ -8,31 +8,31 @@ Here are the blogs posts so far, grouped by category and subject. I write mainly
 
 # Game Development
 ### Unity deep dives
-- [How does Unity export to so many platforms?]({{ site.post1 }}) (Feb. 2014)
-- [How does Unity scripting work under the hood?]({{ site.post2 }}) (Dec. 2014)
+- [How does Unity export to so many platforms?](/articles/how_does_unity_export) (Feb. 2014)
+- [How does Unity scripting work under the hood?](/articles/unity_under_the_hood) (Dec. 2014)
 - Unity serialization series
-	- [Part 1: How it works and examples]({{ site.post3 }}) (Apr. 2015)
-	- [Part 2: Defining a Serializable type]({{ site.post4 }}) (Oct. 2015)
-	- [Part 3: Scriptable Objects]({{ site.post5 }}) (Oct. 2015)
-- [Android 6 (Marshmallow) permissions and Unity]({{ site.post6}}) (Jul. 2016)
-- [C#’s finalizer/destructor trap]({{ site.post9 }}) (Sep. 2019)
-- [Unity’s scripting duality and object destruction]({{ site.post10 }}) (Apr. 2020)
-- [Null check and equality in Unity]({{ site.post11 }}) (Apr. 2020)
-- [Asynchronous programming in Unity: Coroutines vs. async/await]( {{ site.post19 }}) (Sep. 2023)
+	- [Part 1: How it works and examples](/articles/unity_serialization_1) (Apr. 2015)
+	- [Part 2: Defining a Serializable type](/articles/unity_serialization_2) (Oct. 2015)
+	- [Part 3: Scriptable Objects](/articles/unity_serialization_1) (Oct. 2015)
+- [Android 6 (Marshmallow) permissions and Unity](/articles/android_6_permissions) (Jul. 2016)
+- [C#’s finalizer/destructor trap](/articles/finalizer_destructor_trap) (Sep. 2019)
+- [Unity’s scripting duality and object destruction](/articles/unity_script_duality) (Apr. 2020)
+- [Null check and equality in Unity](/articles/null_check_equality_unity) (Apr. 2020)
+- [Asynchronous programming in Unity: Coroutines vs. async/await](/articles/coroutines_async_await) (Sep. 2023)
 
 ### Terraced Terrain Generator
-- [Developing a Terraced Terrain Generator]({{ site.post17 }}) (Apr. 2023)
-- [Terraced Terrain Generator performance improvements]({{ site.post18 }}) (Apr. 2023)
+- [Developing a Terraced Terrain Generator](/articles/ttg) (Apr. 2023)
+- [Terraced Terrain Generator performance improvements](/articles/ttg_performance) (Apr. 2023)
 
 ### Postmortems
-- [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality]({{ site.post8 }}) (Jul. 2019)
-- [How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE]({{ site.post13 }}) (Aug. 2021)
-- [[Postmortem] Parker - the game]({{ site.post16 }}) (Apr. 2023)
+- [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality](/articles/voedingscentrum_1) (Jul. 2019)
+- [How Windows Mixed Reality’s poor reliability forced a kiosk game switch to HTC VIVE](/articles/voedingscentrum_2) (Aug. 2021)
+- [[Postmortem] Parker - the game](/articles/parker_postmortem) (Apr. 2023)
 
 ### Other
-- [When software internationalization isn’t just about UI: a tale of how a parsing error crashed our game]({{ site.post12 }}) (Apr. 2021)
-- [Finally, a proper Game Design Document (whatever that means)]({{ site.post14 }}) (Sep. 2022)
-- [Game testing made easier: decoupling code]({{ site.post15 }}) (Mar. 2023)
+- [When software internationalization isn’t just about UI: a tale of how a parsing error crashed our game](/articles/localization_crash) (Apr. 2021)
+- [Finally, a proper Game Design Document (whatever that means)](/articles/finally_gdd) (Sep. 2022)
+- [Game testing made easier: decoupling code](/articles/decoupling_code) (Mar. 2023)
 
 # Functional Programming
-- [FP: Currying vs. partial application]({{ site.post7 }}) (Oct. 2017)
+- [FP: Currying vs. partial application](/articles/currying_vs_partial_application) (Oct. 2017)
