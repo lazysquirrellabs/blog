@@ -15,7 +15,7 @@ message: >-
   And indeed, there are some scenarios in which a Task will not allocate on the
   heap. For example, if a method returns a Task but completes synchronously. It
   might also be the case for some tasks with a return value that is easily
-  enumerable (e.g., Task&lt;bool&gt;). [Source](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask){:target="_blank"}.
+  enumerable (e.g., Task&lt;bool&gt;). [Source](https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask).
 
 
   ValueTask (or ValueTask&lt;T&gt;) might be handy in methods that return Task (or
