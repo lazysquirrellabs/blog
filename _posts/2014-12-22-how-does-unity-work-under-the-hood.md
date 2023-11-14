@@ -38,5 +38,5 @@ Last but not least, the Unity Engine itself (native portion) runs in plenty of d
 That closes our discussion about how the Unity Engine works greatly on so many platforms with amazing performance and easy programming.
 
 > **Important update (September, 2015)** ⚠️  
-> Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/){: target="_blank"}
+> Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/)
 {: .callout }
