@@ -78,4 +78,4 @@ So this is it boys and girls. Mono is the savior here. It provides the .NET Fram
 > Unity’s IL2CPP technology is changing the way the engine’s scripting backend works, eliminating Mono’s VM and AOT compiler. [Take a look at it!](http://blogs.unity3d.com/2014/05/20/the-future-of-scripting-in-unity/)
 {: .callout }
 
-What to read next? I wrote a new post about how Unity works under the hood and how our code interacts with the engine code [here]({{ site.post2 }}).
+What to read next? I wrote a new post about how Unity works under the hood and how our code interacts with the engine code [here](unity_under_the_hood).

@@ -5,7 +5,7 @@ date:   2014/12/22 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-On the [previous post]({{ site.post1 }}) we learnt how Unity exports to so many platforms. Now let’s talk about a subject that can sound unnecessary at first, but helped (at least me) a lot on the process of understanding how Unity works. We all know [Unity](http://unity3d.com/) is an engine, but how it really works? In this post we’ll learn about:
+On the [previous post](how_does_unity_export) we learnt how Unity exports to so many platforms. Now let’s talk about a subject that can sound unnecessary at first, but helped (at least me) a lot on the process of understanding how Unity works. We all know [Unity](http://unity3d.com/) is an engine, but how it really works? In this post we’ll learn about:
 
 - How Unity Engine is implemented
 - How we access the engine code

@@ -5,9 +5,9 @@ date:   2015/10/22 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This post is part of a series about Unity serialization. Click [here]({{ site.post3 }}) for part 1: how it works and examples or click [here]({{ site.post4 }}) for part 2: defining a serializable type.
+This post is part of a series about Unity serialization. Click [here](unity_serialization_1) for part 1: how it works and examples or click [here](unity_serialization_2) for part 2: defining a serializable type.
 
-On the [last article]({{ site.post4 }}), we learnt how we can define our own serializable types and discovered some problems that can emerge from it. One solution (although not ideal) to our problems is Scriptable Objects. These objects have two major uses: saving and storing data in the Editor and saving and storing data as an asset. According to the documentation, they are optimized and can store huge portions of data. There are a few singularities about Scriptable Objects and we will discuss them on the following paragraphs.
+On the [last article](unity_serialization_2), we learnt how we can define our own serializable types and discovered some problems that can emerge from it. One solution (although not ideal) to our problems is Scriptable Objects. These objects have two major uses: saving and storing data in the Editor and saving and storing data as an asset. According to the documentation, they are optimized and can store huge portions of data. There are a few singularities about Scriptable Objects and we will discuss them on the following paragraphs.
 
 # Defining and Creating
 
@@ -30,11 +30,11 @@ public class MyDatabase : ScriptableObject
 }
 ```
 
-By marking your `ScriptableObject` with this modifier, a menu item will be created in the `Asset/Create` menu. Easy like that, this should create an Asset called `New My Database` in the Assets folder and it can be referenced by any `MonoBehaviour` just like any other type derived from `Unity.Obejct`. By doing this, we solve the first problem present on the previous blog [post]({{ site.post4 }}): databases should be assets and not `MonoBehaviour`. Now let’s learn how Scriptable Objects act differently from custom serializable classes in Unity.
+By marking your `ScriptableObject` with this modifier, a menu item will be created in the `Asset/Create` menu. Easy like that, this should create an Asset called `New My Database` in the Assets folder and it can be referenced by any `MonoBehaviour` just like any other type derived from `Unity.Object`. By doing this, we solve the first problem present on the previous blog [post](unity_serialization_2): databases should be assets and not `MonoBehaviour`. Now let’s learn how Scriptable Objects act differently from custom serializable classes in Unity.
 
 # Objects are stored as references, not copies
 
-Consider the example from the previous [post]({{ site.post4 }}) and think about this: if a `MonoBehaviour` has two references to the same `City` object, how will they get serialized? How does the change made in one affect the other? The answer to these questions is slightly counterintuitive:  they are decoupled and serialized separately, hence changing one’s value won’t change the other’s. Let’s see an example using a `MonoBehaviour` that executes in edit mode just to make things easier:
+Consider the example from the previous [post](unity_serialization_2) and think about this: if a `MonoBehaviour` has two references to the same `City` object, how will they get serialized? How does the change made in one affect the other? The answer to these questions is slightly counterintuitive:  they are decoupled and serialized separately, hence changing one’s value won’t change the other’s. Let’s see an example using a `MonoBehaviour` that executes in edit mode just to make things easier:
 
 ```csharp
 [ExecuteInEditMode]
@@ -283,4 +283,4 @@ Those are not really convincing, but I personally rather have a `ScriptableObjec
 
 # Conclusion
 
-In this article we learnt how to solve some problems (most of them described on the [last]({{ site.post4 }}) article) that may emerge when dealing with custom serialized types and Unity serialization. Even though some problems can be solved by using Scriptable Objects, this solution is far form ideal.
+In this article we learnt how to solve some problems (most of them described on the [last](unity_serialization_2) article) that may emerge when dealing with custom serialized types and Unity serialization. Even though some problems can be solved by using Scriptable Objects, this solution is far form ideal.

@@ -126,7 +126,7 @@ And later on, we check the `ExampleBehaviour` instance for equality against null
 Debug.Log(example == null);
 ```
 
-The log statement above will print “true“. At first, that might seem obvious because we just destroyed that instance, but as I explained on [my previous article]({{ site.post10 }}), the instance’s reference is *not* null and it was not garbage-collected yet. In fact, it won’t be garbage-collected until the scope it has been defined still exists. What Unity’s custom `==` operator does in this scenario is to check if the underlying entity has been destroyed, which in this case is true. This behavior helps programmers identifying objects that have been destroyed but still hold a valid reference.
+The log statement above will print “true“. At first, that might seem obvious because we just destroyed that instance, but as I explained on [my previous article](unity_script_duality), the instance’s reference is *not* null and it was not garbage-collected yet. In fact, it won’t be garbage-collected until the scope it has been defined still exists. What Unity’s custom `==` operator does in this scenario is to check if the underlying entity has been destroyed, which in this case is true. This behavior helps programmers identifying objects that have been destroyed but still hold a valid reference.
 
 ## Other similar operators
 

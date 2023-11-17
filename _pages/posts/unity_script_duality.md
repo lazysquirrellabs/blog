@@ -61,13 +61,13 @@ It is here where the managed vs. native duality explained in the previous sessio
 
 This scenario changes if we try to access any of its underlying native entities, like its `gameObject` property, as we do in the `Move` method. In that case, the engine throws an error to let us know that the object of type `Dog` we are trying to access was destroyed. Note that the exception is a `MissingReferenceException`, an exception defined in the `UnityEngine` namespace. It is not a `NullReferenceException` and thus, it is not a C# built-in exception. Again, that sounds too deep of a dive into the engine details, but this subtle detail underscores the fact that the managed entity (the `Dog` instance) was not destroyed at all, otherwise an `NullReferenceExceptionexception` would have been thrown. In fact, the wrapper object still lives. The call to `Destroy` will only destroy native, engine components. In other words, the lifetime of native entities will be determined by a call to `Destroy` (or a non-additive scene load) whereas the lifetime of managed entities will be determined by the garbage collector. Thus, the two entities have different life cycles, and sometimes we need to keep that in mind.
 
-For a deeper look into how the Unity engine works under the hood, check [this article]({{ site.post2 }}) out.
+For a deeper look into how the Unity engine works under the hood, check [this article](unity_under_the_hood) out.
 
 # The potential problem
 
 We just went through why a user-defined `MonoBehaviour` still lives in the managed world even after their corresponding native entity was destroyed. Also, we discussed how we can still invoke some of their methods successfully, as long as they don’t try to access their native engine components. This fact introduces two important questions: how do we easily identify that these managed entities should not be accessed anymore because their underlying entities were destroyed? Is it a good practice to still access a `MonoBehaviour` after is has been destroyed?
 
-Let’s start answering the second question: no, it is *not* a good idea to access a `MonoBehaviour` after its native entities were destroyed. One might think that it’s safe to keep some of its methods free from accesses to native, engine code, but this practice hurts code maintainability badly. It introduces an unspoken (or undocumented) rule that some methods should not try to access some specific components. Consequently, some developer — unaware of this weird rule — might change the code down the development process, which could potentially introduce errors. Additionally, it goes against the idea of using a `MonoBehaviour`, which is to attach scripts to Game Objects so they can interact. If you want to use an object that does not necessarily relate to a Game Object and its life cycle, do not inherit from `MonoBehaviour` and use a vanilla C# class instead — or maybe you want to use a [Scriptable Object]({{ site.post5 }}).
+Let’s start answering the second question: no, it is *not* a good idea to access a `MonoBehaviour` after its native entities were destroyed. One might think that it’s safe to keep some of its methods free from accesses to native, engine code, but this practice hurts code maintainability badly. It introduces an unspoken (or undocumented) rule that some methods should not try to access some specific components. Consequently, some developer — unaware of this weird rule — might change the code down the development process, which could potentially introduce errors. Additionally, it goes against the idea of using a `MonoBehaviour`, which is to attach scripts to Game Objects so they can interact. If you want to use an object that does not necessarily relate to a Game Object and its life cycle, do not inherit from `MonoBehaviour` and use a vanilla C# class instead — or maybe you want to use a [Scriptable Object](unity_serialization_3).
 
 # The solution
 
@@ -111,7 +111,7 @@ private void DestructionTest()
 
 The method above, when executed outputs “Is the dog null/destroyed? False”. If we run the same check one frame later, or even inside `LateUpdate`, the check returns true. That happens because the call to `Destroy` doesn’t actually destroy the object, it only *tags* it for later destruction. After the `Update` loop, the engine gathers all objects tagged for destruction and actually destroys them, one by one. As a consequence, we need to keep the delayed destruction in mind when checking for existing entities.
 
-Not all C#’s equality operators implement this custom behavior. For a deeper look into Unity’s equality operators, check [this article]({{ site.post11 }}) on the subject.
+Not all C#’s equality operators implement this custom behavior. For a deeper look into Unity’s equality operators, check [this article](null_check_equality_unity) on the subject.
 
 # Conclusion
 

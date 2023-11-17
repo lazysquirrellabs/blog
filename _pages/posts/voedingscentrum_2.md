@@ -5,14 +5,14 @@ date:   2021/08/05 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-In a [previous article]({{ site.post8 }}), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution and we are happy we did it. Here’s the story behind that shift.
+In a [previous article](voedingscentrum_1), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution and we are happy we did it. Here’s the story behind that shift.
 
 > **Disclaimer***:* Most of the events described in this article happened before the COVID-19 pandemic hit the Netherlands and the different testing stages happened either before the restrictions started, or after most of them had been lifted.
 {: .callout }
 
 # A small summary
 
-The application had two released versions. Version 1.0 shipped as a full Windows Mixed Reality (hereafter referred as WMR), using both the headsets and controllers and it was deployed at [Boerhaave Museum](https://rijksmuseumboerhaave.nl/). We quickly concluded that there were some design flaws and the controllers had to be dropped. Version 1.1 brought Leap Motion support to enable interaction with objects without controllers and it was installed at [Open Air Museum](https://openluchtmuseum.nl/en). Read the [original article]({{ site.post8 }}) for more detailed information about the development of the game.
+The application had two released versions. Version 1.0 shipped as a full Windows Mixed Reality (hereafter referred as WMR), using both the headsets and controllers and it was deployed at [Boerhaave Museum](https://rijksmuseumboerhaave.nl/). We quickly concluded that there were some design flaws and the controllers had to be dropped. Version 1.1 brought Leap Motion support to enable interaction with objects without controllers and it was installed at [Open Air Museum](https://openluchtmuseum.nl/en). Read the [original article](voedingscentrum_1) for more detailed information about the development of the game.
 
 # The problems
 

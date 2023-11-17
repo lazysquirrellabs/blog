@@ -5,9 +5,9 @@ date:   2015/10/22 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This post is part of a series about Unity serialization. Click [here]({{ site.post3 }}) for part 1: how it works and examples.
+This post is part of a series about Unity serialization. Click [here](unity_serialization_1) for part 1: how it works and examples.
 
-On the [last article]({{site.post3 }}), we discussed about serialization concepts and how Unity implements it, learning which types can be serialized and which cannot. But what if we want to define our own type? How can I make it serializable so I can keep its data stored?
+On the [last article](unity_serialization_1), we discussed about serialization concepts and how Unity implements it, learning which types can be serialized and which cannot. But what if we want to define our own type? How can I make it serializable so I can keep its data stored?
 
 # Understanding the problem
 
@@ -126,7 +126,7 @@ public class DepthTest : MonoBehaviour
 
 How many allocations will be done to serialize an uninitialized `DepthTest` script? The intuitive answer would be 1 – a null reference – but it happens that the Unity serializer doesn’t support null references of custom classes so it creates an empty object and serializes it instead (this is transparent to the user). And since this object is created and it has a reference to a list of objects of its own type, it creates a cycle in the serialization process that should go on forever. To prevent this cycle (for real, it’s not a joke) the Unity guys picked the – magical – limit of 7 depth levels and after reaching that level, the serializer will assume that a cycle was defined and will stop serializing fields of custom classes. What if we could use a type that supports null in the serialization pipeline?
 
-Each problem described above has a potential solution and It turns out that all four can be fixed with the same resource: `ScriptableObject`. It’s not an extremely elegant or ideal solution, but it’s the closest we get from one. Since it’s a fairly long subject, Scriptable Objects are described in depth on [my next article]({{ site.post5 }}). For now, let’s just acknowledge that those problems have a common way out and if you believe you may face one of those, take a look into it.
+Each problem described above has a potential solution and It turns out that all four can be fixed with the same resource: `ScriptableObject`. It’s not an extremely elegant or ideal solution, but it’s the closest we get from one. Since it’s a fairly long subject, Scriptable Objects are described in depth on [my next article](unity_serialization_3). For now, let’s just acknowledge that those problems have a common way out and if you believe you may face one of those, take a look into it.
 
 # Modifiers and Serialization
 
@@ -140,7 +140,7 @@ Finally, let’s summarize the modifiers involved in serialization.
 
 # Conclusion
 
-In this blog post we learnt how to define our own serializable types and acknowledged some problems that can emerge by doing it. [On the next article]({{ site.post5 }}), we will dive deep into a resource that can work out those problems: ScriptableObjects.
+In this blog post we learnt how to define our own serializable types and acknowledged some problems that can emerge by doing it. [On the next article](unity_serialization_3), we will dive deep into a resource that can work out those problems: ScriptableObjects.
 
 # Reference
 

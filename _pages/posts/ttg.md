@@ -233,7 +233,7 @@ If we modify the height distribution curve of the terrain above, we can obtain a
 
 # Performance improvements ⚡️
 
-Even though the goal of the terraced terrain generator was mostly accomplished on the feature level, performance was far from ideal. The efforts put into performance improvements were described [in a separate article]({{ site.post18 }}).
+Even though the goal of the terraced terrain generator was mostly accomplished on the feature level, performance was far from ideal. The efforts put into performance improvements were described [in a separate article](ttg_performance).
 
 # What's next? 🔮
 
