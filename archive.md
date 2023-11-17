@@ -8,7 +8,7 @@ Here are the blogs posts so far, grouped by category and subject. I write mainly
 
 # Game Development
 ### Unity deep dives
-- [How does Unity export to so many platforms?](/posts/how_does_unity_export.html) (Feb. 2014)
+- [How does Unity export to so many platforms?](/posts/how_does_unity_export) (Feb. 2014)
 - [How does Unity scripting work under the hood?](/posts/unity_under_the_hood) (Dec. 2014)
 - Unity serialization series
 	- [Part 1: How it works and examples](/posts/unity_serialization_1) (Apr. 2015)
