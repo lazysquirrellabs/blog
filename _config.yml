@@ -18,8 +18,6 @@ navigation:
 - text: Portfolio
   url: https://matheusamazonas.net/portfolio
 
-include: [articles]
-
 # Build settings
 remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf
 plugins:
@@ -53,11 +51,14 @@ minima:
     youtube_channel: UCiCD4qB_TAvFBYOWPmHCfPg
     youtube_channel_name: Matheus Amazonas
 
+include: ['_pages']
+
 # Permalink settings
 collections:
   articles:
     output: true
-    permalink: /articles/:title
+    relative_directory: /_pages/posts
+    permalink: /posts/:title
 
 #Staticman
 staticman_url: https://matheus-blog-comments.fly.dev/v2/entry/matheusamazonas/blog/master/comments
