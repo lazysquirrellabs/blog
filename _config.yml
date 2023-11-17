@@ -51,13 +51,11 @@ minima:
     youtube_channel: UCiCD4qB_TAvFBYOWPmHCfPg
     youtube_channel_name: Matheus Amazonas
 
-include: ['_pages']
-
 # Permalink settings
 collections:
   articles:
     output: true
-    relative_directory: /_pages/posts
+    relative_directory: /posts
     permalink: /posts/:title
 
 #Staticman
