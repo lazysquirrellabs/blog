@@ -13,7 +13,7 @@ Here are the blogs posts so far, grouped by category and subject. I write mainly
 - Unity serialization series
 	- [Part 1: How it works and examples](/posts/unity_serialization_1) (Apr. 2015)
 	- [Part 2: Defining a Serializable type](/posts/unity_serialization_2) (Oct. 2015)
-	- [Part 3: Scriptable Objects](/posts/unity_serialization_1) (Oct. 2015)
+	- [Part 3: Scriptable Objects](/posts/unity_serialization_3) (Oct. 2015)
 - [Android 6 (Marshmallow) permissions and Unity](/posts/android_6_permissions) (Jul. 2016)
 - [C#’s finalizer/destructor trap](/posts/finalizer_destructor_trap) (Sep. 2019)
 - [Unity’s scripting duality and object destruction](/posts/unity_script_duality) (Apr. 2020)
