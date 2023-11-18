@@ -1,0 +1,9 @@
+_id: 4
+_parent: '/posts/unity_under_the_hood'
+replying_to: ''
+message: |
+  Why don’t unity provide C scripting interface instead of C# scripting.  
+  This would reduce all this Wrapper and stuff?
+name: Puttaraju R
+email:
+date: '2016-08-04T13:46'

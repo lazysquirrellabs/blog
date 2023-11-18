@@ -1,0 +1,13 @@
+_id: 1-1
+_parent: '/posts/unity_serialization_3'
+replying_to: '1'
+message: |
+  Thank you for the comment!
+
+  I’m not sure if I got your question right, let me know if I didn’t.
+
+  What I understood was “do I need to create a `GameObject` in the scene in order to use a `ScriptableObject`?”. If that was the question than no. You don’t need to attach a `ScriptableObject` to a `GameObject` (like `MonoBehaviours`).
+  Even though, instantiating a `ScriptableObject` isn’t as trivial as a custom class. You must use the `ScriptableObject.CreateInstance` method instead of a regular constructor. Was that your question?
+name: Matheus Amazonas
+email: 
+date: '2016-08-30T15:37'

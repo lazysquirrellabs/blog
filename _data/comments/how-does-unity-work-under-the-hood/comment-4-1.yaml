@@ -1,7 +1,0 @@
-_id: 4-1
-_parent: '/blog/2014/12/22/how-does-unity-work-under-the-hood'
-replying_to: '4'
-message: 'Hi! For some reason your comment went under my radar. I don’t have a solid answer for that, but my guess guess that their approach (making game development easier) didn’t fit really well with the C++ extremely steep learning curve. It’s probably one of the reasons why they added UnityScript (javascript-like) as well.'
-name: Matheus Amazonas
-email:
-date: '2016-10-30T17:45'

@@ -1,0 +1,10 @@
+_id: 3
+_parent: '/posts/how_does_unity_export'
+replying_to: ''
+message: |
+  While I certainly agree that the Mono scripting backend does make it much easier to have Unity games run multiplatform and thus plays an important role, there’s a “little” more to it than just that. They need to support various graphics APIs (Open GL, OpenGL ES, Direct X, Metal, probably some proprietary voodoo stuff on consoles) and they need to make sure that their whole engine and added middleware (stuff like PhysX or FMOD) also works smoothly on all the platforms they support. That’s a pretty big thing that this works so well even though people (including myself) do get fairly annoyed when features don’t work or don’t work properly on specific platforms (which does sometimes happen).
+
+  So what the article gives you really is a rather limited picture: The scripting backend is important, yes. Btw, on Windows Phone / Windows Store Apps, Unity does not use Mono, it does use .NET there (which is pretty much the same from the API perspective … but there are subtle differences and it’s a completely different implementation). But there’s much more than just the scripting backend that needs to properly run multiplatform.
+name: Jashan Chittesh
+email: 
+date: '2015-07-25T12:37'

@@ -1,0 +1,10 @@
+_id: 3
+_parent: '/posts/unity_serialization_3'
+replying_to: ''
+message: |
+  Helpful posts. Still have some problems:  
+  1. When hitting play , what happens?(Serialize or Deserialize?)  
+  2. When in the Editor mode, we modify some public variables in the inspector, then what happens?(Dose a serialization or deserialization happens?)  
+name: onebook
+email: 
+date: '2017-06-26T07:39'

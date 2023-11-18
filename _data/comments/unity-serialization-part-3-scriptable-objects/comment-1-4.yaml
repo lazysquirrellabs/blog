@@ -1,9 +1,0 @@
-_id: 1-4
-_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
-replying_to: '1'
-message: |
-  Oh, Thank you!  
-  Also, how can i make “global” variables? I want to create a serializable list with Characters, but i don’t know how to access that list from other scripts. I noticed that when i create 2 gameObjects with the same script the lists get duplicated instead of overriden, i want it to be only one list so i can access it from any script. Again, sorry if i’m not being clear.
-name: Emil
-email: 
-date: '2016-08-30T19:48'
