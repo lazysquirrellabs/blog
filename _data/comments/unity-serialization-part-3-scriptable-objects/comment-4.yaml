@@ -1,7 +1,0 @@
-_id: 4
-_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
-replying_to: ''
-message: 'Great Article. Thoroughly clear and well written. Thank you! I am an old man, and am only starting to code now in Unity, so apologies if this is a dumb question. I have a need for database style binary repository to record into and retrieve shot options from (ID, transform (position,rotation) and force). There will be thousands of these entries. These items, like a database, should be changeable values at run-time as better solutions are plotted Simple outcome based learning), I also want to extend it over time (store more values in it, not new fields, so the structure is static). Is serialization the answer? Will a binary or text file be better? Is a text file even savable on Android and Apple IOS? I am only looking for the right suitable solution approach. Thanks again for this in any case.'
-name: Telecaster
-email: 
-date: '2017-08-21T19:05'

@@ -1,0 +1,7 @@
+_id: 1-2
+_parent: '/posts/unity_serialization_3'
+replying_to: '1'
+message: 'Yup! Thank you! Serialization is really a headache for me. Do you have any posts on how to save these serialized variables into a binary file(For savegames)?'
+name: Emil
+email: 
+date: '2016-08-30T17:06'

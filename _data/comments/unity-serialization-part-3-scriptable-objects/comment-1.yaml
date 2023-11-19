@@ -1,7 +1,0 @@
-_id: 1
-_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
-replying_to: ''
-message: 'Excuse my ignorance, but if i create a ScriptableObject must i put it on a scene to initialize the serializable classes, unlike with custom classes? Sorry if my question isn’t clear enough, i’m a beginner'
-name: Emil
-email: 
-date: '2016-08-30T03:50'

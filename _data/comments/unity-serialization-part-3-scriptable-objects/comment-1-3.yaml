@@ -1,7 +1,0 @@
-_id: 1-3
-_parent: '/blog/2015/10/22/unity-serialization-part-3-scriptable-objects/'
-replying_to: '1'
-message: 'The best solution for saving a game (inventory, progress) would be using `PlayerPrefs`, have you tried using that? [https://docs.unity3d.com/ScriptReference/PlayerPrefs.html](https://docs.unity3d.com/ScriptReference/PlayerPrefs.html){:target="_blank"}'
-name: Matheus Amazonas
-email: 
-date: '2016-08-30T17:30'

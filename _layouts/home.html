@@ -11,7 +11,7 @@ layout: default
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
   {% else %}
-    {% assign posts = site.posts %}
+    {% assign posts = site.articles | sort: 'date' | reverse%}
   {% endif %}
 
   <h1>Recent posts</h1>
