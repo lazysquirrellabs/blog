@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://blog.matheusamazonas.net/</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/archive</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/coroutines_async_await</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/ttg_performance</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/ttg</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/parker_postmortem</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/decoupling_code</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/finally_gdd</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/voedingscentrum_2</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/localization_crash</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/null_check_equality_unity</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/unity_script_duality</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/finalizer_destructor_trap</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/voedingscentrum_1</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/currying_vs_partial_application</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/android_6_permissions</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_3</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_2</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_1</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/unity_under_the_hood</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/how_does_unity_export</loc>
+  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+</url>
+</urlset>
