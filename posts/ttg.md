@@ -7,7 +7,7 @@ categories: jekyll update
 ---
 In this blog post I will discuss some technical details and give a glimpse of [Terraced Terrain Generator's (TTG)](http://ttg.matheusamazonas.net) development process. TTG is a free Unity tool for procedural generation of terraced terrain meshes. It's open source and it's on [GitHub](https://github.com/matheusamazonas/TTG)! Here are some examples of the type of terrains TTG is able to generate:
 
-![Five images of generated terraced terrains looping.](https://matheusamazonas.net/ttg_site/assets/images/loop.gif)
+![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
 The post follows TTG's four terrain generation steps: basic shape generation, mesh fragmentation, mesh sculpting and terrain slicing. Then, we discuss performance improvements and future developments. Finally, a short conclusion wraps the post up.
 
 Let's dive in TTG's generation steps right away.
