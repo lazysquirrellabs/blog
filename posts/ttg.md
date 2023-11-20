@@ -219,17 +219,12 @@ The end result looks great, but something is missing…
 
 ## Material assignment
 
-Using the same material for all terraces is boring. Ideally, we should be able to assign a different material for each terrace to introduce some color palettes and progressions. To achieve this, terrace generation creates multiple sub meshes, one for each terrace. This simple trick allows for material assignment per sub mesh in Unity. The end result looks like something like this:
+Using the same material for all terraces is boring. Ideally, we should be able to assign a different material for each terrace to introduce some color palettes and progressions. To achieve this, terrace generation creates multiple sub meshes, one for each terrace. This simple trick allows for material assignment on a sub-mesh basis in Unity. The image below is an example of how simple color changes can influence a terrain's look:
 
-![Sliced terrain 2](/assets/images/post17/step4/Screenshot_2022-07-17_at_11.50.38.png)
+![Sliced terrain 2](/assets/images/post17/step4/materials.png)
 
-And as usual, we can play with the generation parameters to create unique terrains like the one below:
-
-![Sliced terrain 3](/assets/images/post17/step4/Screenshot_2022-07-17_at_11.51.15.png)
-
-If we modify the height distribution curve of the terrain above, we can obtain a completely different terrain, where the different colored materials make the distinction really obvious:
-
-![Sliced terrain 4](/assets/images/post17/step4/Screenshot_2022-07-17_at_11.52.49.png)
+# Custom terrace heights (added on version 1.1.0)
+Even though material assignment brings new customization capabilities and I was happy with what version 1.0.0 of TTG delivered, there was still room for improvement. I was particularly bothered by the fact 
 
 # Performance improvements ⚡️
 
