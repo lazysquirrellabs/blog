@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Postmorten] Parker - the game"
+title:  "[Postmortem] Parker - the game"
 date:   2023/04/07 17:07:12 +0200
 author: Matheus Amazonas
 categories: jekyll update

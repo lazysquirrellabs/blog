@@ -49,7 +49,7 @@ Three versions (1.0, 1.1 and 1.2) of the game were shipped. The first one was in
 
 # Challenges
 
-As expected, some challenges surfaced during the development process and after we installed the experience for the first time. In this section we discuss how we overcame them – whenever possible. Keep in mind that this article was published months after development ceased. Therefore, some of these problems might not exist anymore. If that’s the case and you are aware of a possible solution, please leave a comment on the comments section so this post can be updated. Adding new solutions to this postmorten can help many developers that might run into the same problems we did.
+As expected, some challenges surfaced during the development process and after we installed the experience for the first time. In this section we discuss how we overcame them – whenever possible. Keep in mind that this article was published months after development ceased. Therefore, some of these problems might not exist anymore. If that’s the case and you are aware of a possible solution, please leave a comment on the comments section so this post can be updated. Adding new solutions to this postmortem can help many developers that might run into the same problems we did.
 
 ## Controllers
 
