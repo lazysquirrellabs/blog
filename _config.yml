@@ -7,6 +7,10 @@ author:
   name: Matheus Amazonas
   email: "matheus.amazonas@gmail.com"
 
+# Include
+include:
+  - _redirects
+
 # Pages data (navigation)
 navigation:
 - text: Home
