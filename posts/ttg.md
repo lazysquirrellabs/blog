@@ -83,7 +83,7 @@ Now that we've got a flat surface which serves as a base to a terrain, it's time
 - Fully automate this task, eliminating the tedious job of terrain shaping.
 - It should be able to repeatedly generate random terrains.
 - At the same time it should have a deterministic behavior, so it could easily reproduce a given terrain whenever necessary.
-- The following should be generational parameters:
+- The following should be generation parameters:
 	- The feature frequency (how often hills and valleys are formed).
 	- The maximum height of the generated hills.
 	- The height distribution curve.
@@ -224,7 +224,19 @@ Using the same material for all terraces is boring. Ideally, we should be able t
 ![Sliced terrain 2](/assets/images/post17/step4/materials.png)
 
 # Custom terrace heights (added on version 1.1.0)
-Even though material assignment brings new customization capabilities and I was happy with what version 1.0.0 of TTG delivered, there was still room for improvement. I was particularly bothered by the fact 
+
+Even though material assignment brings new customization capabilities to TTG and I was happy with what version 1.0.0 delivered, there was still room for improvement. I was particularly bothered by the fact that all terraces were equally spaced—the height gap between a terrace and its predecessor was constant. Equal spacing might be desirable in some scenarios, but in other it just doesn't make sense; particularly when we're trying to resemble real-life terrains. 
+
+Take a sandy beach with multiple terraces representing the sand, for example. If they're equally spaced, the height gap between each sand terrace will be considerable, which doesn't match the smooth, slow ascends of a sandy beach. At the other end of the spectrum are snowy mountain peaks, which every so often extrude from their surroundings. A constant progression spanning from the bottom of the ocean to the highest mountain peak (like the last picture from the session above) doesn't look convincing.
+
+With that in mind, version 1.1.0 added support for custom terrace heights. In additional to the existing generation parameters, users can provide an array of relative terrace heights: floating point values between 0 (0%) and 1 (100%) which represent the height of the terraces, relative to the terrain's maximum height. On a terrain with maximum height 10, a relative terrace height of 0 would place that terrace at 0 units high. A terrace with relative height of 1 would be placed at 10 units high, and one with relative height of 0.62 would be placed at 6.2 units high, and so on. 
+
+Implementing this feature did not require substantial code changes and it did not introduce a new generation step. Previous versions already used a terrace height array during the [slicing step](#step-4-terrain-slicing) of the terrain generation—it just wasn't customizable, and the terrain heights were equally distributed between 0 and the terrain's maximum height. All that was necessary to introduce this feature was to replace the existing code that calculates terrace heights with code that takes the user-defined relative terrace heights into consideration:
+```csharp
+_terraceHeights = relativeTerraceHeights.Select(h => h * maximumHeight);
+```
+We can modify the last terrain example using the new custom terrace heights feature to make it more dynamic and convincing. Sandy terraces can be placed unevenly and closer together to reflect the smooth ascend of beachfronts. Desert terraces can be placed closely to mimic an erosion effect. The gap between the dry and snowy portions of the mountains can be widened to highlight the mountain's peak. The image below displays an example of these changes:
+![](/assets/images/post17/step5/custom_heights.png)
 
 # Performance improvements ⚡️
 
