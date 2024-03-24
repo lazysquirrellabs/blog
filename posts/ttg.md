@@ -8,7 +8,11 @@ categories: jekyll update
 In this blog post I will discuss some technical details and give a glimpse of [Terraced Terrain Generator's (TTG)](http://ttg.matheusamazonas.net) development process. TTG is a free Unity tool for procedural generation of terraced terrain meshes. It's open source and it's on [GitHub](https://github.com/matheusamazonas/TTG)! Here are some examples of the type of terrains TTG is able to generate:
 
 ![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
-The post follows TTG's four terrain generation steps: basic shape generation, mesh fragmentation, mesh sculpting and terrain slicing. Then, we discuss performance improvements and future developments. Finally, a short conclusion wraps the post up.
+The post follows TTG's four terrain generation steps: basic shape generation, mesh fragmentation, mesh sculpting and terrain slicing. Then, we discuss performance improvements, additions since TTG's first version and future developments. Finally, a short conclusion wraps the post up. This post is part of a series that documents the development process of TTG. Previous posts include:
+- [Developing a Terraced Terrain Generator](/posts/ttg) (this post)
+- [Terraced Terrain Generator performance improvements](/posts/ttg_performance)
+- [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights)
+- [Adding more detail to Terraced Terrain Generator using Perlin noise octaves](/posts/ttg_octaves)
 
 Let's dive in TTG's generation steps right away.
 
@@ -216,7 +220,7 @@ The features discussed up to this point shipped on [TTG 1.0.0](https://github.co
 - **Custom terrain heights**: instead of evenly spacing the terraces between the terrain's lowest and highest points, allow custom heights to be chosen. This feature was implemented on [version 1.1.0](https://github.com/matheusamazonas/TTG/releases/tag/1.0.1) and it's detailed on its own [blog post](ttg_custom_heights).
 - **Improved terrain detailing**: use Perlin noise octaves to create more natural terrains. This feature was implemented on [version 1.2.0](https://github.com/matheusamazonas/TTG/releases/tag/1.2.0) and it's described on its own [blog post](ttg_octaves).
 
-The additions above enabled a new level of detail and expressiveness on TTG terrains. 
+The additions above enabled a new level of expressiveness and detailing on TTG terrains. The image below displays example terrains that were generated using TTG 1.2.0:
 
 ![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
 
