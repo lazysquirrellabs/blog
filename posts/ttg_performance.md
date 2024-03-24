@@ -74,25 +74,24 @@ Although this strategy was easy to implement, it could potentially introduce som
 ## The outcome
 Once the solution above was implemented, it was time to quantify how performant it was. Tests were executed based on the generation of a specific terrain. All tests were performed in synchronous mode because it guarantees that the entire generation occurs in a single frame, easing data collection. Preliminary tests showed that asynchronous mode delivered similar results, but spread across multiple frames. All terrain generation tests were performed using the same input, displayed below:
 
-| Seed | Sides | Depth | Radius | Height | Frequency | Terraces | Mode |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 8 | 5 | 20 | 10 | 0.075 | 15 | Synchronous |
+| Seed | Sides | Depth | Radius | Height | Frequency | Terraces | Mode        |
+| ---- | ----- | ----- | ------ | ------ | --------- | -------- | ----------- |
+| 1    | 8     | 5     | 20     | 10     | 0.075     | 15       | Synchronous |
 
 Although test data like the vertex and index counts of a given terrain are always constant, other data like generation duration and allocated memory vary slightly in each generation. In order to measure these fields more accurately, an average of 100 generations of the same terrain was calculated. All test results can be seen in the table below, where the “Before” column contains results obtained before the vertex duplicate elimination strategy described in this section was implemented, and the “After” column contains results measured after its implementation.
 
-|  | Before | After |
-| --- | --- | --- |
-| Vertex count | 98782 | 18383 |
-| Index count | 36250 | 21699 |
-| GC allocated (average) | 6.5 MB | 1.6MB |
-| Duration (average) | 22.02 ms | 22.78 ms |
+|                        | Before   | After    |
+| ---------------------- | -------- | -------- |
+| Vertex count           | 98782    | 18383    |
+| Index count            | 36250    | 21699    |
+| GC allocated (average) | 6.5 MB   | 1.6MB    |
+| Duration (average)     | 22.02 ms | 22.78 ms |
 
 As we can see above, the number of vertices in the final terrain mesh decreased by 81.4% and the number of indices by 40.1%. This represents a significant reduction in the number of vertices and a great reduction in the the number of indices. It's also evident that the amount of memory allocated by the garbage collector decreased by 75.4% in average, a most welcomed improvement. Finally, we can see that the new implementation takes, in average,  3.45% longer to complete than the original approach. Even though this means that the new implementation is slightly slower than the original one, the difference is negligible, particularly when the significant improvements in the other test results are taken into consideration.
 
 Based on the outcome of the experiments, the vertex duplicate elimination feature was incorporated into the generator.
 
 # Native constructs
-
 Each stage of the terrain generation requires new data; either for internal usage, or for output, or for both. Most of the data allocated during the generation won't be actually used in the final mesh; it's only used for internal representation. 
 
 After some investigation and minor tweaks, I reached the conclusion that there wasn't much room left for memory usage optimization. In theory, I could recycle some vertex and index arrays, but doing so drastically reduce code readability, and I wanted this tool to be something other people could easily tinker with. In the end, I just couldn't find places in the code where memory allocations could be reduced without sacrificing maintainability anymore. But what about garbage generation?
@@ -105,10 +104,10 @@ But how can we reach C++'s level of memory control in Unity with C#? The Unity [
 
 Then, similarly to the subsection above, tests were performed to quantity the impact of the changes on the memory allocated by the garbage collector and on the generation duration. The test results are displayed below, where the “Before” column contains results obtained before native constructs were added, and the “After” column contains results measured after their addition.
 
-|  | Before | After |
-| --- | --- | --- |
-| GC allocated (average of 100 runs) | 1.6MB | 5KB |
-| Duration (average of 100 runs) | 22.78 ms | 22.73 ms |
+|                                    | Before   | After    |
+| ---------------------------------- | -------- | -------- |
+| GC allocated (average of 100 runs) | 1.6MB    | 5KB      |
+| Duration (average of 100 runs)     | 22.78 ms | 22.73 ms |
 
 The results were surprising, at least to me. Garbage collector allocation dropped from 1.6MB to 5KB. That's a significant drop of 99.68%, in average. Meanwhile, generation duration remained marginally unchanged, within the error margin. The results speak for themselves. Based on the experiment results described above, native constructs were fully implemented into the generator.
 
