@@ -23,6 +23,8 @@ Here are the blogs posts so far, grouped by category and subject. I write mainly
 ### Terraced Terrain Generator
 - [Developing a Terraced Terrain Generator](/posts/ttg) (Apr. 2023)
 - [Terraced Terrain Generator performance improvements](/posts/ttg_performance) (Apr. 2023)
+- [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights) (Nov. 2023)
+- [Adding more detail to Terraced Terrain Generator using Perlin noise octaves](/posts/ttg_octaves) (Jan. 2024)
 
 ### Postmortems
 - [[Postmortem] Developing an educational, kiosk, VR game for Windows Mixed Reality](/posts/voedingscentrum_1) (Jul. 2019)
