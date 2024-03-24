@@ -9,7 +9,7 @@ In this blog post I will discuss some technical details and give a glimpse of [T
 
 ![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
 
-This post is part of a series that documents the development process of TTG. The series contains the following posts:
+This post is part of a series that documents the development process of TTG, containing the following posts:
 - [Developing a Terraced Terrain Generator](/posts/ttg) (this post)
 - [Terraced Terrain Generator performance improvements](/posts/ttg_performance)
 - [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights)

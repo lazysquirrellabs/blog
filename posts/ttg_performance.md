@@ -5,7 +5,11 @@ date:   2023/04/09 11:10:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains in Unity. For more info about TTG, check its [website](http://ttg.matheusamazonas.net), [repository](https://github.com/matheusamazonas/TTG) and a [detailed explanation on its development process](ttg).
+This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains in Unity. For more info about TTG, check its [website](http://ttg.matheusamazonas.net), and [repository](https://github.com/matheusamazonas/TTG). It is part of a series that documents the development process of TTG, containing the following posts:
+- [Developing a Terraced Terrain Generator](/posts/ttg) 
+- [Terraced Terrain Generator performance improvements](/posts/ttg_performance) (this post)
+- [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights)
+- [Adding more detail to Terraced Terrain Generator using Perlin noise octaves](/posts/ttg_octaves)
 
 # Things could be better
 Even though the goal of the terraced terrain generator was mostly accomplished on the feature level, performance was far from ideal. Generating a terrain would freeze the application for a couple of seconds, too much memory was allocated by the garbage collector and high-detailed terrains were almost unfeasible, even on a high-end MacBook Pro with a M1 Max chip. It was clear that some performance improvements were necessary. Here are the ones that were implemented by TTG.

@@ -5,9 +5,11 @@ date:   2023/11/21 18:56:45 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-This blog post details how custom terrace heights were added to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net). It is part of a series of posts that documents the development process of TTG. Previous posts include:
-- [Developing a Terraced Terrain Generator](/posts/ttg)
-- [Terraced Terrain Generator performance improvements](/posts/ttg_performance)
+This blog post details how custom terrace heights were added to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net). It is part of a series that documents the development process of TTG, containing the following posts:
+- [Developing a Terraced Terrain Generator](/posts/ttg) 
+- [Terraced Terrain Generator performance improvements](/posts/ttg_performance) 
+- [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights) (this post)
+- [Adding more detail to Terraced Terrain Generator using Perlin noise octaves](/posts/ttg_octaves)
 
 # The problem
 Even though I was happy with what version 1.0.0 of TTG delivered, there was still room for improvement. I was particularly bothered by the fact that all terraces were equally spaced—the height gap between a terrace and its predecessor was constant. Equal spacing might be desirable in some scenarios, but in others it just doesn't make sense, particularly when we're trying to resemble real-life terrains. Here's an example of a terraced with equally spaced terrains:
