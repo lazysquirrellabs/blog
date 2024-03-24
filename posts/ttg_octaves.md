@@ -73,4 +73,4 @@ The GIF below displays the usage of Perlin noise octaves, with four terrains: th
 The value of the octaves is clear: they add detail without changing the scale of the terrain, delivering a more natural-looking outcome. That's exactly what we were looking for.
 
 # Conclusion
-Perlin noise octaves are a simple, yes quite satisfactory solution for adding more detail to terraced terrains. This feature shipped as part of [TTG 1.2.0](https://github.com/matheusamazonas/TTG/releases/tag/1.2.0), where both the API and the helper component were updated to support Perlin noise octaves. On the next release, I plan to add spheres as a basic terrain shape, allowing terraced planets to be created using TTG.
+Perlin noise octaves are a simple, yet quite satisfactory solution for adding more detail to terraced terrains. This feature shipped as part of [TTG 1.2.0](https://github.com/matheusamazonas/TTG/releases/tag/1.2.0), where both the API and the helper component were updated to support Perlin noise octaves. On the next release, I plan to add spheres as a basic terrain shape, allowing terraced planets to be created using TTG.
