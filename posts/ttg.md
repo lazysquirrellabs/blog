@@ -15,7 +15,7 @@ This post is part of a series that documents the development process of TTG, con
 - [Adding custom terrace heights to Terraced Terrain Generator](/posts/ttg_custom_heights)
 - [Adding more detail to Terraced Terrain Generator using Perlin noise octaves](/posts/ttg_octaves)
 
-The sections below follows TTG's four terrain generation steps: basic shape generation, mesh fragmentation, mesh sculpting and terrain slicing. Then, we discuss performance improvements, additions since TTG's first version, and future developments. Finally, a short conclusion wraps the post up. 
+The sections below follow TTG's four terrain generation steps: basic shape generation, mesh fragmentation, mesh sculpting and terrain slicing. Then, we discuss performance improvements, additions since TTG's first version, and future developments. Finally, a short conclusion wraps the post up. 
 
 Let's dive in TTG's generation steps right away.
 
