@@ -6,11 +6,19 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
   <loc>https://blog.matheusamazonas.net/</loc>
-  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+  <lastmod>2024-03-24T16:14:39+00:00/lastmod>
 </url>
 <url>
   <loc>https://blog.matheusamazonas.net/archive</loc>
-  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+  <lastmod>2024-03-24T16:13:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/ttg_octaves</loc>
+  <lastmod>2024-03-24T16:12:39+00:00</lastmod>
+</url>
+<url>
+  <loc>https://blog.matheusamazonas.net/posts/ttg_custom_heights</loc>
+  <lastmod>2024-03-24T16:11:39+00:00</lastmod>
 </url>
 <url>
   <loc>https://blog.matheusamazonas.net/posts/coroutines_async_await</loc>
@@ -22,7 +30,7 @@
 </url>
 <url>
   <loc>https://blog.matheusamazonas.net/posts/ttg</loc>
-  <lastmod>2023-11-19T11:01:39+00:00</lastmod>
+  <lastmod>2024-03-24T16:10:39+00:00</lastmod>
 </url>
 <url>
   <loc>https://blog.matheusamazonas.net/posts/parker_postmortem</loc>
