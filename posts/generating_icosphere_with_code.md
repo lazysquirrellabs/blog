@@ -21,13 +21,13 @@ Before jumping into details, it's important to understand what an icosphere is. 
 The image below displays an example of an icosphere with 1920 vertices:
 ![A white sphere composed by a mesh of equilateral triangles with gray edges. Transparent background](icosphere.png)
 ## Characteristics
-- Equilateral triangles.
-- Consequently, all faces have the same area.
-- Uniform in every direction. It doesn't have poles.
-- Better fit for more natural shapes, particularly when UV mapping isn't required.
-
-
-> [!warning] TODO /\
+There are multiple techniques to generate spheres and each one creates meshes with different properties. The icosphere has the following characteristics:
+- Its triangles have about the same area.
+- Its triangles are equilateral—or as close to it as possible.
+- Its triangles are oriented non-uniformly. There are 20 areas (we will soon see why 20) with distinct triangle orientation. The image above displays a point on its center where five of these areas meet, forming a pentagon. Each one of the five triangles has a different orientation.
+- It is uniform in every direction. It doesn't matter which direction you move on an icosphere, the shape, area and consequently the concentration of triangles remains mostly unchanged. Therefore, it doesn't have poles, unlike the [UV sphere](https://en.wikipedia.org/wiki/UV_mapping).
+- Unlike UV spheres, it isn't a great fit for [texture mapping](https://en.wikipedia.org/wiki/Texture_mapping).
+- It is a better fit when modeling more natural shapes.
 
 ## The icosahedron 
 Knowing what an icosphere looks like is one thing. Knowing how to generate one is something completely different. In order to learn how to generate icosphere meshes procedurally, we need to understand the concepts behind it. First of all, how can we conceptually define an icosphere?
