@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Generating an icosphere with code"
-date:   2024/06/11 17:29:00 +0200
+date:   2024/06/25 19:04:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
