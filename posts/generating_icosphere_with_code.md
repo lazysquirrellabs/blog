@@ -221,4 +221,8 @@ void RepositionAllVertices(Vector3[] vertices, float radius)
 With that, we can generate all icospheres one can imagine—and one's computer can handle.
 
 # Conclusion
-> [!warning] TODO
+In this article, we learned what an icosphere is, what its properties are and how we can generate one procedurally, using code. We also observed how the different generation steps influence the final mesh. Finally, we saw how the fragmentation depth impacts the mesh's level of detail and, therefore, its similarity with real, continuous spheres.
+
+The techniques described here are used to add spherical terrain support to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2 (still under development) and [Sphere Generator](https://github.com/matheusamazonas/sphere_generator)'s icosphere support. 
+
+That's a wrap! As usual, feel free to use the comment section below for questions, suggestions, corrections, or just to say “hi”. See you on the next one!
