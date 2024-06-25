@@ -5,9 +5,9 @@ date:   2024/06/11 17:29:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. The content is divided in 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
+In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which will add support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). Building the library inspired me to write this piece.
 
-If you're looking for a tool to procedurally generate spheres in Unity, check [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). It is able to generate icospheres in addition to cube- and UV-spheres. 
+The article's content is divided in 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
 
 # The icosphere
 Before jumping into details, it's important to understand what an icosphere is. It's uncertain (at least to me) who invented the term icosphere, but the most popular usage of the term is in the 3D modeling tool [Blender](https://docs.blender.org/manual/en/dev/modeling/meshes/primitives.html#icosphere), which defines the term as:
