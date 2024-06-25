@@ -85,15 +85,16 @@ Therefore, in order to find the vertices coordinates, we need to find the values
 - The golden ratio determines that `width = height * goldenRatio`, and therefore `c = a * goldenRatio`.
 - The `a/b/1` triangle (represented by dotted lines in the first rectangle image) is equilateral, and therefore we can use [Pythagoras' Theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem).
 
-With that in mind, we can apply Pythagoras' Theorem on the `a/c/1` triangle using `^` is an exponent operator:
+With that in mind, we can apply Pythagoras' Theorem on the `a/c/1` triangle:
 
 ```
-1^2 = a^2 + c^2                       // Pythagoras' Theorem
-1 = a^2 + (a * goldenRatio)^2         // c = a * goldenRatio, 1^2 = 1
-1 = a^2 * (1 + goldenRation^2)        // "a" is a common factor
-a^2 = 1 / (1 + goldenRation^2)        // Divide both sides by a^2 and flip
-a = sqrt(1 / (1 + goldenRatio^2))     // Apply square root on both sides
-a = sqrt(1 / (1 + 2.618033988749895)) // Replace golden ratio value
+1² = a² + c²                          // Pythagoras' Theorem
+1 = a² + (a * goldenRatio)²           // c = a * goldenRatio, 1² = 1
+1 = a² + a² * goldenRation²           // Exponent distribution (power rule)
+1 = a² * (1 + goldenRation²)          // "a" is a common factor
+a² = 1 / (1 + goldenRation²)          // Divide both sides by a² and flip
+a = √(1 / (1 + goldenRatio²))         // Apply square root on both sides
+a = √(1 / (1 + 2.618033988749895))    // Replace golden ratio value
 a = 0.525731112119134                 // Solve the square root
 ```
 
