@@ -5,8 +5,6 @@ date:   2024/06/11 17:29:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-
-# Introduction
 In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. The content is divided in 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
 
 If you're looking for a tool to procedurally generate spheres in Unity, check [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). It is able to generate icospheres in addition to cube- and UV-spheres. 

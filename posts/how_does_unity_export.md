@@ -7,7 +7,7 @@ categories: jekyll update
 ---
 So for my first article I picked a not so simple theme, but one that has been extremely intriguing to me lately. This week a friend, during a talk about game development and Unity, asked me: *“How does Unity export to so many and different platforms?”* I started to think and formulate my answer, struggled and I couldn’t really answer why. I never really thought about it. So I started researching about it.
 
-# Intro
+# Introduction
 
 [Unity](http://unity3d.com/) is probably the most famous Game Development Engine on the market. It’s user friendly (15 y.o. kids can use it after a few tutorials, trust me), it’s available for both Windows and MacOS X (a Linux port is on experimental phase)  and finally and the most important in this article: it can export to basically any existing device. I’m not kidding, check the list at their [website](http://unity3d.com/unity/multiplatform):
 
