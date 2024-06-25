@@ -47,7 +47,8 @@ The process described in this article creates an icosahedron (the rotating shape
 
 The next sections describe the steps above in detail.
 
-> [!info] Even though an icosphere can be of any size, for the sake of comprehension, the next three sections describe the process of generating a [unit](https://en.wikipedia.org/wiki/Unit_sphere) icosphere: an icosphere with radius of 1.
+> ℹ️ Even though an icosphere can be of any size, for the sake of comprehension, the next three sections describe the process of generating a [unit](https://en.wikipedia.org/wiki/Unit_sphere) icosphere: an icosphere with radius of 1.
+{: .callout }
 
 # Step 1: Icosahedron generation
 First, it's important to define what it means to generate a 3D shape. Traditionally, virtual 3D shapes are represented as meshes composed by simple primitives like squares or, more commonly, triangles. Regardless of how detailed, complex and large a 3D mesh is, it can be decomposed into small triangles. The larger the number of triangles, the more detailed a mesh can be and the more resources are needed to load and display it are necessary. Here's an example of a 3D model of the famous [Utah teapot](https://en.wikipedia.org/wiki/Utah_teapot) with its mesh elements displayed:
@@ -136,7 +137,8 @@ Fragmenting a mesh composed only by triangles consists of turning each triangle 
 
 When it comes to an icosahedron, we need to keep in mind that the fragmentation process must not change the mesh's topology. In this case, it is enough to ensure that all triangles in the mesh are equilateral. Luckily, equilateral triangles are particularly easy to fragment and the operation conserves equilaterality. The image above is also an example of a fragmentation of an equilateral triangle into 4 smaller, equally equilateral triangles.
 
->[!info] Even though this section uses C# as its guiding programming language, the code described here should be easily translatable to other programming languages. 
+>ℹ️ Although this section uses C# as its guiding programming language, the code described here should be easily translatable to other programming languages.
+{: .callout }
 
 Let's look into how to fragment triangles with code. Like in every fragmentation process, the original vertices are maintained—failing to do so would change the mesh's shape. Three new vertices are created by finding the mid-point of each edge. The coordinates (x, y, z) of a mid-point of an edge with vertices `v1` and `v2` can be calculated as:
 
