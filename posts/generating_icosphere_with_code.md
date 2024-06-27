@@ -7,20 +7,20 @@ categories: jekyll update
 ---
 In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which will add support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). Building the library inspired me to write this piece.
 
-The article's content is divided in 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
+The article's content is divided into 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
 
 # The icosphere
 Before jumping into details, it's important to understand what an icosphere is. It's uncertain (at least to me) who invented the term icosphere, but the most popular usage of the term is in the 3D modeling tool [Blender](https://docs.blender.org/manual/en/dev/modeling/meshes/primitives.html#icosphere), which defines the term as:
 
 > An icosphere is a polyhedral* sphere made up of triangles. Icospheres are normally used to achieve a more isotropical layout of vertices than a UV sphere, in other words, they are uniform in every direction.
 
-\*: *A polyhedral shape is a shape that represents a [polyhedron](https://en.wikipedia.org/wiki/Polyhedron): a 3-dimensional shape with flat, polygonal faces. Examples of polyhedrons: pyramid, cube.* 
+\*: *A polyhedral shape is a shape that represents a [polyhedron](https://en.wikipedia.org/wiki/Polyhedron): a 3-dimensional shape with flat, polygonal faces. Pyramids and cubes are examples of polyhedrons.* 
 
-The image below displays an example of an icosphere with 1920 vertices:
+The image below displays an example of an icosphere:
 ![A white sphere composed by a mesh of equilateral triangles with gray edges. Transparent background](/assets/images/post22/icosphere.png)
 
 ## Characteristics
-There are multiple techniques to generate spheres, and each one creates meshes with different properties. The icosphere has the following characteristics:
+Multiple techniques can be used to generate spheres, and each one creates meshes with different properties. The icosphere has the following characteristics:
 - Its triangles have about the same area.
 - Its triangles are equilateral—or as close to it as possible.
 - Its triangles are oriented non-uniformly. There are 20 areas (we will soon see why 20) with distinct triangle orientation. The image above displays a point on its center where five of these areas meet, forming a pentagon. Each one of the five triangles has a different orientation.
@@ -55,7 +55,7 @@ First, it's important to define what it means to generate a 3D shape. Traditiona
 
 ![](/assets/images/post22/teapot.png)
 
-Notice how the entire teapot is composed by triangles, regardless of how detailed the mesh area is. The areas which are less detailed—like the center side—have a smaller concentration of triangles. Highly detailed areas—like the lid's knob— have a higher concentration of triangles.
+Notice how the entire teapot is composed by triangles, regardless of how detailed the mesh area is. The areas which are less detailed—like the center of its side—have a smaller concentration of triangles. Highly detailed areas—like the lid's knob—have a higher concentration of triangles.
 
 Every triangle of a 3D mesh can be represented by the coordinate of its 3 vertices. Once we have that data, we can draw the triangle. To draw the entire 3D model, all we need is to repeat the drawing process on all triangles on the mesh. Therefore, in order to represent a 3D mesh, all we need is:
 - The coordinates of all of the triangle vertices.
@@ -63,14 +63,14 @@ Every triangle of a 3D mesh can be represented by the coordinate of its 3 vertic
 
 Generating an icosahedron is no different; all we need is its vertices and triangle indices. Finding the vertices coordinates is particularly interesting. Once you've got those, the triangle indices are easy to find. 
 
-There are different paths one can take to gather vertex data on a regular icosahedron. The [path I took](https://en.wikipedia.org/wiki/Regular_icosahedron#Construction) was to find them by using mutually perpendicular rectangles of particular dimensions (more on this soon). The image below demonstrates an example of such rectangles, with each one colored differently to ease viewing:
+There are different paths one can take to gather vertex data on a regular icosahedron. The [path I took](https://en.wikipedia.org/wiki/Regular_icosahedron#Construction) aims to find them by using mutually perpendicular rectangles of particular dimensions (more on this soon). The image below demonstrates an example of such rectangles, with each one colored differently to ease viewing:
 
 ![](/assets/images/post22/regular_icosahedron.png)
 
-The vertices of the triangles (highlighted with tiny dark pink balls) will become the vertices of the icosahedron. There are twelve of them, 4 for each rectangle. The white lines define 20 faces and are placed where the icosahedron's edges would be. Contrast this image with the icosahedron one at the beginning of this section and the correlation becomes clear.
+The vertices of the triangles (highlighted with tiny pink balls) will become the vertices of the icosahedron. There are twelve of them, 4 for each rectangle. The white lines define 20 faces and are placed where the icosahedron's edges would be. Contrast this image with the rotating icosahedron one in the previous section and the correlation becomes clear.
 
 ## Finding the vertices
-The first step to construct the rectangles is to find the coordinates of their 4 vertices. We know all rectangles are placed at the same point in space (i.e. their centers share the same coordinates), and we choose that point to be the origin: `(0, 0, 0)`.  We have also established that all rectangles have the same dimensions. Consequently, they only differ in rotation and once we have found the coordinates of one rectangle's vertices, we can just rotate them to find the coordinates of the other 2.
+The first step to construct the rectangles is to find the coordinates of their 4 vertices. We know all rectangles are placed at the same point in space (i.e. their centers share the same coordinates), and we choose that point to be the origin: `(0, 0, 0)`.  We have also established that all rectangles have the same dimensions. Consequently, they only differ in rotation and, once we have found the coordinates of one rectangle's vertices, we can just rotate them to find the coordinates of the other 2.
 
 The rectangles can be of any size, as long as the ratio between their sides is the [golden ratio](https://en.wikipedia.org/wiki/Golden_ratio), which is approximately 1.618033988749. Effectively, this means that the rectangle's width must be ~1.618 times larger than its height. We also know that all rectangle vertices must be at 1 unit away from its center (it's a unit sphere), so we can calculate the rectangle's `height` and `width` based on the diagram below:
 
@@ -84,7 +84,7 @@ Therefore, in order to find the vertices coordinates, we need to find the values
 - The golden ratio determines that `width = height * goldenRatio`, and therefore `c = a * goldenRatio`.
 - The `a/b/1` triangle (represented by dotted lines in the first rectangle image) is equilateral, and therefore we can use [Pythagoras' Theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem).
 
-With that in mind, we can apply Pythagoras' Theorem on the `a/c/1` triangle:
+With that in mind:
 
 ```
 1² = a² + c²                          // Pythagoras' Theorem
@@ -97,7 +97,7 @@ a = √(1 / (1 + 2.618033988749895))    // Replace golden ratio value
 a = 0.525731112119134                 // Solve the square root
 ```
 
-Now that we know that `a = 0.525731112119134 `, finding `c` becomes trivial:
+Once we know that `a = 0.525731112119134`, finding `c` becomes trivial:
 
 ```
 c = a * goldenRatio
@@ -127,20 +127,20 @@ Creating this list is not as challenging as finding the vertex positions. In fac
 If you would like to take a look at the triangle indices and the vertex coordinates I've found, take a look at Sphere Generator's [source code](https://github.com/matheusamazonas/sphere_generator/blob/361e4e64cc1b3ecd00db495181b4ec8adabcf37c/Assets/Libraries/SphereGenerator/Runtime/Generators/IcosphereGenerator.cs#L35).
 
 # Step 2: Fragmentation
-Step 1 leaves us with a regular icosahedron. As discussed before, this shape lacks detail and it doesn't contain enough vertices to pass as a sphere. To remedy that, we need to generate more vertices; and that's where mesh fragmentation comes in.
+Step 1 leaves us with a regular icosahedron, a shape which lacks detail and doesn't contain enough vertices to pass as a sphere. To remedy that, we need to generate more vertices; and that's where mesh fragmentation comes in.
 
-Mesh fragmentation is the process of procedurally increasing the vertex count of a mesh by fragmenting its primitives (in this case triangles) into new, smaller ones. It aims to allow the mesh to provide more detail than existing, without actually adding the detail information (that would be step 3's role).
+Mesh fragmentation is the process of procedurally increasing the vertex count of a mesh by fragmenting its primitives (in this case triangles) into new, smaller ones. It aims to allow the mesh to provide more detail than existing, without actually adding the detail information (that is step 3's role).
 
 Fragmenting a mesh composed only by triangles consists of turning each triangle into 4 smaller ones, while preserving the shape of the original. The image below displays an example of a triangle (larger, outer lines) that has been fragmented once into 4 smaller ones. It also happens to unequivocally resemble The Legend of Zelda's [triforce](https://en.wikipedia.org/wiki/Triforce):
 
 ![](/assets/images/post22/fragment_1.svg)
 
-When it comes to an icosahedron, we need to keep in mind that the fragmentation process must not change the mesh's topology. In this case, it is enough to ensure that all triangles in the mesh are equilateral. Luckily, equilateral triangles are particularly easy to fragment and the operation conserves equilaterality. The image above is also an example of a fragmentation of an equilateral triangle into 4 smaller, equally equilateral triangles.
+When it comes to an icosahedron, we need to keep in mind that the fragmentation process must not change the mesh's topology. In this case, it is enough to ensure that all triangles in the mesh are equilateral. Luckily, equilateral triangles are particularly easy to fragment and the operation conserves equilaterality. The image above is also an example of the fragmentation of an equilateral triangle into 4 smaller, equally equilateral triangles.
 
 >ℹ️ Although this section uses C# as its guiding programming language, the code described here should be easily translatable to other programming languages.
 {: .callout }
 
-Let's look into how to fragment triangles with code. Like in every fragmentation process, the original vertices are maintained—failing to do so would change the mesh's shape. Three new vertices are created by finding the mid-point of each edge. The coordinates (x, y, z) of a mid-point of an edge with vertices `v1` and `v2` can be calculated as:
+Let's look into how to fragment triangles with code. Like in every fragmentation process, the original vertices are maintained—failing to do so would change the mesh's shape. Three new vertices are created by finding the mid-point of each edge. The coordinates `(x, y, z)` of a mid-point of an edge with vertices `v1` and `v2` can be calculated as:
 
 ```csharp
 var x = (v1.x + v2.x) / 2;  
@@ -152,11 +152,11 @@ The fragmentation process can be repeated indefinitely. Each iteration increases
 
 ![](/assets/images/post22/fragment_2.svg)
 
-With this in mind, we can apply the fragmentation process to the regular icosahedron. The image below displays a regular icosahedron followed by three meshes that are the outcome of fragmenting the regular icosahedron with a depth of 1, 2 and 3 respectively.
+With this in mind, we can apply the fragmentation process to the regular icosahedron. The image below displays a regular icosahedron followed by three meshes that are the outcome of fragmenting it with a depth of 1, 2 and 3 respectively.
 
 ![](/assets/images/post22/icosahedrons.png) 
 
-Notice how, although the number of triangles increased from 20 to 80, then to 320, the shape of the mesh hasn't changed (if you struggle to see it, look at the contour). The original faces and edges are still untouched—they just have more vertices and triangles now. In other words, the meshes above are all icosahedrons; just with different triangle counts.
+Notice how, although the number of triangles increased from 20 to 80, then to 320 and finally to 1280, the shape of the mesh hasn't changed (if you struggle to see it, look at the contour). The original faces and edges are still untouched—they just have more vertices and triangles now. In other words, the meshes above are all icosahedrons; just with different triangle counts.
 
 # Step 3: Normalization
 As we can see in the previous section, even though the number of triangles increases with every fragmentation iteration, the shape of the mesh remains unchanged. The cause is clear: during fragmentation, new triangle vertices are placed on the same plane as the triangle they originally belonged to. As a result, no new planes or faces are created. To address this issue, the new vertices need to be repositioned to "break out" of their plane, effectively changing the mesh's shape in a manner that resembles a sphere. The question at hand is: how to do that?
@@ -164,15 +164,15 @@ As we can see in the previous section, even though the number of triangles incre
 Here's where one of the sphere's properties comes in handy: all points on the surface of a sphere are equally distant from its center, and that distance is called *radius*. In the case of a unit sphere, the radius is equal to 1. This property holds for all 12 original vertices of the icosahedron (as we demonstrated above), but it doesn't for the new vertices—they are closer to the sphere's center than the original ones. Logically, the next step would be to ensure that the radius property holds for all vertices by moving them away from the center. The question now is: in which direction should we move them?
 
 To answer this question, we revisit the characteristics of the icosphere. We would like to, as much as possible, keep:
-- All the faces (and therefore triangles) close to an equilateral. 
+- All triangles close to an equilateral one.
 - The area of all faces similar. 
-- The triangle distribution should be as uniform as possible.
+- The triangle distribution as uniform as possible.
 
 A great way to closely maintain these properties is to normalize the vertices. Normalization is the process of converting a given vector into a [unit vector](https://en.wikipedia.org/wiki/Euclidean_vector#Unit_vector):  a vector with a length of 1. This operation modifies the length of the vector but keeps its direction unmodified. The image below displays how we can use vector normalization to ensure that a vertex respects the sphere radius property:
 
 ![](/assets/images/post22/radius.svg)  
 
-In the image, the circle represents a slice of the sphere passing through its center. The circle's radius is 1 and it's placed at the origin (center is at `(0, 0)`). The surface of the icosahedron is represented as a square for simplicity's sake. The distance between the square's corners and the center of the circle is 1—just like the original vertices of the icosahedron are placed 1 unit away from the sphere's center. Vertices `v1` and `v2` represent all "new" vertices: vertices that are not part of the original icosahedron and were generated by fragmentation. They are placed on the surface of the icosahedron and the distance between them and the center of the circle is less than 1.
+In the image, the circle represents a slice of the sphere passing through its center. The circle's radius is 1. The surface of the icosahedron is represented as a square for simplicity's sake. The distance between the square's corners and the center of the circle is 1—just like the original vertices of the icosahedron are placed 1 unit away from the sphere's center. Vertices `v1` and `v2` represent all "new" vertices: vertices that are not part of the original icosahedron and were generated by fragmentation. They are placed on the surface of the icosahedron and the distance between them and the center of the circle is less than 1.
 
 In this case, vertices `v1`and `v2` are normalized into vectors `v1n` and `v2n`, respectively. The normalization operation maintains their direction but "expands" them, ensuring that their length is equal to 1, effectively placing them on the sphere's surface. Problem solved.
 
@@ -191,14 +191,14 @@ void NormalizeAllVertices(Vector3[] vertices)
 
 Where `vertex.normalized` returns a normalized version of the given vertex. This operation is extremely common and is often included in game engine libraries (e.g. `Vector3.normalized` is defined in both [Unity's](https://docs.unity3d.com/ScriptReference/Vector3-normalized.html) and [Godot's](https://docs.godotengine.org/en/stable/classes/class_vector3.html#class-vector3-method-normalized) libraries). It is even present in some programming languages' standard libraries, like [C#'s](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector3.normalize). 
 
-The outcome of the normalization process can be observed in the image below. The first row is identical to the image at the end of the fragmentation section and contains icosahedrons that not been normalized. The first mesh in that row is the regular icosahedron, followed by fragmented meshes with a depth of 1, 2 and 3 respectively. The bottom row displays the normalized version of the top row, keeping their fragmentation depths.
+The outcome of the normalization process can be observed in the image below. The first row is identical to the image at the end of the fragmentation section and contains icosahedrons that have not been normalized. The first mesh in that row is the regular icosahedron, followed by fragmented meshes with a depth of 1, 2 and 3 respectively. The bottom row displays the normalized version of the top row, keeping their fragmentation depths.
 
 ![](/assets/images/post22/icosahedrons.png)  
 ![](/assets/images/post22/icosahedrons_2.png) 
 
-It's worth noting that the number of vertices in the meshes on each column is identical; the only difference is the position of each vertex. It is also clear that the higher the fragmentation depth, the closer to a continuous sphere the normalized meshes get—their contour progressively resemble a circle. Finally, it is evident that both steps are necessary: fragmenting without normalization increases detail but doesn't change the mesh's shape and normalization without fragmentation accomplishes nothing—all vertices of an icosahedron are already normalized.
+It's worth noting that the number of vertices in the meshes on each column is identical; the only difference is the position of each of the mesh's vertex. It is also clear that the higher the fragmentation depth, the closer to a continuous sphere the normalized meshes get—their contour progressively resembles a circle. Finally, it is evident that both steps are necessary: fragmenting without normalization increases detail but doesn't change the mesh's shape and normalization without fragmentation accomplishes nothing—all vertices of an icosahedron are already normalized.
 
-The GIF below summarizes the "augmentation" process, composed by fragmentation and normalization (steps 2 and 3 respectively). It starts with a regular icosahedron which is fragmented twice (hence depth = 2). Then, the icosahedron is progressively (for educational purposes) normalized until all vertices are equally distant from the mesh's center. The final mesh represents an icosphere.
+The GIF below summarizes the process, composed by fragmentation and normalization (steps 2 and 3 respectively). It starts with a regular icosahedron which is fragmented twice (hence depth = 2). Then, the icosahedron is progressively (for educational purposes) normalized until all vertices are equally distant from the mesh's center. The final mesh represents an icosphere.
 
 ![](/assets/images/post22/process_loop.gif)
 
@@ -218,7 +218,7 @@ void RepositionAllVertices(Vector3[] vertices, float radius)
 }
 ```
 
-With that, we can generate all icospheres one can imagine—and one's computer can handle.
+With that, we can generate all icospheres one can imagine—as long as one's computer can handle it.
 
 # Conclusion
 In this article, we learned what an icosphere is, what its properties are and how we can generate one procedurally, using code. We also observed how the different generation steps influence the final mesh. Finally, we saw how the fragmentation depth impacts the mesh's level of detail and, therefore, its similarity with real, continuous spheres.
