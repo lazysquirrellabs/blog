@@ -127,7 +127,6 @@ public class Dog : ScriptableAnimal
 		this.breed = breed;
 	}
 }
-
 ```
 
 And a simple `MonoBehaviour` that runs in the editor for testing:
