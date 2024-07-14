@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Tabs vs. spaces: the discussion that should not exist"
-date:   2024/07/25 08:04:00 +0200
+title: "Tabs vs. spaces: the discussion that should not exist"
+date: 2024/07/14 19:11:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
