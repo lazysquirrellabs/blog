@@ -16,7 +16,7 @@ Primarily let’s learn how to define a Scriptable Object using the same example
 ```csharp
 public class MyDatabase : ScriptableObject
 {
-  public List<City> cities;
+	public List<City> cities;
 }
 ```
 
@@ -26,7 +26,7 @@ As we can see, the only difference is that our class now derives from `Scriptabl
 [CreateAssetMenu]
 public class MyDatabase : ScriptableObject
 {
-  public List<City> cities;
+	public List<City> cities;
 }
 ```
 
@@ -40,19 +40,19 @@ Consider the example from the previous [post](unity_serialization_2) and think a
 [ExecuteInEditMode]
 public class MonoBehaviourDecoupleTest : MonoBehaviour 
 {
-  public City city1;
-  public City city2;
-     
-  private void OnEnable()
-  {
-    if (city1 == null)
-    {
-      City chicago = new City();
-      chicago.name = "Chicago";
-      city1 = chicago;
-      city2 = city1;
-    }       
-  }
+	public City city1;
+	public City city2;
+	
+	private void OnEnable()
+	{
+		if (city1 == null)
+		{
+			City chicago = new City();
+			chicago.name = "Chicago";
+			city1 = chicago;
+			city2 = city1;
+		}
+	}
 }
 ```
 
@@ -63,7 +63,7 @@ Only classes that inherit from `Unity.Object` are serialized as actual reference
 ```csharp
 public class ScriptableCity : ScriptableObject 
 {
-  public string name;
+	public string name;
 }
 ```
 
@@ -73,24 +73,24 @@ Now let’s use it instead of a regular `City` like the previous example. Note t
 [ExecuteInEditMode]
 public class ScriptableDecoupleTest : MonoBehaviour 
 {
-  public ScriptableCity city1;
-  public ScriptableCity city2;
+	public ScriptableCity city1;
+	public ScriptableCity city2;
 
-  private void OnEnable()
-  {   
-    if (city1 == null)    
-    {     
-      city1 = ScriptableObject.CreateInstance<ScriptableCity>();          
-			city1.name = "Chicago";      
-      city2 = city1;
-    }
-    
-    Debug.Log(city1.name);
-    Debug.Log(city2.name);
-    city1.name = "New York";
-    Debug.Log(city1.name);
-    Debug.Log(city2.name);
-  }
+	private void OnEnable()
+	{
+		if (city1 == null)
+		{
+			city1 = ScriptableObject.CreateInstance<ScriptableCity>();
+			city1.name = "Chicago";
+			city2 = city1;
+		}
+		
+		Debug.Log(city1.name);
+		Debug.Log(city2.name);
+		city1.name = "New York";
+		Debug.Log(city1.name);
+		Debug.Log(city2.name);
+	}
 }
 ```
 
@@ -106,12 +106,12 @@ We face a serialization problem when using polymorphism and custom serializable 
 [System.Serializable]
 public class Animal
 {
-  public string name;
+	public string name;
 
-  public Animal (string name)
-  {
-    this.name = name;
-  }
+	public Animal (string name)
+	{
+		this.name = name;
+	}
 }
 ```
 
@@ -120,12 +120,12 @@ Now let’s define the `Dog` class:
 ```csharp
 public class Dog : ScriptableAnimal
 {
-  public string breed;
+	public string breed;
 
-  public Dog (string name, string breed) : base(name)
-  {
-    this.breed = breed;
-  }
+	public Dog (string name, string breed) : base(name)
+	{
+		this.breed = breed;
+	}
 }
 
 ```
@@ -136,30 +136,30 @@ And a simple `MonoBehaviour` that runs in the editor for testing:
 ExecuteInEditMode]
 public class BehaviourExample : MonoBehaviour
 {
-  public List<Animal> animals;
+	public List<Animal> animals;
 
-  private void OnEnable()
-  {
-    if (animals == null)
-    {
-      animals = new List<Animal>();
-    }
-    if (animals.Count == 0)
-    {
-      Animal elephant = new Animal("Elephant");
-      Dog dog = new Dog("Dog", "Bulldog");
-      Animal lion = new Animal("Lion");
+	private void OnEnable()
+	{
+		if (animals == null)
+		{
+			animals = new List<Animal>();
+		}
+		if (animals.Count == 0)
+		{
+			Animal elephant = new Animal("Elephant");
+			Dog dog = new Dog("Dog", "Bulldog");
+			Animal lion = new Animal("Lion");
 
-      animals.Add(elephant);
-      animals.Add(dog);
-      animals.Add(lion);
-    }
-  }
+			animals.Add(elephant);
+			animals.Add(dog);
+			animals.Add(lion);
+		}
+	}
 
-  private void OnDisable()
-  {
-    Debug.Log(animals[1] is Dog);
-  }
+	private void OnDisable()
+	{
+		Debug.Log(animals[1] is Dog);
+	}
 }
 ```
 
@@ -170,7 +170,7 @@ Scriptable Object can help us with that, given that it inherits from `Unity.Obje
 ```csharp
 public class ScriptAnimal : ScriptableObject
 {
-  public string name;
+	public string name;
 }
 ```
 
@@ -180,36 +180,36 @@ Now let’s use an equivalent example to the one above, but adapting it to the w
 [ExecuteInEditMode]
 public class ScriptableExample : MonoBehaviour
 {
-  public List<ScriptAnimal> animals;
+	public List<ScriptAnimal> animals;
 
-  private void OnEnable()
-  {
-    if (animals == null)
-    {
-      animals = new List<ScriptAnimal>();
-    }
+	private void OnEnable()
+	{
+		if (animals == null)
+		{
+		 	animals = new List<ScriptAnimal>();
+		}
 
-    if (animals.Count == 0)
-    {
-      ScriptAnimal a1 = ScriptableObject.CreateInstance<ScriptAnimal>();
-      Dog dog = ScriptableObject.CreateInstance<Dog>();
-      ScriptAnimal a2 = ScriptableObject.CreateInstance<ScriptAnimal>();
+		if (animals.Count == 0)
+		{
+			ScriptAnimal a1 = ScriptableObject.CreateInstance<ScriptAnimal>();
+			Dog dog = ScriptableObject.CreateInstance<Dog>();
+			ScriptAnimal a2 = ScriptableObject.CreateInstance<ScriptAnimal>();
 
-      a1.name = "Elephant";
-      dog.name = "Dog";
-      dog.breed = "Bulldog";
-      a2.name = "Lion";
+			a1.name = "Elephant";
+			dog.name = "Dog";
+			dog.breed = "Bulldog";
+			a2.name = "Lion";
 
-      animals.Add(a1);
-      animals.Add(dog);
-      animals.Add(a2);
-    }
-  }
+			animals.Add(a1);
+			animals.Add(dog);
+			animals.Add(a2);
+		}
+	}
 
-  private void OnDisable()
-  {
-    Debug.Log(animals[1] is Dog);
-  }
+	private void OnDisable()
+	{
+		Debug.Log(animals[1] is Dog);
+	}
 }
 ```
 
@@ -225,7 +225,7 @@ Demonstrating an example of the depth serialization problem in Unity is fairly s
 [Serializable]
 public class DepthClass
 {
-  public List<DepthClass> depthObjects;
+	public List<DepthClass> depthObjects;
 }
 ```
 
@@ -242,7 +242,7 @@ Given that, always think twice before serializing any field that has recursive d
 [Serializable]
 public class DepthClass : ScriptableObject
 {
-  public List<DepthClass> depthObjects;
+	public List<DepthClass> depthObjects;
 }
 ```
 
@@ -259,7 +259,7 @@ There is a catch, though. What if, instead of storing the array on a `Scriptable
 ```csharp
 public class BehaviourDatabase : MonoBehaviour
 {
-  public Vector4[] vectors;
+	public Vector4[] vectors;
 }
 ```
 
@@ -268,7 +268,7 @@ Let’s add this script to a scene object and save it as a prefab. Now let’s c
 ```csharp
 public class MemoryTest : MonoBehaviour
 {
-  public BehaviourDatabase database;
+	public BehaviourDatabase database;
 }
 ```
 

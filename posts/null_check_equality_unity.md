@@ -28,18 +28,18 @@ The `==` operator can be used for both value and reference types. For built-in v
 ```csharp
 public struct Coordinates
 {
-    private int _x;
-    private int _y;
- 
-    public static bool operator ==(Coordinates a, Coordinates b)
-    {
-        return a._x == b._x && a._y == b._y;
-    }
- 
-    public static bool operator !=(Coordinates a, Coordinates b)
-    {
-        return !(a == b);
-    }
+	private int _x;
+	private int _y;
+	
+	public static bool operator ==(Coordinates a, Coordinates b)
+	{
+		return a._x == b._x && a._y == b._y;
+	}
+	
+	public static bool operator !=(Coordinates a, Coordinates b)
+	{
+		return !(a == b);
+	}
 }
 ```
 
@@ -50,20 +50,20 @@ Although this might make sense, sometimes we want to implement a custom behavior
 ```csharp
 public class Person
 {
-    private string _name;
-    private int _id;
-     
-    public static bool operator ==(Person a, Person b)
-    {
-        if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
-            return false;
-        return a._id == b._id;
-    }
- 
-    public static bool operator !=(Person a, Person b)
-    {
-        return !(a == b);
-    }
+	private string _name;
+	private int _id;
+	 
+	public static bool operator ==(Person a, Person b)
+	{
+		if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+			return false;
+		return a._id == b._id;
+	}
+	
+	public static bool operator !=(Person a, Person b)
+	{
+		return !(a == b);
+	}
 }
 ```
 
@@ -82,18 +82,17 @@ Unlike the `==` operator, it is not static and it only takes 1 parameter of type
 ```csharp
 public class Coordinates
 {
- 
-    private int _x;
-    private int _y;
-     
-    public override bool Equals(object obj)
-    {
-        if (ReferenceEquals(obj, null))
-            return false;
-        if (obj is Coordinates c)
-            return c._x == _x && c._y == _y;
-        return false;
-    }
+	private int _x;
+	private int _y;
+	 
+	public override bool Equals(object obj)
+	{
+		if (ReferenceEquals(obj, null))
+			return false;
+		if (obj is Coordinates c)
+			return c._x == _x && c._y == _y;
+		return false;
+	}
 }
 ```
 
@@ -138,7 +137,7 @@ These operators were planned as shortcuts for safe member and element access, re
 
 ```csharp
 if (_dog != null)
-    _dog.Bark();
+	_dog.Bark();
 ```
 
 Can be replaced with:
@@ -163,9 +162,9 @@ It is equivalent to
 
 ```csharp
 if (a1 == null)
-    a3 = a2;
+	a3 = a2;
 else
-    a3 = a1;
+	a3 = a1;
 ```
 
 The `??=` is an assignment operator that assigns its right operand to its left operand only if its left operand is null. In the example below, `a1` will be assigned to `a3` only if `a1` is null.
@@ -180,7 +179,7 @@ It is equivalent to
 ```csharp
 Animal a1 = ...
 if (a1 == null)
-    a1 = a3
+	a1 = a3
 ```
 
 Just like the null-conditional operators, there are no custom implementations of these operators for `UnityEngine.Object`. As a consequence, if the `Animal` class from the code snippets above inherited from `MonoBehaviour`, for example, the implicit null checks would not behave like the null checks using the `==` operator. Thus, their respective “equivalent” code would not be equivalent anymore. Again, a warning will be displayed in the Rider IDE when using these operands on objects that inherit from `UnityEngine.Object`.

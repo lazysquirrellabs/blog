@@ -179,13 +179,13 @@ In this case, vertices `v1`and `v2` are normalized into vectors `v1n` and `v2n`,
 Now that we know how to reposition a vertex without deviating too much from the icosphere properties, we can apply normalization on all vertices:
 
 ```csharp
-void NormalizeAllVertices(Vector3[] vertices)  
-{  
-    for (var index = 0; index < vertices.Length; index++)    
-    {    
-        var vertex = vertices[index];    
-        vertices[index] = vertex.normalized;    
-    }  
+void NormalizeAllVertices(Vector3[] vertices)
+{
+	for (var index = 0; index < vertices.Length; index++)
+	{
+		var vertex = vertices[index];
+		vertices[index] = vertex.normalized;
+	}
 }
 ```
 
@@ -208,13 +208,13 @@ At this point, we have concluded the process of generating an icosphere. The nex
 The previous generation steps left us with a unit icosphere. Even though that mesh is an icosphere, we would often like to easily tinker with sphere size. To accommodate for that, we can easily modify the `NormalizeAllVertices` method from step 3 to introduce a new parameter: the sphere's `radius`:
 
 ```csharp
-void RepositionAllVertices(Vector3[] vertices, float radius)  
-{  
-    for (var index = 0; index < vertices.Length; index++)    
-    {    
-        var vertex = vertices[index];    
-        vertices[index] = vertex.normalized * radius;    
-    }  
+void RepositionAllVertices(Vector3[] vertices, float radius)
+{
+	for (var index = 0; index < vertices.Length; index++)
+	{
+		var vertex = vertices[index];
+		vertices[index] = vertex.normalized * radius;
+	}
 }
 ```
 

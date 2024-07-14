@@ -14,19 +14,19 @@ A [finalizer](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/c
 ```csharp
 public class MusicPlayer
 {
-    private FileStream _file;
- 
-    public void Play(string filePath)
-    {
-        _file = File.Open(filePath, FileMode.Open);
-        // ...
-    }
- 
-    ~MusicPlayer()
-    {
-        if (_file != null)
-            _file.Close();
-    }
+	private FileStream _file;
+	
+	public void Play(string filePath)
+	{
+		_file = File.Open(filePath, FileMode.Open);
+		// ...
+	}
+	
+	~MusicPlayer()
+	{
+		if (_file != null)
+			_file.Close();
+	}
 }
 ```
 
@@ -46,7 +46,7 @@ The `ExampleButton` behavior contains only an event, for example purposes:
 ```csharp
 public class ExampleButton : MonoBehaviour
 {
-    public event Action OnClick;
+	public event Action OnClick;
 }
 ```
 
@@ -55,22 +55,22 @@ The `MyBehaviour` behavior subscribes to `_button`‘s `OnClick` event when it�
 ```csharp
 public class MyBehaviour : MonoBehaviour
 {
-    [SerializeField] private ExampleButton _button;
- 
-    private void Awake()
-    {
-        _button.OnClick += Foo;
-    }
- 
-    private void OnDestroy()
-    {
-        _button.OnClick -= Foo;
-    }
- 
-    private void Foo()
-    {
-        // ...
-    }
+	[SerializeField] private ExampleButton _button;
+	
+	private void Awake()
+	{
+		_button.OnClick += Foo;
+	}
+	
+	private void OnDestroy()
+	{
+		_button.OnClick -= Foo;
+	}
+	
+	private void Foo()
+	{
+		// ...
+	}
 }
 ```
 
@@ -83,32 +83,32 @@ At some point during development, we introduce a regular, non-`MonoBehaviour` cl
 ```csharp
 public class ExampleClass
 {
-    private string _name;
-    private ExampleButton _button;
- 
-    public ExampleClass(string name, ExampleButton button)
-    {
-        _name = name;
-        _button = button;
-        _button.OnClick += Bar;
-    }
- 
-    ~ExampleClass()
-    {
-        Debug.Log($"Calling {_name} destructor.");
-        _button.OnClick -= Bar;
-    }
- 
-    private void Bar()
-    {
-        // ...
-        Debug.Log("Bar");
-    }
- 
-    private static void Something()
-    {
-        Debug.Log("Something");
-    }
+	private string _name;
+	private ExampleButton _button;
+	
+	public ExampleClass(string name, ExampleButton button)
+	{
+		_name = name;
+		_button = button;
+		_button.OnClick += Bar;
+	}
+	
+	~ExampleClass()
+	{
+		Debug.Log($"Calling {_name} destructor.");
+		_button.OnClick -= Bar;
+	}
+	
+	private void Bar()
+	{
+		// ...
+		Debug.Log("Bar");
+	}
+	
+	private static void Something()
+	{
+		Debug.Log("Something");
+	}
 }
 ```
 
@@ -117,14 +117,14 @@ Let’s define `ExampleBehaviour`, a `MonoBehaviour` that contains an `ExampleBu
 ```csharp
 public class ExampleBehaviour : MonoBehaviour
 {
-    [SerializeField] private ExampleButton _button;
- 
-    private ExampleClass _object;
- 
-    private void Awake()
-    {
-        _object = new ExampleClass("Foo", _button);
-    }
+	[SerializeField] private ExampleButton _button;
+	
+	private ExampleClass _object;
+	
+	private void Awake()
+	{
+		_object = new ExampleClass("Foo", _button);
+	}
 }
 ```
 
@@ -143,11 +143,11 @@ Maybe the garbage collector is not running, for whatever reason. Let’s try to 
 ```csharp
 public class ManualGarbageCollector : MonoBehaviour
 {
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-            GC.Collect();
-    }
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.C))
+			GC.Collect();
+	}
 }
 ```
 
@@ -174,7 +174,7 @@ On `ExampleClass`:
 ```csharp
 public void Cleanup()
 {
-    _button.OnClick -= Bar;
+	_button.OnClick -= Bar;
 }
 ```
 
@@ -183,7 +183,7 @@ On `ExampleBehaviour`:
 ```csharp
 private void OnDestroy()
 {
-    _object.Cleanup();
+	_object.Cleanup();
 }
 ```
 

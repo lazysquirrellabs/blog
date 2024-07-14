@@ -16,18 +16,18 @@ Let’s choose a (slight [biased](https://play.google.com/store/apps/details?id=
 ```csharp
 public class MyDatabase : MonoBehaviour
 {
-  public List<City> cities;
+	public List<City> cities;
 }
 
 public class City : MonoBehaviour
 {
-  public string name;
-  public List<Place> places;
+	public string name;
+	public List<Place> places;
 }
 
 public class Place : MonoBehaviour 
 {
-  public string name;
+	public string name;
 }
 ```
 
@@ -36,13 +36,13 @@ There, done! But wait a second, something’s wrong: I can’t just create an in
 ```csharp
 public class City
 {
-  public string name;
-  public List<Place> places;
+	public string name;
+	public List<Place> places;
 }
 
 public class Place 
 {
-  public string name;
+	public string name;
 }
 ```
 
@@ -58,14 +58,14 @@ That happens because we didn’t define our type as serializable, so Unity won�
 [System.Serializable]
 public class City 
 {
-  public string name;
-  public List<Place> places;
+	public string name;
+	public List<Place> places;
 }
 
 [System.Serializable]
 public class Place 
 {
-  public string name;
+	public string name;
 }
 ```
 
@@ -84,18 +84,18 @@ The second problem involves polymorphism and happens when a class inherits from 
 [System.Serializable]
 public class Animal 
 {
-  public string name;
+	public string name;
 }
 
 [System.Serializable]
 public class Dog : Animal 
 {
-  public string breed;
+	public string breed;
 }
 
 public class PolymorphismExample : MonoBehaviour 
 {
-  public Animal[] animals;
+	public Animal[] animals;
 }
 ```
 
@@ -111,7 +111,7 @@ The last problem is related to recursive declarations, which can generate cycles
 [Serializable]
 public class DepthClass  
 {
-  public List<DepthClass> depthObjects; 
+	public List<DepthClass> depthObjects; 
 }
 ```
 
@@ -120,7 +120,7 @@ And a `MonoBehaviour` that holds a reference to an instance of it:
 ```csharp
 public class DepthTest : MonoBehaviour 
 {
-  public DepthClass test;
+	public DepthClass test;
 }
 ```
 

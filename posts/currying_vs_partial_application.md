@@ -14,7 +14,7 @@ Currying is the process of transforming a function that takes many (N) arguments
 
 ```python
 def mult_pow(x,y,z):
-    return x ** y * z
+	return x ** y * z
  
 print(mult_pow(2,3,4))
 >> 32
@@ -23,7 +23,7 @@ Now let’s try to curry this function. As described above, we will transform th
 
 ```python
 def mult_pow_c(x):
-    return lambda y: lambda z: x ** y * z
+	return lambda y: lambda z: x ** y * z
 ```
 
 Let’s analyze this pice of code for a minute. The function `mult_pow_c(x)` takes one argument and will always return a lambda, which is… a function! The returned function takes exactly one argument – `z` – and returns another lambda. This last lambda, again, takes one argument and returns the result. Note that the outer variables `x` and `y` are part of the inner function’s closure and can be accessed by it. As you noticed, we did exactly what the definition of currying said two paragraphs ago: we turned a function that takes many arguments into a series of nested functions, each one taking exactly one argument. To put it in a more formal way, currying transforms a function of N-*[arity](https://en.wikipedia.org/wiki/Arity)* into N functions of 1-*arity*.
