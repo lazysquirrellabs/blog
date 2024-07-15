@@ -74,26 +74,26 @@ Let’s start answering the second question: no, it is *not* a good idea to acce
 The first question remains open: how do we easily identify that these managed entities should not be accessed anymore? The answer comes from Unity. We can easily check if the underlying entities of a `MonoBehaviour` were destroyed in two ways:
 
 - Check for equality against null:
-    
-    ```csharp
-    if (_dog == null)
-    	_dog.Move();
-    ```
-    
+  
+  ```csharp
+  if (_dog == null)
+  	_dog.Move();
+  ```
+  
 - Check it as a boolean expression:
-    
-    ```csharp
-    if (_dog == true)
-    	_dog.Move();
-    ```
-    
-    or simply
-    
-    ```csharp
-    if (_dog)
-    	_dog.Move();
-    ```
-    
+  
+  ```csharp
+  if (_dog == true)
+  	_dog.Move();
+  ```
+  
+  or simply
+  
+  ```csharp
+  if (_dog)
+  	_dog.Move();
+  ```
+  
 
 The `UnityEngine.Object` class (which `MonoBehaviour` inherits from) implements custom equality operators that check if the underlying entities were destroyed. This operation is more complex than simply checking if the object reference is null because it invokes native code to check if the underlying entity was destroyed. As a consequence, it is also less performant than a vanilla C# null comparison. That’s why the Rider IDE displays a warning (“Comparison to ‘null’ is expensive”) whenever this null check is performed in a performance critical context. This custom implementation was [reconsidered](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/) a while ago by Unity developers, but it was kept and still exists. This tool gives us a way to safely and easily check the lifetime of a `MonoBehaviour`‘s underlying object, which was exactly what we were looking for. But there is one thing to keep in mind…
 
