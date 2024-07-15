@@ -16,15 +16,15 @@ This might seem an unnecessary deep dive into the engine, but it brings some une
 ```csharp
 public class Dog : MonoBehaviour
 {
-    public void Bark()
-    {
-        Debug.Log("Woof!");
-    }
- 
-    public void Move()
-    {
-        transform.position += new Vector3(1f,1f,1f);
-    }
+	public void Bark()
+	{
+		Debug.Log("Woof!");
+	}
+	
+	public void Move()
+	{
+		transform.position += new Vector3(1f,1f,1f);
+	}
 }
 ```
 
@@ -33,23 +33,23 @@ Now let’s test our `Dog` script with the help of the `DogExample` script below
 ```csharp
 public class DogExample : MonoBehaviour
 {
-    private Dog _dog;
- 
-    private void Awake()
-    {
-        var dogGameObject = new GameObject("Dog");
-        _dog = dogGameObject.AddComponent();
-    }
- 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-            Destroy(_dog);
-        if (Input.GetKeyDown(KeyCode.B))
-            _dog.Bark();
-        if (Input.GetKeyDown(KeyCode.M))
-            _dog.Move();    
-    }
+	private Dog _dog;
+	
+	private void Awake()
+	{
+		var dogGameObject = new GameObject("Dog");
+		_dog = dogGameObject.AddComponent();
+	}
+	
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.D))
+			Destroy(_dog);
+		if (Input.GetKeyDown(KeyCode.B))
+			_dog.Bark();
+		if (Input.GetKeyDown(KeyCode.M))
+			_dog.Move();    
+	}
 }
 ```
 
@@ -77,21 +77,21 @@ The first question remains open: how do we easily identify that these managed en
     
     ```csharp
     if (_dog == null)
-        _dog.Move();
+    	_dog.Move();
     ```
     
 - Check it as a boolean expression:
     
     ```csharp
     if (_dog == true)
-       _dog.Move();
+    	_dog.Move();
     ```
     
     or simply
     
     ```csharp
     if (_dog)
-       _dog.Move();
+    	_dog.Move();
     ```
     
 
@@ -104,8 +104,8 @@ Even though we can use Unity’s custom equality operators to check whether a `M
 ```csharp
 private void DestructionTest()
 {
-    Destroy(_dog);
-    Debug.Log($"Is the dog null/destroyed? {_dog == null}");
+	Destroy(_dog);
+	Debug.Log($"Is the dog null/destroyed? {_dog == null}");
 }
 ```
 
