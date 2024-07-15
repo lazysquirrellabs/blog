@@ -9,7 +9,8 @@ I am a firm believer that the "tabs vs. spaces" discussion regarding code indent
 
 And I don't mean to joke with that punchline—I truly believe that tabs are objectively the right choice when it comes to indentation. I also think that by choosing spaces, one pushes their opinion down an entire team's throat. My goal in this article is to describe why I believe that tabs are the way to go.
 
-> [!info] Consistency throughout codebases and teams is more important than sticking to our personal opinion. Personally, I believe that mixing tabs and spaces for indentation is worse than using spaces because the inconsistencies and merge conflicts that it brings (if you're using a Version Control System) greatly outweigh the clear benefits of picking tabs.
+> ℹ️ Consistency throughout codebases and teams is more important than sticking to our personal opinion. Personally, I believe that mixing tabs and spaces for indentation is worse than using spaces because the inconsistencies and merge conflicts that it brings (if you're using a Version Control System) greatly outweigh the clear benefits of picking tabs.
+{: .callout }
 
 # The problem
 First, it's important to quickly describe the problem. The "tabs vs. spaces" debate surrounds the choice of character used to indent code blocks. Indentation is usually represented as whitespace between the start of one line and the following one. For example:
