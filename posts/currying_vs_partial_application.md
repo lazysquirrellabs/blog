@@ -14,7 +14,7 @@ Currying is the process of transforming a function that takes many (N) arguments
 
 ```python
 def mult_pow(x,y,z):
-    return x ** y * z
+	return x ** y * z
  
 print(mult_pow(2,3,4))
 >> 32
@@ -23,7 +23,7 @@ Now let’s try to curry this function. As described above, we will transform th
 
 ```python
 def mult_pow_c(x):
-    return lambda y: lambda z: x ** y * z
+	return lambda y: lambda z: x ** y * z
 ```
 
 Let’s analyze this pice of code for a minute. The function `mult_pow_c(x)` takes one argument and will always return a lambda, which is… a function! The returned function takes exactly one argument – `z` – and returns another lambda. This last lambda, again, takes one argument and returns the result. Note that the outer variables `x` and `y` are part of the inner function’s closure and can be accessed by it. As you noticed, we did exactly what the definition of currying said two paragraphs ago: we turned a function that takes many arguments into a series of nested functions, each one taking exactly one argument. To put it in a more formal way, currying transforms a function of N-*[arity](https://en.wikipedia.org/wiki/Arity)* into N functions of 1-*arity*.
@@ -57,10 +57,10 @@ Let’s again use a Python example to illustrate the concept of partial applicat
 
 ```python
 def mult(x,y):
-    return x*y
+	return x*y
  
 def double(x):
-    return mult(2,x)
+	return mult(2,x)
 ```
 
 Notice that the `double` is defined in terms of `mult`. This is a pattern that we’ve seen before and some call it “wrapper functions”. Another good example are the functions `pow` (power) and `square` (^2). We use previously implemented functionality and we fix one of the parameters to create a new function. This is also known as [partially applying](https://en.wikipedia.org/wiki/Partial_application) a function, simple like that. Given the original function, we limit its expressiveness by tying some of its parameters. For example, take the `*` operator (multiplication): initially, its image (the set of possible outcomes) includes all the integers, but when we partially apply it, by tying the first argument to 2 (\*2), we reduce the function’s expressiveness by limiting its image to even numbers.

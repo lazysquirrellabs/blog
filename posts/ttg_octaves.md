@@ -41,25 +41,25 @@ Perlin noise octaves can be implemented as different iterations (or passes) usin
 The function below uses Perlin noise octaves to calculate the height of a vertex based on its coordinates and the number of octaves to be applied. It is a slightly modified version of the original code introduced on TTG's generation [step 3](/posts/ttg#step-3-hills-and-valleys-generation-aka-mesh-sculpting-). The values of the base frequency, persistence and lacunarity are constant for demonstration purposes.
 
 ```csharp
-static float GetHeight(float x, float y, uint octaves, Vector2[] offsets)  
-{  
-    float height = 0;  
-    var amplitude = 1f;  
-    var frequency = 0.055f;  
-    const float persistence = 0.5f;  
-    const float lacunarity = 2.5f;  
-    for (var i = 0; i < octaves; i++)  
-    {       
-       var offset = offsets[i];  
-       var filterX = x * frequency + offset.x;  
-       var filterY = y * frequency + offset.y;  
-       var noise = Mathf.PerlinNoise(filterX, filterY);  
-       height += amplitude * noise;  
-       frequency *= lacunarity;  
-       amplitude *= persistence;  
-    }  
-  
-    return height;  
+static float GetHeight(float x, float y, uint octaves, Vector2[] offsets)
+{
+	float height = 0;
+	var amplitude = 1f;
+	var frequency = 0.055f;
+	const float persistence = 0.5f;
+	const float lacunarity = 2.5f;
+	for (var i = 0; i < octaves; i++)
+	{
+		var offset = offsets[i];
+		var filterX = x * frequency + offset.x;
+		var filterY = y * frequency + offset.y;
+		var noise = Mathf.PerlinNoise(filterX, filterY);
+		height += amplitude * noise;
+		frequency *= lacunarity;
+		amplitude *= persistence;
+	}
+	
+	return height;
 }
 ```
 

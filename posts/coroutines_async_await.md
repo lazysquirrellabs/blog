@@ -23,11 +23,11 @@ Writing one synchronous method (like the one below) will not accomplish the dim 
 
 public void DimLight()
 {
-    const int steps = 100;
-    var originalIntensity = _light.intensity;
-    var decrement = originalIntensity / steps;
-    for (var i = 0; i < steps; i++)
-        _light.intensity -= decrement;
+	const int steps = 100;
+	var originalIntensity = _light.intensity;
+	var decrement = originalIntensity / steps;
+	for (var i = 0; i < steps; i++)
+		_light.intensity -= decrement;
 }
 ```
 
@@ -42,21 +42,21 @@ private int _stepCount;
 
 public void StartDimming()
 {
-    _decrement = _light.intensity / Steps;
-    _dimming = true;
+	_decrement = _light.intensity / Steps;
+	_dimming = true;
 }
 
 private void Update()
 {
-    if (!_dimming) return;
-    if (_stepCount >= Steps)
-    {
-        _dimming = false;
-        return;
-    }
-    
-    _light.intensity -= _decrement;
-    _stepCount++;
+	if (!_dimming) return;
+	if (_stepCount >= Steps)
+	{
+		_dimming = false;
+		return;
+	}
+	
+	_light.intensity -= _decrement;
+	_stepCount++;
 }
 ```
 
@@ -67,20 +67,20 @@ That's where Coroutines come in. They are a handy tool provided by the Unity API
 ```csharp
 public void StartDimming()
 {
-    StartCoroutine(DimLight());
-    Debug.LogWarning("Dimming started!");
+	StartCoroutine(DimLight());
+	Debug.LogWarning("Dimming started!");
 }
 
 private IEnumerator DimLight()
 {
-    const int steps = 180;
-    var originalIntensity = _light.intensity;
-    var decrement = originalIntensity / steps;
-    for (var i = 0; i < steps; i++)
-    {
-        _light.intensity -= decrement;
-        yield return null;
-    }
+	const int steps = 180;
+	var originalIntensity = _light.intensity;
+	var decrement = originalIntensity / steps;
+	for (var i = 0; i < steps; i++)
+	{
+		_light.intensity -= decrement;
+		yield return null;
+	}
 }
 ```
 
@@ -115,14 +115,14 @@ The Task-based Asynchronous Pattern has been supported in Unity [since version 2
 // name with `Async`, doing so doesn't trigger any language features.
 public async Task DimLightAsync()
 {
-    const int steps = 180;
-    var originalIntensity = _light.intensity;
-    var decrement = originalIntensity / steps;
-    for (var i = 0; i < steps; i++)
-    {
-        _light.intensity -= decrement;
-        await Task.Yield();
-    }
+	const int steps = 180;
+	var originalIntensity = _light.intensity;
+	var decrement = originalIntensity / steps;
+	for (var i = 0; i < steps; i++)
+	{
+		_light.intensity -= decrement;
+		await Task.Yield();
+	}
 }
 ```
 
@@ -207,10 +207,10 @@ private IEnumerator DimLight() { ... }
 
 private IEnumerator RunComposed()
 {
-    // There is no need to call StartCoroutine when yielding Coroutines
-    // to accomplish sequential composition.
-    yield return MoveTarget();
-    yield return DimLight();
+	// There is no need to call StartCoroutine when yielding Coroutines
+	// to accomplish sequential composition.
+	yield return MoveTarget();
+	yield return DimLight();
 }
 ```
 
@@ -221,14 +221,14 @@ C#'s TAP and `Task`, on the other hand, do not suffer from the same limitation a
 ```csharp
 private async Task RunComposedAsync()
 {
-    try
-    {
-        await MoveTargetAsync();
-    }
-    catch (ArithmeticException)
-    {
-        // Cleanup the mess 
-    }
+	try
+	{
+		await MoveTargetAsync();
+	}
+	catch (ArithmeticException)
+	{
+		// Cleanup the mess 
+	}
 }
 ```
 

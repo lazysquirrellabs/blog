@@ -56,14 +56,14 @@ Let’s take the following code (`MyBehaviour.cs`) as an example:
 ```csharp
 public class MyBehaviour : MonoBehaviour
 {
-  [SerializeField] private int x = 3;
-  [SerializeField] private float y = 5.6f;
-  public float pi = 3.1415f;
-  private int mySecret = 42;
-  public static int myStatic = 10;
-  public const int myConst = 22;
-  public readonly int myReadOnly = 99;
-  public int MyProperty { get { return 100; } }
+	[SerializeField] private int x = 3;
+	[SerializeField] private float y = 5.6f;
+	public float pi = 3.1415f;
+	private int mySecret = 42;
+	public static int myStatic = 10;
+	public const int myConst = 22;
+	public readonly int myReadOnly = 99;
+	public int MyProperty { get { return 100; } }
 }
 ```
 
@@ -76,18 +76,18 @@ But there is a better way to show that the other fields were not serialized: by 
 ```csharp
 private void Start()
 {
-  Debug.Log("Pi:" + pi + ". MySecret:" + mySecret + ". MyStatic:" + myStatic);
+	Debug.Log("Pi:" + pi + ". MySecret:" + mySecret + ". MyStatic:" + myStatic);
 }
 
 private void Update()
 {
-  if (Input.GetMouseButtonDown(0))
-  {
-    pi = -4;
-    mySecret = -11;
-    myStatic = 13;
-    GameObject.Instantiate(gameObject);
-  }
+	if (Input.GetMouseButtonDown(0))
+	{
+		pi = -4;
+		mySecret = -11;
+		myStatic = 13;
+		GameObject.Instantiate(gameObject);
+	}
 }
 ```
 
