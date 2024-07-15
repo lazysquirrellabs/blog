@@ -113,11 +113,11 @@ var yOffset = _random.Next(-1_000, 1_000);
 
 for (var i = 0; i < vertices.Length; i++)
 {
-    var vertex = vertices[i];
-    var filterX = (vertex.x + xOffset) * frequency;
-    var filterY = (vertex.z + yOffset) * frequency;
-    vertex.y += height * Mathf.PerlinNoise(filterX, filterY);
-    vertices[i] = vertex;
+	var vertex = vertices[i];
+	var filterX = (vertex.x + xOffset) * frequency;
+	var filterY = (vertex.z + yOffset) * frequency;
+	vertex.y += height * Mathf.PerlinNoise(filterX, filterY);
+	vertices[i] = vertex;
 }
 ```
 
@@ -146,12 +146,12 @@ Such a curve can be easily defined in Unity using [Animation Curves](https://doc
 ```csharp
 static float GetHeight(float x, float y, float maximum, AnimationCurve heightDistribution)
 {
-    // Step 1, fetch the noise value at the given point
-    var noise = Mathf.PerlinNoise(x, y);
-    // Step 2, apply the height sculpting curve (if it's not null) to the noise value
-    var modifier = heightDistribution?.Evaluate(noise) ?? 1;
-    // Step 3, apply the modifier to the maximum height
-    return maximum * modifier;
+	// Step 1, fetch the noise value at the given point
+	var noise = Mathf.PerlinNoise(x, y);
+	// Step 2, apply the height sculpting curve (if it's not null) to the noise value
+	var modifier = heightDistribution?.Evaluate(noise) ?? 1;
+	// Step 3, apply the modifier to the maximum height
+	return maximum * modifier;
 }
 ```
 
