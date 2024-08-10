@@ -5,7 +5,7 @@ date:   2024/06/25 19:04:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which will add support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). Building the library inspired me to write this piece.
+In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which added support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). Building the library inspired me to write this piece.
 
 The article's content is divided into 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
 
@@ -223,6 +223,6 @@ With that, we can generate all icospheres one can imagine—as long as one's com
 # Conclusion
 In this article, we learned what an icosphere is, what its properties are and how we can generate one procedurally, using code. We also observed how the different generation steps influence the final mesh. Finally, we saw how the fragmentation depth impacts the mesh's level of detail and, therefore, its similarity with real, continuous spheres.
 
-The techniques described here are used to add spherical terrain support to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2 (still under development) and [Sphere Generator](https://github.com/matheusamazonas/sphere_generator)'s icosphere support. 
+The techniques described here were used to add spherical terrain support to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2 and [Sphere Generator](https://github.com/matheusamazonas/sphere_generator)'s icosphere support. 
 
 That's a wrap! As usual, feel free to use the comment section below for questions, suggestions, corrections, or just to say “hi”. See you on the next one!
