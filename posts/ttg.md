@@ -5,7 +5,7 @@ date:   2023/04/08 10:01:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-In this blog post I will discuss some technical details and give a glimpse of [Terraced Terrain Generator's (TTG)](http://ttg.matheusamazonas.net) development process. TTG is a free Unity tool for procedural generation of terraced terrain meshes. It's open source and it's on [GitHub](https://github.com/matheusamazonas/TTG)! Here are some examples of the type of terrains TTG is able to generate:
+In this blog post I will discuss some technical details and give a glimpse of [Terraced Terrain Generator's (TTG)](http://ttg.matheusamazonas.net) development process. TTG is a free Unity tool for procedural generation of terraced terrain meshes. It's open source and it's on [GitHub](https://github.com/lazysquirrellabs/TTG)! Here are some examples of the type of terrains TTG is able to generate:
 
 ![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
 
@@ -219,9 +219,9 @@ Using the same material for all terraces is boring. Ideally, we should be able t
 Even though the goal of the terraced terrain generator was mostly accomplished on the feature level, performance was far from ideal. The efforts put into performance improvements were described [in a separate article](ttg_performance).
 
 # Additions ✅
-The features discussed up to this point shipped on [TTG 1.0.0](https://github.com/matheusamazonas/TTG/releases/tag/1.0.0). The following features expanded TTG's capabilities and shipped on later releases:
-- **Custom terrain heights**: instead of evenly spacing the terraces between the terrain's lowest and highest points, allow custom heights to be chosen. This feature was implemented on [version 1.1.0](https://github.com/matheusamazonas/TTG/releases/tag/1.0.1) and it's detailed on its own [blog post](ttg_custom_heights).
-- **Improved terrain detailing**: use Perlin noise octaves to create more natural terrains. This feature was implemented on [version 1.2.0](https://github.com/matheusamazonas/TTG/releases/tag/1.2.0) and it's described on its own [blog post](ttg_octaves).
+The features discussed up to this point shipped on [TTG 1.0.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.0.0). The following features expanded TTG's capabilities and shipped on later releases:
+- **Custom terrain heights**: instead of evenly spacing the terraces between the terrain's lowest and highest points, allow custom heights to be chosen. This feature was implemented on [version 1.1.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.0.1) and it's detailed on its own [blog post](ttg_custom_heights).
+- **Improved terrain detailing**: use Perlin noise octaves to create more natural terrains. This feature was implemented on [version 1.2.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.2.0) and it's described on its own [blog post](ttg_octaves).
 
 These additions enabled a new level of expressiveness and detailing on TTG terrains. The image below displays example terrains that were generated using TTG 1.2.0:
 
@@ -233,7 +233,7 @@ Although it looks like the Terraced Terrain Generator is complete, there's alway
 - Realtime sculpting: instead of letting an algorithm generate the hills, let the user interactively sculpt them.
 - Outer walls: “close” the generated mesh so it looks like a model carved in wood, sitting on a desk.
 
-You can follow the development of TTG in its [Trello board](https://trello.com/b/cFRtgqal/terracted-terrain-generator). If you have suggestions, feature requests or bugs to report, use the Issues section of TTG's [GitHub repository](https://github.com/matheusamazonas/TTG) to communicate them.
+You can follow the development of TTG in its [Trello board](https://trello.com/b/cFRtgqal/terracted-terrain-generator). If you have suggestions, feature requests or bugs to report, use the Issues section of TTG's [GitHub repository](https://github.com/lazysquirrellabs/TTG) to communicate them.
 
 # Conclusion 🏁
 TTG was a great side project that taught me a lot about several aspects of game development tools creation—including non-coding nuances. I hope the effort I've put in the creation of the tool and its documentation help someone out there.

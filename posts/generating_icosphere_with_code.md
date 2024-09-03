@@ -5,7 +5,7 @@ date:   2024/06/25 19:04:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
-In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which added support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/matheusamazonas/sphere_generator). Building the library inspired me to write this piece.
+In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which added support for spherical terrains. I took some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/lazysquirrellabs/sphere_generator). Building the library inspired me to write this piece.
 
 The article's content is divided into 5 sections. The first one introduces the concept and characteristics of the icosphere. The remaining sections correlate to the 4 generation steps. The conclusion wraps the article up.
 
@@ -124,7 +124,7 @@ Once the coordinates of all vertices are known, we need to find the triangle ind
 
 Creating this list is not as challenging as finding the vertex positions. In fact, I am not aware of a procedural method to assign the triangle indices (leave a comment if you know one!), and I found them by trial and error. Having a reference image (like the one with the 3 mutually perpendicular rectangles in the previous section) was extremely helpful. It sounds like a cumbersome task, but it didn't take long (~15 minutes) and honestly, it was a nice exercise in mesh construction and I kind of enjoyed it. I probably wouldn't think the same if the mesh had many more triangles, but an icosahedron was manageable.
 
-If you would like to take a look at the triangle indices and the vertex coordinates I've found, take a look at Sphere Generator's [source code](https://github.com/matheusamazonas/sphere_generator/blob/361e4e64cc1b3ecd00db495181b4ec8adabcf37c/Assets/Libraries/SphereGenerator/Runtime/Generators/IcosphereGenerator.cs#L35).
+If you would like to take a look at the triangle indices and the vertex coordinates I've found, take a look at Sphere Generator's [source code](https://github.com/lazysquirrellabs/sphere_generator/blob/361e4e64cc1b3ecd00db495181b4ec8adabcf37c/Assets/Libraries/SphereGenerator/Runtime/Generators/IcosphereGenerator.cs#L35).
 
 # Step 2: Fragmentation
 Step 1 leaves us with a regular icosahedron, a shape which lacks detail and doesn't contain enough vertices to pass as a sphere. To remedy that, we need to generate more vertices; and that's where mesh fragmentation comes in.
@@ -223,6 +223,6 @@ With that, we can generate all icospheres one can imagine—as long as one's com
 # Conclusion
 In this article, we learned what an icosphere is, what its properties are and how we can generate one procedurally, using code. We also observed how the different generation steps influence the final mesh. Finally, we saw how the fragmentation depth impacts the mesh's level of detail and, therefore, its similarity with real, continuous spheres.
 
-The techniques described here were used to add spherical terrain support to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2 and [Sphere Generator](https://github.com/matheusamazonas/sphere_generator)'s icosphere support. 
+The techniques described here were used to add spherical terrain support to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2 and [Sphere Generator](https://github.com/lazysquirrellabs/sphere_generator)'s icosphere support. 
 
 That's a wrap! As usual, feel free to use the comment section below for questions, suggestions, corrections, or just to say “hi”. See you on the next one!
