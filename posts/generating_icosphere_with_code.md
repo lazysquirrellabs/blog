@@ -127,7 +127,7 @@ If you would like to take a look at the triangle indices and the vertex coordina
 # Step 2: Fragmentation
 Step 1 leaves us with a regular icosahedron, a shape which lacks detail and doesn't contain enough vertices to pass as a sphere. To remedy that, we need to generate more vertices; and that's where mesh fragmentation comes in.
 
-> ℹ️ Originally, this article described the fragmentation strategy used in versions 1.0.X of Sphere Generator, which required an extra final generation step to "normalize" all vertices. As [pointed out](https://www.reddit.com/r/Unity3D/comments/1eo1dxp/comment/lhe7w9q/) by Reddit user MonkeyMcBandwagon, the normalization step might be skipped if we use a different fragmentation strategy. The paragraphs below describe the new, improved fragmentation. The original, naive implementation is described in this article's original [archive](generating_icosphere_with_code_archive#the-icosphere).
+> ℹ️ Originally, this article described the fragmentation strategy used in versions 1.0.X of Sphere Generator, which required an extra final generation step to "normalize" all vertices. As [pointed out](https://www.reddit.com/r/Unity3D/comments/1eo1dxp/comment/lhe7w9q/) by Reddit user MonkeyMcBandwagon, the normalization step might be skipped if we use a different fragmentation strategy. The paragraphs below describe the new, improved fragmentation. The original, naive implementation is described in this article's original [archive](generating_icosphere_with_code_archive#step-2-fragmentation).
 
 Mesh fragmentation is the process of procedurally increasing the vertex count of a mesh by fragmenting its primitives (in this case triangles) into new, smaller ones. It aims to provide the mesh with more detail than existing. Fragmenting a mesh composed only by triangles consists of turning each triangle into 4 smaller ones. The image below displays an example of a triangle (larger, outer lines) that has been fragmented once into 4 smaller ones. It also happens to unequivocally resemble The Legend of Zelda's [triforce](https://en.wikipedia.org/wiki/Triforce):
 
@@ -145,7 +145,7 @@ If this approach is used, we end up with meshes like the ones in the image below
 
 ![](/assets/images/post22/icosahedrons.png) 
 
-Consequently, this fragmentation strategy requires an extra step to "expand" these vertices towards the sphere's surface—in fact, that's what the [original article](generating_icosphere_with_code_archive#the-icosphere) proposed and what Sphere Generator 1.0.X implemented. Even though this expansion stage is harmless, it can be fully avoided if we choose a fragmentation strategy that places the new vertices on the sphere's surface to begin with.
+Consequently, this fragmentation strategy requires an extra step to "expand" these vertices towards the sphere's surface—in fact, that's what the [original article](generating_icosphere_with_code_archive#step-3-normalization) proposed and what Sphere Generator 1.0.X implemented. Even though this expansion stage is harmless, it can be fully avoided if we choose a fragmentation strategy that places the new vertices on the sphere's surface to begin with.
 
 ## An improved fragmentation strategy
 
