@@ -222,14 +222,14 @@ Even though the goal of the terraced terrain generator was mostly accomplished o
 The features discussed up to this point shipped on [TTG 1.0.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.0.0). The following features expanded TTG's capabilities and shipped on later releases:
 - **Custom terrain heights**: instead of evenly spacing the terraces between the terrain's lowest and highest points, allow custom heights to be chosen. This feature was implemented on [version 1.1.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.0.1) and it's detailed on its own [blog post](ttg_custom_heights).
 - **Improved terrain detailing**: use Perlin noise octaves to create more natural terrains. This feature was implemented on [version 1.2.0](https://github.com/lazysquirrellabs/TTG/releases/tag/1.2.0) and it's described on its own [blog post](ttg_octaves).
+- **Spherical terrains**: in addition to planar terrains, allow spherical, planet-like terrains to be created. This feature was implemented on [version 2.0.0](https://github.com/lazysquirrellabs/TTG/releases/tag/2.0.0).
 
-These additions enabled a new level of expressiveness and detailing on TTG terrains. The image below displays example terrains that were generated using TTG 1.2.0:
+These additions enabled a new level of expressiveness and detailing on TTG terrains. The image below displays example terrains that were generated using TTG 2.0.0:
 
-![Five images of generated terraced terrains looping.](/assets/images/post17/loop.gif)
+![An image containing 6 terraced terrains: 3 spheres and 3 planes. The spheres are placed side-by-side, on the top of the image. The planes are also placed side-by-side, on the bottom of the image.](/assets/images/post24/banner.png)
 
 # What's next? 🔮
 Although it looks like the Terraced Terrain Generator is complete, there's always more work to be done. The following features are planned in future updates:
-- Sphere as a basic shape: let's create completely terraced planets!
 - Realtime sculpting: instead of letting an algorithm generate the hills, let the user interactively sculpt them.
 - Outer walls: “close” the generated mesh so it looks like a model carved in wood, sitting on a desk.
 

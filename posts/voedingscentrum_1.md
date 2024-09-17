@@ -13,7 +13,7 @@ The project was commissioned by [Voedingscentrum](https://www.voedingscentrum.nl
 
 ## Concept
 
-The game was planned as a fun, educacional VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
+The game was planned as a fun, educational VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
 
 ![/assets/images/post8/waiter.png](/assets/images/post8/characters.png)
 

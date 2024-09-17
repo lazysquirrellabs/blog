@@ -35,7 +35,7 @@ Here are the blogs posts so far, grouped by category and subject. I write mainly
 - [When software internationalization isn’t just about UI: a tale of how a parsing error crashed our game](/posts/localization_crash) (Apr. 2021)
 - [Finally, a proper Game Design Document (whatever that means)](/posts/finally_gdd) (Sep. 2022)
 - [Game testing made easier: decoupling code](/posts/decoupling_code) (Mar. 2023)
-- [Generating an icosphere with code](/posts/generating_icosphere_with_code) (Jun. 2024)
+- [Generating an icosphere with code](/posts/generating_icosphere_with_code) (Jun. 2024) ([archive](/archive/generating_icosphere_with_code_archive))
 
 # Software Development
 - [Tabs vs. spaces: the discussion that should not exist](/posts/tabs_vs_spaces) (Jul. 2024)
