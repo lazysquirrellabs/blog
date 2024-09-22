@@ -145,7 +145,7 @@ If this approach is used, we end up with meshes like the ones in the image below
 
 ![](/assets/images/post22/icosahedrons.png) 
 
-Consequently, this fragmentation strategy requires an extra step to "expand" these vertices towards the sphere's surface—in fact, that's what the [original article](generating_icosphere_with_code_archive#step-3-normalization) proposed and what Sphere Generator 1.0.X implemented. Even though this expansion stage is harmless, it can be fully avoided if we choose a fragmentation strategy that places the new vertices on the sphere's surface to begin with.
+Consequently, this fragmentation strategy requires an extra step to "expand" these vertices towards the sphere's surface—in fact, that's what the [original article](/archive/generating_icosphere_with_code_archive#step-3-normalization) proposed and what Sphere Generator 1.0.X implemented. Even though this expansion stage is harmless, it can be fully avoided if we choose a fragmentation strategy that places the new vertices on the sphere's surface to begin with.
 
 ## An improved fragmentation strategy
 
