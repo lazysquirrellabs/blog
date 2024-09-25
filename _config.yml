@@ -62,5 +62,9 @@ collections:
     relative_directory: /posts
     permalink: /posts/:title
 
+feed:
+  collections:
+    - articles
+
 #Staticman
 staticman_url: https://matheus-blog-comments.fly.dev/v2/entry/matheusamazonas/blog/master/comments
