@@ -5,107 +5,107 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://blog.matheusamazonas.net/</loc>
+  <loc>https://blog.lslabs.dev</loc>
   <lastmod>2024-03-24T16:14:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/archive</loc>
+  <loc>https://blog.lslabs.dev/archive</loc>
   <lastmod>2024-09-17T19:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/tabs_vs_spaces</loc>
+  <loc>https://blog.lslabs.dev/posts/tabs_vs_spaces</loc>
   <lastmod>2024-07-14T19:11:00+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/archive/generating_icosphere_with_code_archive</loc>
+  <loc>https://blog.lslabs.dev/archive/generating_icosphere_with_code_archive</loc>
   <lastmod>2024-09-17T19:05:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/generating_icosphere_with_code</loc>
+  <loc>https://blog.lslabs.dev/posts/generating_icosphere_with_code</loc>
   <lastmod>2024-09-17T19:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/ttg_octaves</loc>
+  <loc>https://blog.lslabs.dev/posts/ttg_octaves</loc>
   <lastmod>2024-09-04T18:30:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/ttg_custom_heights</loc>
+  <loc>https://blog.lslabs.dev/posts/ttg_custom_heights</loc>
   <lastmod>2024-03-24T16:11:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/coroutines_async_await</loc>
+  <loc>https://blog.lslabs.dev/posts/coroutines_async_await</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/ttg_performance</loc>
+  <loc>https://blog.lslabs.dev/posts/ttg_performance</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/ttg</loc>
+  <loc>https://blog.lslabs.dev/posts/ttg</loc>
   <lastmod>2024-09-04T18:27:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/parker_postmortem</loc>
+  <loc>https://blog.lslabs.dev/posts/parker_postmortem</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/decoupling_code</loc>
+  <loc>https://blog.lslabs.dev/posts/decoupling_code</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/finally_gdd</loc>
+  <loc>https://blog.lslabs.dev/posts/finally_gdd</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/voedingscentrum_2</loc>
+  <loc>https://blog.lslabs.dev/posts/voedingscentrum_2</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/localization_crash</loc>
+  <loc>https://blog.lslabs.dev/posts/localization_crash</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/null_check_equality_unity</loc>
+  <loc>https://blog.lslabs.dev/posts/null_check_equality_unity</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/unity_script_duality</loc>
+  <loc>https://blog.lslabs.dev/posts/unity_script_duality</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/finalizer_destructor_trap</loc>
+  <loc>https://blog.lslabs.dev/posts/finalizer_destructor_trap</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/voedingscentrum_1</loc>
+  <loc>https://blog.lslabs.dev/posts/voedingscentrum_1</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/currying_vs_partial_application</loc>
+  <loc>https://blog.lslabs.dev/posts/currying_vs_partial_application</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/android_6_permissions</loc>
+  <loc>https://blog.lslabs.dev/posts/android_6_permissions</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_3</loc>
+  <loc>https://blog.lslabs.dev/posts/unity_serialization_3</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_2</loc>
+  <loc>https://blog.lslabs.dev/posts/unity_serialization_2</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/unity_serialization_1</loc>
+  <loc>https://blog.lslabs.dev/posts/unity_serialization_1</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/unity_under_the_hood</loc>
+  <loc>https://blog.lslabs.dev/posts/unity_under_the_hood</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 <url>
-  <loc>https://blog.matheusamazonas.net/posts/how_does_unity_export</loc>
+  <loc>https://blog.lslabs.dev/posts/how_does_unity_export</loc>
   <lastmod>2023-11-19T11:01:39+00:00</lastmod>
 </url>
 </urlset>
