@@ -1,7 +1,7 @@
 # Site data
 title: Sometimes I Code
 subtitle: Lazy Squirrel Labs' blog
-description: Sometimes I play, sometimes I surf, sometimes I even code.
+description: Video games and tools development.
 url: "https://blog.lslabs.dev"
 author:
   name: Lazy Squirrel Labs
@@ -48,9 +48,9 @@ kramdown:
 minima:
   skin: dark
   social_links:
-    github: lazysquirrellabs
-    linkedin: matheusamazonas
-    instagram: lazysquirrellabs
+    - { platform: github,  user_url: "https://github.com/lazysquirrellabs" }
+    - { platform: linkedin, user_url: "https://www.linkedin.com/company/lazy-squirrel-labs" }
+    - { platform: lazysquirrellabs, user_url: "http://instagram.com/lazysquirrellabs" }
 
 # Permalink settings
 collections:
