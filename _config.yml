@@ -1,11 +1,11 @@
 # Site data
 title: Sometimes I Code
-subtitle: Matheus Amazonas' blog
+subtitle: Lazy Squirrel Labs' blog
 description: Sometimes I play, sometimes I surf, sometimes I even code.
-url: "https://blog.matheusamazonas.net"
+url: "https://blog.lslabs.dev"
 author:
-  name: Matheus Amazonas
-  email: "matheus.amazonas@gmail.com"
+  name: Lazy Squirrel Labs
+  email: "contact@lslabs.dev"
 
 # Include
 include:
@@ -18,9 +18,7 @@ navigation:
 - text: Archive
   url: /archive/
 - text: About
-  url: https://matheusamazonas.net
-- text: Portfolio
-  url: https://matheusamazonas.net/portfolio
+  url: https://lslabs.dev
 
 # Build settings
 remote_theme: jekyll/minima@fdc3aba23a1d59ad1d1f65f505693848c4b82fdf
@@ -50,10 +48,9 @@ kramdown:
 minima:
   skin: dark
   social_links:
-    github: matheusamazonas
+    github: lazysquirrellabs
     linkedin: matheusamazonas
-    youtube_channel: UCiCD4qB_TAvFBYOWPmHCfPg
-    youtube_channel_name: Matheus Amazonas
+    instagram: lazysquirrellabs
 
 # Permalink settings
 collections:
