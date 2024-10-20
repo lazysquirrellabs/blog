@@ -4,7 +4,7 @@ title: Archive
 permalink: /archive
 ---
 
-Here are the blogs posts so far, grouped by category and subject. I write mainly about game development. During my masters, I got quite interested in functional programming and it’s my main interest outside my working area.
+Here are the blogs posts so far, grouped by category and subject. We write mainly about game development, but are also quite interested in functional programming .
 
 # Game Development
 ### Unity deep dives
