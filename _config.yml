@@ -26,6 +26,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-target-blank
+  - jekyll-seo-tag
 
 enableComments: true
 
