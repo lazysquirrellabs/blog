@@ -1,7 +1,7 @@
 # Site data
 title: Sometimes I Code
-subtitle: Lazy Squirrel Labs' blog
-description: Video games and tools development.
+tagline: Lazy Squirrel Labs' blog
+description: Blog maintained by the game development studio Lazy Squirrel Labs. We write mostly about video game development, but also about software development in general.
 url: "https://blog.lslabs.dev"
 author:
   name: Lazy Squirrel Labs
