@@ -21,7 +21,7 @@ As usual with iOS development, you need a machine running macOS. Xcode is an ess
 That should be all we need to get it working.
 
 # Setup
-This is the setup that I used to perform the steps below, in case it relevant to your use case:
+This is the setup that I used to perform the steps below, in case it is relevant to your use case:
 - Hardware: macBook Pro 16" (M1 Max).
 - OS: macOS Sonoma 14.6.1.
 - Software:
