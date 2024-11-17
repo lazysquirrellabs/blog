@@ -4,7 +4,7 @@ title:  "Android 6 (Marshmallow) permissions and Unity"
 date:   2016/07/09 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: Apps built using Unity request all permissions at once when running on Android 6. In this post, we investigate the issue further and provide a solution for it.
+description: "Apps built using Unity request all permissions at once when running on Android 6. In this post, we investigate the issue further and provide a solution for it."
 ---
 While working on [Overclock](http://sky.vu/oc), our team faced a new problem with Android 6 (Marshmallow): all permissions were requested when the app launches the first time instead of when the user downloads the app. Not only that, but the permissions are requested individually and not altogether like it used to be, which showed us some permissions we didn’t even notice were there. After some research, we found some answers and some problems and I’ll list them here to hopefully help some developers in the future.
 

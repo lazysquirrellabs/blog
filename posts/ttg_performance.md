@@ -4,7 +4,7 @@ title:  "Terraced Terrain Generator performance improvements"
 date:   2023/04/09 11:10:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains.
+description: "This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains."
 ---
 This post details the process of improving the performance of Terraced Terrain Generator (TTG), a tool developed to procedurally generate terraced terrains in Unity. For more info about TTG, check its [website](http://ttg.matheusamazonas.net), and [repository](https://github.com/lazysquirrellabs/TTG). This post is part of a series that documents the development process of TTG, containing the following posts:
 - [Developing a Terraced Terrain Generator](/posts/ttg) 

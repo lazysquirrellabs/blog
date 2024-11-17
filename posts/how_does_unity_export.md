@@ -4,7 +4,7 @@ title:  "How does Unity export to so many platforms?"
 date:   2014-02-19 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: The Unity engine exports to many platforms, from PC to mobile, XR, consoles and web. How is that possible? Let's find out!
+description: "The Unity engine exports to many platforms, from PC to mobile, XR, consoles and web. How is that possible? Let's find out!"
 ---
 So for my first article I picked a not so simple theme, but one that has been extremely intriguing to me lately. This week a friend, during a talk about game development and Unity, asked me: *“How does Unity export to so many and different platforms?”* I started to think and formulate my answer, struggled and I couldn’t really answer why. I never really thought about it. So I started researching about it.
 

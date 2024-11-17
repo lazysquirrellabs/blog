@@ -4,7 +4,7 @@ title:  "Finally, a proper Game Design Document (whatever that means)"
 date:   2022/09/10 20:38:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: Game Design Documents (GDDs) are deemed essential by many developers, but are often neglected. In this article, we discuss why GDDs are so beneficial.
+description: "Game Design Documents (GDDs) are deemed essential by many developers, but are often neglected. In this article, we discuss why GDDs are so beneficial."
 ---
 A Game Design Document (GDD) is a famous and popular tool used by game developers to… well, to document the design of a game. Even though some say it's an essential part of the development process, most of the projects I've worked on didn't use GDDs during the entire development of the game (or at all). On my last project at [Fantazm](https://www.fantazm.com), I had the opportunity to make some decisions from the start. I took this opportunity to experiment with some concepts and ideas, and trying to properly use GDDs (whatever that means) was one of them. Here's my testimonial on the experience of using a GDD for that project.
 

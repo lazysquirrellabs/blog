@@ -4,7 +4,7 @@ title:  "[Postmortem] Parker - the game"
 date:   2023/04/07 17:07:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: A discussion on the development process of "Parker - the game", an online multiplayer turn-based team strategy video game built using Unity.
+description: "A discussion on the development process of Parker - the game, an online multiplayer turn-based team strategy video game built using Unity."
 ---
 {::options parse_block_html="true" /}
 

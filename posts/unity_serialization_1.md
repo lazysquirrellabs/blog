@@ -4,7 +4,7 @@ title:  "Unity serialization part 1: How it works and examples"
 date:   2015/04/11 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: The first post on a series about Unity serialization. Learn about what serialization is, how Unity does it, serializable types and ScriptableObject.
+description: "The first post on a series about Unity serialization. Learn about what serialization is, how Unity does it, serializable types and ScriptableObject."
 ---
 This post is part of a series about Unity serialization.  On this series of articles we will discuss a topic that is extremely  important to Unity development: serialization. This subject may be a bit cloudy for beginners, but understanding it not only helps to figure out how the Unity engine works, but it can also become really handy during a game development process and assist you to build better solutions. We will concentrate our study on the following subjects:
 

@@ -4,7 +4,7 @@ title:  "When software internationalization isn’t just about UI: a tale of how
 date:   2021/04/14 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: Learn how a software internationalization bug crashed our game, how hard it was to unearth the source of the error and how easy it was to fix it.
+description: "Learn how a software internationalization bug crashed our game, how hard it was to unearth the source of the error and how easy it was to fix it."
 ---
 Whenever we talk about adapting a game to different countries, the first thing we often think of is localization, but we sometimes neglect its sibling: internationalization. Wait, what’s the difference again? Internationalization is the process of designing and developing your software so it can easily be adapted and used in different, countries, cultures and languages. Localization is the process of adapting an existing software to be used in a new country, culture or language, usually by means of translating text and or/adding components that are relevant to the new environment. Even though localization uses the tools provided by internationalization to deliver its work, internationalization’s role is not to simply assist localization, as we will find out soon. In this article I will discuss how a software internationalization bug crashed our game, how hard it was to unearth the source of the error and how easy it was to fix it.
 

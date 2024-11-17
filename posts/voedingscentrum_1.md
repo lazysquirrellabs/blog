@@ -4,7 +4,7 @@ title:  "[Postmortem] Developing an educational, kiosk, VR game for Windows Mixe
 date:   2019/07/29 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: An analysis on the development of Voedingscentrum VR: an educational, kiosk-style and Virtual Reality game developed in Unity.
+description: "An analysis on the development of Voedingscentrum VR: an educational, kiosk-style and Virtual Reality game developed in Unity."
 ---
 In this article I analyze the development Voedingscentrum VR, an educational, kiosk-style and Virtual Reality game I helped to develop at [Fantazm](https://www.fantazm.com) from October 2018 until April 2019. After a quick introduction about the project, the biggest problems that surfaced during development are explained along with the solutions we found to solve them. At the end, a quick conclusion wraps the article up.
 

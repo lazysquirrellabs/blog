@@ -4,7 +4,7 @@ title:  "C#’s finalizer/destructor trap"
 date:   2019/09/08 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: A common mistake when using C#'s finalizers might lead to unwanted behavior, especially in applications made with the Unity engine. Let's learn how to avoid it.
+description: "A common mistake when using C#'s finalizers might lead to unwanted behavior, especially in applications made with the Unity engine. Let's learn how to avoid it."
 ---
 Let’s talk about C#’s finalizers (also called destructors in C#) and how a common mistake when using them might lead to unwanted behavior, especially in applications made with the Unity engine.
 

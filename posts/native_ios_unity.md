@@ -4,7 +4,7 @@ title:  "Creating and using a native iOS/iPadOS (Swift) library in Unity"
 date:   2024/11/17 12:18:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: Use iOS code in Unity—how to create a native iOS/iPadOS library written in Swift, and how to import and use it in a Unity iOS project, using C#.
+description: "Use iOS code in Unity: how to create a native iOS/iPadOS library written in Swift, and how to import and use it in a Unity iOS project, using C#."
 ---
 Unity is a great tool to develop cross-platform games and interactive applications, but it lacks some functionality that is often delivered by native platform libraries. A good example of that is iOS/iPadOS functionality that is only available in native libraries like SwiftUI.
 

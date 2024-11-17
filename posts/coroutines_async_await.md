@@ -4,7 +4,7 @@ title:  "Asynchronous programming in Unity: Coroutines vs. async/await"
 date:   2023/09/29 16:53:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
-description: Coroutines and async/await are two different strategies to implement asynchronous behavior in Unity. In this post, we introduce, contrast and discuss them.
+description: "Coroutines and async/await are two different strategies to implement asynchronous behavior in Unity. In this post, we introduce, contrast and discuss them."
 ---
 {::options parse_block_html="true" /}
 
