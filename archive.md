@@ -4,7 +4,7 @@ title: Archive
 permalink: /archive
 ---
 
-Here are the blogs posts so far, grouped by category and subject. We write mainly about game development, but are also quite interested in functional programming .
+Here are the blogs posts published so far, grouped by category and subject. We write mainly about game development, but are also quite interested in functional programming .
 
 ## Game Development
 ### Unity deep dives
