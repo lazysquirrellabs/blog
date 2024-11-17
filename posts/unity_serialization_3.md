@@ -9,7 +9,7 @@ This post is part of a series about Unity serialization. Click [here](unity_seri
 
 On the [last article](unity_serialization_2), we learnt how we can define our own serializable types and discovered some problems that can emerge from it. One solution (although not ideal) to our problems is Scriptable Objects. These objects have two major uses: saving and storing data in the Editor and saving and storing data as an asset. According to the documentation, they are optimized and can store huge portions of data. There are a few singularities about Scriptable Objects and we will discuss them on the following paragraphs.
 
-# Defining and Creating
+## Defining and Creating
 
 Primarily let’s learn how to define a Scriptable Object using the same example we’ve been using in the last article:
 
@@ -32,7 +32,7 @@ public class MyDatabase : ScriptableObject
 
 By marking your `ScriptableObject` with this modifier, a menu item will be created in the `Asset/Create` menu. Easy like that, this should create an Asset called `New My Database` in the Assets folder and it can be referenced by any `MonoBehaviour` just like any other type derived from `Unity.Object`. By doing this, we solve the first problem present on the previous blog [post](unity_serialization_2): databases should be assets and not `MonoBehaviour`. Now let’s learn how Scriptable Objects act differently from custom serializable classes in Unity.
 
-# Objects are stored as references, not copies
+## Objects are stored as references, not copies
 
 Consider the example from the previous [post](unity_serialization_2) and think about this: if a `MonoBehaviour` has two references to the same `City` object, how will they get serialized? How does the change made in one affect the other? The answer to these questions is slightly counterintuitive:  they are decoupled and serialized separately, hence changing one’s value won’t change the other’s. Let’s see an example using a `MonoBehaviour` that executes in edit mode just to make things easier:
 
@@ -98,7 +98,7 @@ We use debug logs to check the data since the inspector won’t show us much use
 
 We can also use Scriptable Objects as assets instead of scene objects and the effect is the same. In addition, this approach may be considered really specific, but is essential when really complicated relationships must be consistent between objects.
 
-# Polymorphism
+## Polymorphism
 
 We face a serialization problem when using polymorphism and custom serializable classes: an instance of a derived class is serialized as an instance of the base class. Let’s use the example the Unity Documentation [does](http://docs.unity3d.com/Manual/script-Serialization.html): animals. See the example:
 
@@ -216,7 +216,7 @@ This example is analogue to the previous one, so run it and observe the console.
 
 In addition, a fix to this polymorphism serialization problem has been extremely [requested](http://feedback.unity3d.com/suggestions/serialization-of-polymorphic-dat) by the community in the last years and haven’t been solved it.
 
-# Serialization depth limit (or no support for null)
+## Serialization depth limit (or no support for null)
 
 Demonstrating an example of the depth serialization problem in Unity is fairly simple. Take a look:
 
@@ -247,7 +247,7 @@ public class DepthClass : ScriptableObject
 
 And this simple change should get rid of the error and let you use more than 7 depth levels of references.
 
-# Data can be shared among objects
+## Data can be shared among objects
 
 This problem (although not listed on the previous article) is exactly the same discussed in the Unity [documentation](http://docs.unity3d.com/Manual/class-ScriptableObject.html) about Scriptable Objects. If you store an array of integers that occupies about 4MB in a prefab and you instantiate that prefab 10 times, you would have a copy of the array in each prefab’s instance, occupying a total of 40MB. That happens because the array lives on the script itself, and copying the prefab copies the script, hence the array.
 
@@ -280,6 +280,6 @@ Those are not really convincing, but I personally rather have a `ScriptableObjec
 
 \*: Note the emphasis on _data_only_. Using a prefab and a `MonoBehaviour` won’t solve the other problems.
 
-# Conclusion
+## Conclusion
 
 In this article we learnt how to solve some problems (most of them described on the [last](unity_serialization_2) article) that may emerge when dealing with custom serialized types and Unity serialization. Even though some problems can be solved by using Scriptable Objects, this solution is far form ideal.

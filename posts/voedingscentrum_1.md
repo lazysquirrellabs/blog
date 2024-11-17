@@ -7,11 +7,11 @@ categories: jekyll update
 ---
 In this article I analyze the development Voedingscentrum VR, an educational, kiosk-style and Virtual Reality game I helped to develop at [Fantazm](https://www.fantazm.com) from October 2018 until April 2019. After a quick introduction about the project, the biggest problems that surfaced during development are explained along with the solutions we found to solve them. At the end, a quick conclusion wraps the article up.
 
-# Introduction
+## Introduction
 
 The project was commissioned by [Voedingscentrum](https://www.voedingscentrum.nl/nl/service/english.aspx) (The Netherlands Nutrition Center), an independent organization funded by the Dutch government. Their aim is to use relevant research regarding sustainable nutrition to promote balanced, sustainable food consumption and production.
 
-## Concept
+### Concept
 
 The game was planned as a fun, educational VR experience targeted at children from 9 to 12 years old. Players are placed into a cartoonish world where they need to feed Smikkel – an elephant-like creature – for 3 to 4 meals: breakfast, lunch, afternoon snack and dinner.
 
@@ -24,34 +24,34 @@ Once playtime finishes, the feeding loop starts again. Once all the meal loops a
 
 The educational value is clear: children learn that what they ingest might affect their mood, stamina and health. The fun aspect is present: immersing into a cartoonish VR world and interacting with fictional characters is exciting, even for adults.
 
-## Team
+### Team
 
 Voedingscentrum was responsible for nutrition expertise and game design insights. The development team consisted of one game designer/project manager, two game developers (I inherited the project from another developer), one 2D artist, two 3D artists, one external 3D artist/animator and an external voice actor agency.
 
-## Timeline
+### Timeline
 
 Prototyping started as early as May of 2018 and the last version of the game was deployed in April 2019. Although this period might seem long, development didn’t take place continuously because the development team didn’t work on this project exclusively. Therefore, it’s hard to estimate how many hours were put into development.
 
-## Setup
+### Setup
 
 The VR experience was meant to be installed in Dutch museums. Besides the VR headset and controllers, walls with game art, a grass carpet and a TV (for spectators) would be installed to add a fun, immersive and inviting environment. By design, the experience should work unsupervised and require low maintenance. Windows Mixed Reality (hereafter referred as WMR) was chosen as the target platform because it offers the features we sought (VR headset with controllers and inside-out tracking) at an affordable price.
 
 ![](/assets/images/post8/48415118_10161161378390481_3020615091566411776_o.jpg)
 *Me playing the first setup of VoedingscentrumVR at [Boerhaave](https://rijksmuseumboerhaave.nl) museum in Leiden, the Netherlands. [Source](https://www.facebook.com/voedingscentrum/photos/a.10150983607945481/10161161378380481/?type=1&theater).*
 
-## Development environment
+### Development environment
 
 The project was developed using the Unity engine (by the end of the project, 2018.3.11f) and C# as a programming language. On initial development stages, Unity Collaborate was used for version controlling, but later we switched to a Git-based solution hosted by BitBucket.
 
-## Versions
+### Versions
 
 Three versions (1.0, 1.1 and 1.2) of the game were shipped. The first one was installed at Boerhaave Museum (Leiden, the Netherlands) in December of 2018 and it showed us right away that there were some challenges we had to overcome before the game was ready for the world. The exhibition was taken down and we came back to the drawing board. After a quick break, we started the development of version 1.1, on which we tackled most of the problems the previous version unearthed. Although most of the design problems found in version 1.0 were fixed in version 1.1, technical problems (mostly regarding Windows Mixed Reality) could not be overcome. The application was migrated from WMR to HTC VIVE + SteamVR on version 1.2.
 
-# Challenges
+## Challenges
 
 As expected, some challenges surfaced during the development process and after we installed the experience for the first time. In this section we discuss how we overcame them – whenever possible. Keep in mind that this article was published months after development ceased. Therefore, some of these problems might not exist anymore. If that’s the case and you are aware of a possible solution, please leave a comment on the comments section so this post can be updated. Adding new solutions to this postmortem can help many developers that might run into the same problems we did.
 
-## Controllers
+### Controllers
 
 Arguably the biggest challenge we faced during the game development were the WMR controllers. It’s nothing about their build quality or responsiveness (which are both great, by the way), but we ran into a few different aspects that didn’t match our project. We did not find solutions for some of these challenges, and there’s a reason behind that. At the end, the accumulation of problems regarding the controllers was so overwhelming that we decided to ditch the controllers altogether. We used a Leap Motion to track hand movement so we could use the player’s hands as interaction interfaces instead. Nevertheless, the problems we ran into before ditching the controllers  are listed below.
 
@@ -65,7 +65,7 @@ Finally, the controllers are wireless and no cords keep someone from removing th
 
 Facing all these challenges, we started to question our platform choice and to search for alternatives to WMR. But other platforms either didn’t solve our existing problems or introduced new ones. Our team had some experience with the Leap Motion and we decided it was worth a shot. We took a couple of days to implement the Leap Motion and its library into the game and by the end of it, we were quite surprised. Not only using the hands to interact with the VR elements solved all of the problems we had with the WMR controllers, but it also felt way more natural than pressing buttons. We decided to keep the WMR headset but we ditched the controllers for the Leap Motion. After some tests with children, we identified some problems regarding the Leap Motion (discussed on the next section), but they appeared to be way more manageable than the challenges we had with the WMR controllers.
 
-## Leap Motion
+### Leap Motion
 
 The Leap Motion was meant to replace the WMR controllers as interaction devices in the VR world. Although the switch eliminated the challenges we faced with WMR, other characteristic issues surfaced once we started to use the Leap Motion.
 
@@ -83,11 +83,11 @@ In order to integrate the Leap Motion into the VR setup, the sensor had to be fi
 
 During the installation of the experience, one problem became evident: the headset the client chose ([Samsung Odyssey](https://www.samsung.com/us/support/computing/hmd/hmd-odyssey/hmd-odyssey-mixed-reality/)) was different from the one used during development and it had a different sensor placement. Finding an optimal spot to attach the Leap Motion became a challenge because there’s less free room on the Samsung headset. After a few tests, it became obvious that there was no spot that would not occlude (even if just a bit) the headset sensors without compromising the hand tracking. In the end, we glued the Leap Motion in such a way that it would slightly obstruct the headset sensor, but not enough to compromise the WMR tracking. As a lesson, make sure you use the target hardware during development to avoid problems on installation/deployment day.
 
-## Sound
+### Sound
 
 Since the game is intended to be displayed on public spaces, the environmental noise could muffle the game voices and sounds. Thus, a setup with headphones was desirable. Luckily, there was a WMR headset with built-in headphones: the Samsung Odyssey. During playtests, a new game requirement was added: the external TV used to display the gameplay to spectators should also play the game sounds. By the time the game’s first version was installed, there was a Windows Mixed Reality setting to enable or disable audio redirection to the headset, but no audio mirroring option was available. The audio could go either to the headset or to the TV, but never to both. After some research, we found some third-party Windows applications that could simulate audio cards and that could potentially solve the problem, but it introduced some delay between the headset and the TV audio, which was undesirable. By the time we started working on the game’s second version, the WMR settings were updated and a mirroring option was added, but it presented the same delay problem as the third-party mirroring solution. Currently, the delay is still present and we have not found a solution for it yet.
 
-## Windows Mixed Reality
+### Windows Mixed Reality
 
 Even though the WMR platform sounds really promising and the quality of the compatible hardware is quite impressive for a first generation of devices, the development platform has a lot of room for improvement.
 
@@ -97,7 +97,7 @@ Additionally, there’s not much control over WMR’s play area. First, you can�
 
 Overall, I found the WMR platform to be too closed to developers. Sometimes it felt like I was fighting against the platform in order to accomplish my goals. Many settings that should be available (either on the WMR control panel or via an API) can’t be changed whatsoever. That being said, I did notice that the team responsible for the WMR platform is listening to developers and is slowly implementing requested features. Maybe the platform is just not mature enough and all it needs is some time to evolve.
 
-## Kiosk mode
+### Kiosk mode
 
 The game had specific requirements that made it a kiosk application: the computer should be easy to turn on and off (ideally just one physical button), the application should open automatically when the system finishes booting up, nobody should assist or instruct players, the application should run as long as the computer was on and the game should reset every time someone takes the headset off. At the time, unlike with the HoloLens, WMR didn’t have a kiosk mode, so we had to implement the requirements by ourselves.
 
@@ -109,23 +109,23 @@ The game should reset every time the headset is taken off so the next player get
 
 Once the above features were implemented, the game behaved like a kiosk application that could be turn on and off using a single button (the computer’s power button) and that would work uninterruptedly for hours on end.
 
-# Other lessons
+## Other lessons
 
-## Playtests
+### Playtests
 
 Before starting external playtests, we would introduce the game and instruct the children on how to play it. In retrospect, we shouldn’t done that. Since the game would be used as an unsupervised installation, nobody would explain to children how to play the game (in the end we added some small icons with basic guidelines on the spectator screen, but it still wasn’t as informative as the instructions we gave them). Therefore, we should’ve replicated the same kind of environment during external playtests. As a consequence, we didn’t catch usability and UX problems as soon as we should have. In fact, some of the problems were only evident after the first day the game was available to the public. On future projects, we will try to mimic the real world environment on external playtests in order to catch usability problems as early as possible.
 
-## Programming
+### Programming
 
 *Attention: this subsection is targeted at programmers.*
 
 I tried two new features on this project: async/await and C# 7. The first one was used as a replacement for coroutines because it delivers the same features but enables the usage of return values and error handling. You can read more about the motivation behind the switch and how to use async/await in Unity [here](http://www.stevevermeulen.com/index.php/2017/09/using-async-await-in-unity3d-2017/). The new version of C# brings features as nested functions, pattern matching, tuples, more expression-bodied members and out variables. These features allow for more succinct but easily understandable code. You can read more about them [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=2ahUKEwj8p9efv7LjAhWFyKQKHaYSCKEQFjABegQIBxAB&url=https%3A%2F%2Fblogs.msdn.microsoft.com%2Fdotnet%2F2017%2F03%2F09%2Fnew-features-in-c-7-0%2F&usg=AOvVaw1dYTRAtnI2IfwNBovKptxE) and [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwj8p9efv7LjAhWFyKQKHaYSCKEQFjAAegQIABAB&url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fcsharp%2Fwhats-new%2Fcsharp-7&usg=AOvVaw3imMXTODOiW-PngovgZ93J). Both async/await and C# 7 additions proved to be worth the time investment and I’m glad I took the time to learn about them.
 
-## Tooling
+### Tooling
 
 Looking back, I wish we’d created more tools to automate repetitive tasks we had to perform during development. An example is taking screenshots of food items within the environment for client approval. The first time I had to take screenshots, I didn’t think that we would end up having so many approval iterations, so I didn’t implement a tool to automate it and took them manually. And every time I had to take the screenshots again, I’d think “I’m sure this is the last time. It’s not worth implementing a tool just for this”. And as one can imagine, I was wrong. Many times.
 
-# Conclusion
+## Conclusion
 
 VoedingscentrumVR was a challenging project, mostly from usability and UX perspectives. We learned valuable lessons on how to design unsupervised VR applications, how to deal with WMR limitations, how to plan better playtests and how to design better interactions using the Leap Motion. It was a project that seemed an easy task at the beginning, but that showed us we had more to learn than expected. But at the end, we accomplished our task and developed a fun, educational VR game that children enjoy playing.
 

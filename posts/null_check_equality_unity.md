@@ -7,11 +7,11 @@ categories: jekyll update
 ---
 In some programming languages – like C# – it is a common practice to use comparison operators and functions to check for null references. However, when programming in Unity, there are some particularities to keep in mind that the usual C# programmer usually does not take into consideration. This article is a guide on how these caveats work and how to properly use C#’s equality tools in Unity.
 
-# A quick recap of C#’s equality functions and operators
+## A quick recap of C#’s equality functions and operators
 
 There are three main ways to check for equality in C#: the `ReferenceEquals` function, the `==` operator and the `Equals` function. If you are an experienced C# developer that knows your ways in and out of the language’s equality tools, fell free to skip this section and jump straight to the Unity section.
 
-## The ReferenceEquals function
+### The ReferenceEquals function
 
 This function is not as famous as the other alternatives, but it is the easier to understand. It’s a static function from the Object class and it takes two object arguments to be compared for equality.
 
@@ -21,7 +21,7 @@ public static bool ReferenceEquals (object objA, object objB);
 
 It returns a bool that represents whether the two arguments have the same reference – that is, the same memory address. It can not be overwritten, which is understandable. It does not check for the object contents and/or data, it only takes their references into account.
 
-## The == operator
+### The == operator
 
 The `==` operator can be used for both value and reference types. For built-in value types, it returns whether the values are the same. For user-defined types, they can only be used if the operator has been defined. Here’s an example of a `==` operator defined for the `Coordinates` struct. The `!=` operator must also be defined whenever the `==` is, otherwise a “*The operator == requires a matching operator ‘!=’ to also be defined*” compilation error will be thrown.
 
@@ -69,7 +69,7 @@ public class Person
 
 Not that both arguments are of type Coordinates, so the operator can only be used on objects of that type – and on its subtypes.
 
-## The Equals function
+### The Equals function
 
 This function lives in the `Object` class but unlike `ReferenceEquals`, it is virtual and can be overwritten by any user-defined type. Its default behaviors for reference types (implemented in the `Object` class) mimics `ReferenceEquals`: it checks if the object share the same reference. Its default behavior for value types (defined in the `ValueType` class) checks if all fields of both objects are the same. Check its definition below.
 
@@ -100,7 +100,7 @@ In addition to checking the parameter for a null reference, it is necessary to c
 
 If you want to dive deeper into C#’s equality tools, you might want to check [this article](https://coding.abel.nu/2014/09/net-and-equals/) out.
 
-# Equality in Unity
+## Equality in Unity
 
 Out of the three main equality tools C# provides (`ReferenceEquals`, `Equals` and `==`), only the `==` operator requires special attention – the other two behave exactly like they do in vanilla C#.
 
@@ -127,11 +127,11 @@ Debug.Log(example == null);
 
 The log statement above will print “true“. At first, that might seem obvious because we just destroyed that instance, but as I explained on [my previous article](unity_script_duality), the instance’s reference is *not* null and it was not garbage-collected yet. In fact, it won’t be garbage-collected until the scope it has been defined still exists. What Unity’s custom `==` operator does in this scenario is to check if the underlying entity has been destroyed, which in this case is true. This behavior helps programmers identifying objects that have been destroyed but still hold a valid reference.
 
-## Other similar operators
+### Other similar operators
 
 A few C# operators have implicit null checks. They are worth investigating here because they behave inconsistently with the `==` operator.
 
-### The null-conditional operators ?. and ?[ ]
+#### The null-conditional operators ?. and ?[ ]
 
 These operators were planned as shortcuts for safe member and element access, respectively. The portion of code following the `?.` or `?[]` will only be executed if the object they been invoked on is not null. In standard C#, they are the equivalent of executing a similar call wrapped in a null check. For example, the following code, assuming that `_dog` is not instance of `UnityEngine.Object`:
 
@@ -148,7 +148,7 @@ _dog?.Bark();
 
 Although these two code snippets might behave exactly the same in vanilla C#, they behave differently in Unity if `_dog` is an instance of `UnityEngine.Object`. Unlike `==`, the engine does not have custom implementation for these operators. As a consequence, the first code snippet would check for underlying object destruction whereas the second code snippet would not. If you use the Rider IDE, the warning “Possible unintended bypass of lifetime check of underlying Unity engine object” will be displayed whenever one of these operators are used on an object of a class that inherits from `UnityEngine.Object`.
 
-### The null-coalescing operators ?? and ??=
+#### The null-coalescing operators ?? and ??=
 
 The `??` operator checks if its left operand is null. If it not is, it returns its left operand. If it is, it returns its right operand. In the example below, assuming that `Animal` is a class that does not inherit from `UnityEngine.Object`, `a3` will point to `a2` because the left operand of `??` (`a1`) is null.
 
@@ -184,13 +184,13 @@ if (a1 == null)
 
 Just like the null-conditional operators, there are no custom implementations of these operators for `UnityEngine.Object`. As a consequence, if the `Animal` class from the code snippets above inherited from `MonoBehaviour`, for example, the implicit null checks would not behave like the null checks using the `==` operator. Thus, their respective “equivalent” code would not be equivalent anymore. Again, a warning will be displayed in the Rider IDE when using these operands on objects that inherit from `UnityEngine.Object`.
 
-# Wrapping up
+## Wrapping up
 
 Equality operators and functions are basic language constructs present in every C# programmer’s toolset. When developing in standard C#, a programmer should keep in mind how some of these constructs behave differently for value and reference types. When programming in C# for Unity, a developer must also keep in mind how the engine tailored the language’s `==` and `!=` operators to its ecosystem. In addition, one must keep in mind that some shortcut operators that perform implicit null checks behave inconsistently with the engine’s `==` operator. With that in mind, a developer should master all these equality tools in order to avoid undesired behavior. Finally, some IDEs like Rider will warn the programmer about possible pitfalls regarding these operators.
 
 That’s it for today. As always, feel free to leave a comment with questions, corrections, criticism or anything else that you want to add. See you next time!
 
-# Source
+## Source
 
 - [Passion for Coding: .NET == and .Equals()](https://coding.abel.nu/2014/09/net-and-equals/)
 - [Unity Blog: Custom == operator, should we keep it?](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/)

@@ -12,7 +12,7 @@ And I don't mean to joke with that punchline—I truly believe that tabs are obj
 > ℹ️ Consistency throughout codebases and teams is more important than sticking to our personal opinion. Personally, I believe that mixing tabs and spaces for indentation is worse than using spaces because the inconsistencies and merge conflicts that it brings (if you're using a Version Control System) greatly outweigh the clear benefits of picking tabs.
 {: .callout }
 
-# The problem
+## The problem
 First, it's important to quickly describe the problem. The "tabs vs. spaces" debate surrounds the choice of character used to indent code blocks. Indentation is usually represented as whitespace between the start of one line and the following one. For example:
 
 ```csharp
@@ -45,15 +45,15 @@ Out of the six characters above, only two can be used to represent whitespace wi
 
 And so the eternal discussion was born: should we use tabs or spaces for indenting code?
 
-## Why should we care?
+### Why should we care?
 Both tabs and spaces look like whitespace, so why should we care? First, as pointed out in the introduction, consistency is key. Mixing tabs and spaces is a recipe for disaster, particularly when working in a team, and even more when working with Version Control Systems.
 
 Well, then let's just pick any and move on, right? They both look the same, so how can they be any different? As it happens, there are many practical differences between them. The following sections describe and contrast the differences and ultimately conclude that, given the distinction, [Richard Hendricks was right](https://www.youtube.com/watch?v=SsoOG6ZeyUI) and tab is objectively the best choice.
 
-# The differences
+## The differences
 Let's take a look at the distinction from different perspectives.
 
-## Consistency
+### Consistency
 I would like to start with an argument that is usually used in favor of spaces, but that fails to understand the nature behind tabs. The argument usually goes in the lines of:
 
 > Tabs might look different in different computers or even software applications, leading to inconsistency. Spaces, in the other hand, will always look the same regardless of the computer or software it's being displayed at.
@@ -62,7 +62,7 @@ I've encountered this argument multiple times, spanning from discussions with fr
 
 But if not a flaw, what is this "inconsistency", a strength? What does it bring to the table?
 
-## Customization
+### Customization
 The origins of the tab character shine a light on what value the "inconsistency" brings. To fully understand the idea behind the tab character, we need to go back in time as early as 1900, when electronic computers did not exist and typewriters reigned. The tab key was first introduced as a mean of automating the tabulation process (arrange data or text in a table form), saving the typist repeated presses of the space and backspace keys. The width of the tabulation was flexible, and it was determined by a tabulator rack and its clips.
 
 The idea of tabulation with customizable width made its way through the 20th century all the way to the ASCII standard which we still use today, in the form of the vertical and horizontal tabulation characters `'\t'` and `'\v'`.  These characters were [created](https://en.wikipedia.org/wiki/Tab_key#Tab_characters) to allow for flexible tabulation on printers, where the user could customize its length in column and line units, respectively.
@@ -71,7 +71,7 @@ In short, tab characters have always been used to provide customizable tabulatio
 
 Notice how, in this case, customization might lead to "inconsistency": the same source code might be displayed differently on my computer than on my colleague's because the software applications used to display the code have different tabulation widths set. If we would like to make both of them look exactly the same, all we need to do is to change the tab width setting on one of the applications. This is as much as inconsistent as saying "the cars in the road are inconsistently colored" when in reality what it means is "car colors are customizable". 
 
-## Respecting each other's preferences
+### Respecting each other's preferences
 Some might say that spaces also allow for customization—you can choose any amount of spaces for indentation as you wish, just like you can do with tabs. Although that sounds like a simple solution when working individually, it becomes problematic when working on a team because only two outcomes are possible. Either:
 - The team agrees on a standard number of spaces to use for indentation (let's say 4), keeping the code base consistent, or;
 - No standard is agreed on, and each developer is free to choose a space count to their heart's content.
@@ -80,7 +80,7 @@ The first scenario accomplishes consistency at the cost of customization and res
 
 Tabs come to the rescue. First, it delivers consistency: a codebase that uses tabs for indentation will have consistent indentation lengths within the same code editor. The code might look different between my computer and my coworker's, but neither I nor they should care about that, just like they might use a different code editor, font and editor theme as me. Second, as it just became obvious, customization is also conserved. Thus, unlike spaces, tabs manage to deliver on both promises. It's the best of both worlds and is objectively a better choice.
 
-## Accessibility
+### Accessibility
 One aspect of the debate that is often forgotten (but that thankfully has been remembered more often these days) is accessibility. Take the following scenarios into consideration:
 1. A visually impaired developer struggles to recognize small indentations in code. Indentations of 1, 2 or even 4 columns are hard to identify, and they are more comfortable with at least 6 columns. If the code base they work on used 4 spaces for indentation, they would struggle to work comfortably. 
 2. Another developer, with a completely different visual impairment, uses a large font on their code editor in order to make the code more readable. We're not talking about small increments here; we're talking about *huge* font sizes that are not personal taste, but instead a necessity. If, for example, the code being displayed uses 4 spaces for indentation, large portions of the screen will be wasted. Screen real-estate is already valuable for people that are not visually impaired, imagine for those who are. In this case, the developer in question would highly benefit from a small indentation. In some instances, 1 column would be ideal.
@@ -92,7 +92,7 @@ Tabs, in the other hand, allow developers 1 and 2 to choose whatever column leng
 
 The scenarios above are not fictional. Points 1 and 2 were experienced by Chase Moskal and shared on a Reddit [thread](https://www.reddit.com/r/javascript/comments/c8drjo/nobody_talks_about_the_real_reason_to_use_tabs/) that gained some traction in the tabs/spaces discussion. The third scenario was [presented](https://github.com/prettier/prettier/issues/7475#issuecomment-668544890) first-hand by Marco Zehe, who is totally blind from birth. These scenarios should, in my opinion, be enough to establish tabs as a standard even if the benefits so far discussed in this article did not hold. The accessibility argument dwarves any small nitpick and personal preference.
 
-## Alignment
+### Alignment
 Some spaces defenders argue that it's hard to align multiline code with tabs because its flexible nature won't allow for consistent alignment. The code snippet below, for example, contains a multiline method call that was perfectly aligned using tabs (with width set to three columns) on lines 2 and 3:
 
 ```csharp
@@ -119,15 +119,15 @@ The images below demonstrate this practice. Both of them display the same code s
 ![](/assets/images/post23/alignment2.png)
 
 Notice how the alignment didn't break when the tab width was modified. This approach works on any indentation level and can be used when code is indented, aligned, then indented again, preserving the desired layout. This last addition to our formatting strategy delivers all benefits of tabs (consistency and customization) while preserving alignment when different tab widths are used.
-## File space (JK)
+### File space (JK)
 There is one last argument against using spaces for indentation. Each tab is stored as a single character, and so is each space. In the best case scenario (if 1 space is used for each indentation level) tabs take the same amount of storage than spaces. In the most common scenario (4 spaces), they take 1/4 of the storage space. In the worst case scenario (infinite spaces are used), it's impossible to store the source code using spaces due to storage limitations.
 
 This argument is usually considered quite weak to the point that it is often considered a joke, but I can not let the gag die. In a time when 4K video streaming is becoming a norm, the gap between the storage needs of these 2 strategies is beyond negligible.
-# One last thing
+## One last thing
 It might go without saying, but better safe than sorry: enforcing tab width in a team or organization goes against the idea of using tabs to begin with. Customization is the reason behind the tab character, and abandoning it defeats its purpose. If you do so, you might as well use spaces.
 
 Additionally, if you build a tool for developers that allows source code to be displayed, I beg you: allow users to choose their own tab width.
-# Conclusion
+## Conclusion
 Tabs should be the industry's indentation standard because it preserves consistency while allowing for customization and respecting personal preferences. Additionally, it is *the* choice when it comes to accessibility. Finally, tabs can be used for indentation along spaces for alignment, combining the best of both worlds.
 
 That's all, folks! As usual, feel free to use the comment section below for questions, suggestions, corrections, or just to say “hi”. See you on the next one!

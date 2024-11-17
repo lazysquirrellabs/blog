@@ -12,7 +12,7 @@ This article aims to contrast two different strategies for writing asynchronous 
 > ℹ️ If you are familiar with Coroutines and `async`/`await` and you're just looking for the differences between them, jump to the [Coroutines vs. async/await](#coroutines-vs-asyncawait) section.
 {: .callout }
 
-# Coroutines
+## Coroutines
 
 Coroutines are a handy tool to conveniently write code that spans over multiple frames. They can be used, for example, to dim a light until it's completely off. 
 
@@ -88,25 +88,25 @@ It's important to point out the asynchronous nature of a Coroutine: the code ins
 
 Coroutines can be stopped, chained, and Unity's API offers support for this asynchronous pattern in many ways. Even though there is [a lot you can do](https://docs.unity3d.com/Manual/Coroutines.html) with Coroutines, the aim of this article is not to dive deep into them, but to contrast them with an alternative.
 
-# The `async`/`await` pattern
+## The `async`/`await` pattern
 
 The `async` and `await` keywords are part of C#'s [asynchronous programming model](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/), which follows the [Task-based Asynchronous Pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) (TAP). In short, it is a bundle of language features (keywords, types, methods and runtime support) that aim to ease asynchronous programming. 
 
-## Motivation
+### Motivation
 
 The motivation behind asynchronous programming in traditional software development is simple: some operations (most notably I/O operations) depend on external resources and conditions to complete. We call such operations “asynchronous”. Receiving network packages via the `Socket.Receive` [method](https://learn.microsoft.com/en-us/dotnet/api/system.net.sockets.socket.receive?view=net-7.0) is an example of a potentially asynchronous operation: we depend on external resources (in this case, on actual data to be available) to complete the operation. Whenever traditional, synchronous code tries to execute an asynchronous operation, it has no other choice: it must wait until the asynchronous operation is performed, “blocking” execution until a certain condition (e.g., a network packet has arrived) is met. In this context, “blocking” means that the thread executing the synchronous code will pause execution, causing a context switch (an expensive operation).
 
 Asynchronous programming came to solve the resource management issue: instead of blocking the thread while waiting for the asynchronous operation to complete, signal that you're waiting for it, say what you'd like to be done after it's completed, and release the thread so it can perform other tasks. Whenever the asynchronous operation is completed, the runtime will fetch a thread to continue the execution from where it left off.
 
-## History
+### History
 
 Previously, writing asynchronous C# code meant dealing with lots of callbacks, state objects, and completion events. Reading asynchronous code was not a linear operation and it involved following a callback chain. More often than not, most of the time and effort spent writing asynchronous code was dedicated to managing the asynchronous aspect of the code, instead of completing the task at hand.
 
-## Task-based Asynchronous Pattern (TAP)
+### Task-based Asynchronous Pattern (TAP)
 
 Introduced in .NET Framework 4.5, the TAP simplifies writing and reading asynchronous code. Asynchronous operations are represented by the `Task` and `Task<T>` classes. Instead of following a callback chain, tasks can be read sequentially, line after line. In addition, tasks can be composed and canceled. Waiting for an asynchronous operation is accomplished via the `await` keyword. A method can be awaited if it returns an “awaitable” type (e.g., `Task`). Asynchronous methods (i.e., methods that wait for asynchronous operations) must be tagged with the `async` keyword. 
 
-## TAP in Unity
+### TAP in Unity
 
 The Task-based Asynchronous Pattern has been supported in Unity [since version 2017.1](https://github.com/Unity-Technologies/UnityCsReference/blob/96f436785a211ceaee095b67b170b8ce73908350/Runtime/Export/UnitySynchronizationContext.cs). Therefore, we can rewrite the light dimming example from the previous section using TAP's constructs:
 
@@ -130,7 +130,7 @@ The code above is extremely similar to the dimming's Coroutine approach from the
 
 There are some valid points worth considering  when comparing the two approaches. But before we jump into the differences, I would like to discuss how asynchronous programming in game development differs from traditional software development.
 
-# Asynchronous programming in game development
+## Asynchronous programming in game development
 
 In “traditional” software, asynchronous operations are a necessary evil that we can't get gif of. Let's say, for example, that we're waiting for a network socket to receive some data and there's none available. It's impossible to eliminate the issue at hand (there's no data to receive). We can't just magically place the data into the socket buffer, unless it has actually been received. There's no other choice besides waiting until the data is available to continue execution. In an ideal world, asynchronous operations would not exist and every operation would be synchronous. Thread blocking would be eradicated and everything would be amazing. But that's not the world we live in, and we have to cope with asynchronous calls. Solutions like TAP and `async`/`await` aim to ease writing and reading asynchronous code, but they don't eliminate their existence.
 
@@ -138,7 +138,7 @@ Even though the same holds for game development, we don't just cope with asynchr
 
 This distinction might seem obvious, but it has some impact on how game developers deal with asynchronous operations. While non-game developers try to avoid asynchronous operations at all costs, game developers embrace them. Instead of a necessary evil, they become a tool to model operations that span across multiple frames. Consequently, game developers might not only encounter, but also write asynchronous code much more often than traditional developers. I believe, therefore, that like any other tool, we should understand it, compare the available options and learn which ones are best for each task.
 
-# Coroutines vs. `async`/`await`
+## Coroutines vs. `async`/`await`
 
 Even though both strategies are capable of modeling asynchronous operations, there are some important differences between them. This section presents the ones I judge most important, split into different aspects and in no particular order.
 
@@ -315,7 +315,7 @@ The allocation cost of both Coroutines and Tasks might seem nitpicking, but it i
 Fortunately, an alternative to C#'s `Task` aims to reduce this performance overhead: UniTask. We will dive into this solution in the next section.
 </details>
 
-# UniTask: an alternative to `Task`
+## UniTask: an alternative to `Task`
 
 [UniTask](https://github.com/Cysharp/UniTask) is a library that, in their words, “provides an efficient allocation free async/await integration for Unity”. It introduces a replacement for the `Task` class when using C#'s TAP in Unity: the `UniTask` struct. It's a drop-in replacement that behaves almost exactly like `Task` would, with a few exceptions: 
 
@@ -333,7 +333,7 @@ Fortunately, an alternative to C#'s `Task` aims to reduce this performance overh
 
 When compared to `Task`, `UniTask` maintains most of the characteristics discussed in the previous section: outcome accessibility, cancellation, lifetime management, error handling and multithreading support. At the same time, it improves “fire and forget” support and memory allocation. The downside is clear: availability. UniTask is not built into C#'s standard library nor into Unity. In my opinion, it's a price worth paying for an overall superior solution for writing asynchronous code in Unity.
 
-# Conclusion
+## Conclusion
 
 In this article, we took a deep dive into two solutions for writing asynchronous code in Unity: Coroutines and C#'s Task-based Asynchronous Pattern (TAP) with `async`/`await`. We compared these approaches against each other in categories that exposed the main differences between them.
 

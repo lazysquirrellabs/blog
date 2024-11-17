@@ -6,7 +6,7 @@ permalink: /archive
 
 Here are the blogs posts so far, grouped by category and subject. We write mainly about game development, but are also quite interested in functional programming .
 
-# Game Development
+## Game Development
 ### Unity deep dives
 - [How does Unity export to so many platforms?](/posts/how_does_unity_export) (Feb. 2014)
 - [How does Unity scripting work under the hood?](/posts/unity_under_the_hood) (Dec. 2014)
@@ -38,8 +38,8 @@ Here are the blogs posts so far, grouped by category and subject. We write mainl
 - [Generating an icosphere with code](/posts/generating_icosphere_with_code) (Jun. 2024) ([archive](/archive/generating_icosphere_with_code_archive))
 - [Creating and using a native iOS/iPadOS (Swift) library in Unity](/posts/native_ios_unity) (Nov. 2024)
 
-# Software Development
+## Software Development
 - [Tabs vs. spaces: the discussion that should not exist](/posts/tabs_vs_spaces) (Jul. 2024)
 
-# Functional Programming
+## Functional Programming
 - [FP: Currying vs. partial application](/posts/currying_vs_partial_application) (Oct. 2017)

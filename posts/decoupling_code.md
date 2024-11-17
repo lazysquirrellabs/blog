@@ -7,11 +7,11 @@ categories: jekyll update
 ---
 Most (or close to none) of the game projects I've worked in the past implemented automated tests. I was aware of the benefits this type of testing could bring, but I was also knew that implementing them could be quite challenging. In this article, I describe a strategy that helped me to write automated tests in a video game I've developed: code decoupling.
 
-# Motivation
+## Motivation
 
 It is widely accepted among software developers that automated tests are extremely helpful when developing, maintaining and validating applications. Some modern approaches like Test-driven Development (TDD) go as far as to put test code as the central player during the development of a software. In some areas like web development, where Continuous Integration and Delivery are becoming more and more common, automated tests are a programmer's bread and butter. Then why is it so uncommon to write automated tests in video game projects, when compared to traditional software?
 
-# The challenge
+## The challenge
 
 There is no clear answer to this question, but one thought keeps popping up in discussions on the subject: video games are just too complex. Take a simple 3D endless wave survival game as an example. In this game, multiple enemies follow and attack the player when they're close enough. The player can attack them using melee and range weapons that are occasionally dropped by enemies when killed. Even though it doesn't sound like the most complex game ever created, it actually is quite convoluted when we analyze it from a testing perspective.
 
@@ -21,7 +21,7 @@ The number of possible combinations of variables is overwhelming and the number 
 
 Let's look at the problem from another perspective: bug reproduction. It's not rare for game developers to fail to reproduce some bugs, even when they have multiple bug reports with screenshots and screen recordings of them. They try over and over again, but some bugs seem to be impossible to reproduce. After some time, they finally succeed to reproduce the bug and realize that the test attempts were not using the same variable set as the users who were able to reproduce the bug. This could be anything from hitting a wall at a very specific angle, equipping a specific armor set, or being under the effect of a special potion. If reproducing bugs might be that hard, how does one write automated tests for a game?
 
-# Code decoupling
+## Code decoupling
 
 The answer is not simple, and there are different techniques that help developers with automated testing. In this article, I will discuss a technique that has been really relevant to me in the projects I’ve recently worked on.
 
@@ -29,7 +29,7 @@ In past projects, the main argument I've heard against investing development tim
 
 The strategy I used to ease the process of writing automated tests is well-known in the industry, but is often forgotten: decouple game logic from their interactive/visual representation. In Unity terms, this means that most of the game logic did not live in classes that inherited from `MonoBehaviour` (a Unity class that has a strong focus on the interactive aspect of the game), but in vanilla C# constructs instead.
 
-## Example: company management game
+### Example: company management game
 
 For the sake of analyzing the problem, let's introduce a simple fictional video game: a multiplayer turn-based strategy game where each player manages a company that produces, distributes and sells water bottles. Each company is composed of 5 departments, including a financial department responsible for budgeting. Each department has 3 different areas, which can be improved by acquiring upgrades. Upgrades will affect some KPIs (Key Points of Interest) like production rate, sales and profit. Each turn, players need to decide on:
 
@@ -41,7 +41,7 @@ At the end of each turn, a year is simulated, including market demand, supply, u
 
 The game could certainly benefit from more features, but it's complex enough to aid us on understanding the central topic of this article.
 
-## Separation of concerns
+### Separation of concerns
 
 Now that we understand the example, let's analyze it from the code decoupling perspective. First, let's look into the highly coupled way of coding it.
 
@@ -51,7 +51,7 @@ The example above contains two types of logic: interactive/visual logic and game
 
 This distinction is the heart of the code decoupling strategy. The idea is that the game logic code should be decoupled from its interactive/visual counterpart. By doing so, the game logic code doesn't depend on interactions, and we can test it separately from the rest of the application.
 
-## Applying code decoupling
+### Applying code decoupling
 
 Now that we've discussed the concept of code decoupling, let's see how to apply it in our example game.
 
@@ -59,7 +59,7 @@ Instead of writing a `DepartmentBehaviour`, let's split the two types of code in
 
 If we keep decoupling and connecting more game entities (e.g. `Upgrade` and `UpgradeController`, `Company` and `CompanyController`), we end up with the same features and the same game, but its code base is completely decoupled. So far, it seems like we've accomplished nothing.
 
-## Reaping what we sowed
+### Reaping what we sowed
 
 We are not seeking code decoupling just for the sake of it. A decoupled codebase has a characteristic that might seem obvious but is often overlooked: we don't need the interactive aspect of the game engine to play games anymore. All we need is to create instances of the entities (i.e. `Company`, `Department`, etc.) with the relevant data and then perform operations (e.g. buy an upgrade, change a department's budget) via code. If we write the right boilerplate code, we can play full game matches via code only. 
 
@@ -73,7 +73,7 @@ Just like that, we can write automated tests on game logic that are:
 - Easy to create: once you've discovered a bug in the game logic, writing an automated test for it should require a considerable smaller amount of effort than programming an interactive test.
 - Scalable: doubling the size of your automated test suite means adding a few seconds to your build pipeline, not hours or days in playtests.
 
-## Not just game logic
+### Not just game logic
 
 Even though the examples above focus on game logic, that's not the only kind of code that benefits from decoupling. Here are some other examples:
 
@@ -82,7 +82,7 @@ Even though the examples above focus on game logic, that's not the only kind of 
 - Fuzzy testing. Provide random, unexpected or invalid data as input and see how the application reacts to it. Does it handle it gracefully, or does it crash?
 - Serialization/deserialization.
 
-# Tests and UI as views
+## Tests and UI as views
 
 If we consider the decoupled game logic portion of the codebase as the game core, the UI (engine-based) and the automated tests can be considered as *views* of our game. The UI is a view where the game is played by interacting via a graphical interface that is rendered at high frame rates, using input methods like a mouse and a keyboard. Automated tests are a view where the game is played via predefined operations executed by a test scheduler. 
 
@@ -93,7 +93,7 @@ Other examples of views:
 
 When looked under this light, code decoupling makes our games more extendible. For example, it's much easier to implement a command-line version of a game first, then extend it with a UI view.
 
-# Not a silver bullet
+## Not a silver bullet
 
 Although code decoupling can open doors for more automated tests on some game projects, it's not the answer to all of our testing problems.
 
@@ -114,7 +114,7 @@ Highly interactive games, in the other hand, benefit less. That's the case of:
 
 Even though these games rely heavily on interactions, they can still use code decoupling and automated tests on non-interactive aspects of the game like inventory management, skill tree progression and shopping systems, for example.
 
-# Conclusion
+## Conclusion
 
 In this article, we saw how video games differ from traditional software in regard to automated testing and how decoupling game logic from interactive code opens a door into more and better automated tests. We looked into how this technique could be applied in a fictional game, how we can benefit from it and what its limitations are.
 
