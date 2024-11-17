@@ -4,10 +4,11 @@ title:  "Unity’s scripting duality and object destruction"
 date:   2020/04/01 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "Managed vs. native: how an example of an abstraction tool — Unity’s scripting solution — can accidentally expose the engine’s underlying mechanisms."
 ---
 The Unity engine provides users with tools and abstractions that ease its usage and hide its complexity. Although we often take these commodities for granted and completely forget they exist, we often face a situation in which they become apparent, usually due to an unexpected behavior. In this article, I discuss how an example of such an abstraction tool — Unity’s scripting solution — can accidentally expose the engine’s underlying mechanisms.
 
-# The duality: managed vs. native
+## The duality: managed vs. native
 
 As we all know, Unity’s programming language of choice is C#, but we need to keep in mind that the engine code itself isn’t written in C#, but in C/C++. Consequently, every code piece that invokes engine code (e.g. `transform`, `GetComponent`, `gameObject.SetActive`) does not run directly on the C# side, but on the native C++ side instead. An object of a type that inherits from `UnityEngine.Object` (like a `MonoBehaviour`) has two counterparts that live in different worlds: a managed object in C# world and an object in the native engine world. These two entities are linked to each other — the managed entity holds a pointer to the native entity — but are not, in fact, the same thing. Calls to the managed entity (often referred as a “wrapper”) will be transferred to the native entity whenever necessary: when a call to engine code is invoked. On the opposite side, wrapper calls that do *not* invoke engine code will not send to the native entity and will execute locally.
 
@@ -63,13 +64,13 @@ This scenario changes if we try to access any of its underlying native entities,
 
 For a deeper look into how the Unity engine works under the hood, check [this article](unity_under_the_hood) out.
 
-# The potential problem
+## The potential problem
 
 We just went through why a user-defined `MonoBehaviour` still lives in the managed world even after their corresponding native entity was destroyed. Also, we discussed how we can still invoke some of their methods successfully, as long as they don’t try to access their native engine components. This fact introduces two important questions: how do we easily identify that these managed entities should not be accessed anymore because their underlying entities were destroyed? Is it a good practice to still access a `MonoBehaviour` after is has been destroyed?
 
 Let’s start answering the second question: no, it is *not* a good idea to access a `MonoBehaviour` after its native entities were destroyed. One might think that it’s safe to keep some of its methods free from accesses to native, engine code, but this practice hurts code maintainability badly. It introduces an unspoken (or undocumented) rule that some methods should not try to access some specific components. Consequently, some developer — unaware of this weird rule — might change the code down the development process, which could potentially introduce errors. Additionally, it goes against the idea of using a `MonoBehaviour`, which is to attach scripts to Game Objects so they can interact. If you want to use an object that does not necessarily relate to a Game Object and its life cycle, do not inherit from `MonoBehaviour` and use a vanilla C# class instead — or maybe you want to use a [Scriptable Object](unity_serialization_3).
 
-# The solution
+## The solution
 
 The first question remains open: how do we easily identify that these managed entities should not be accessed anymore? The answer comes from Unity. We can easily check if the underlying entities of a `MonoBehaviour` were destroyed in two ways:
 
@@ -97,7 +98,7 @@ The first question remains open: how do we easily identify that these managed en
 
 The `UnityEngine.Object` class (which `MonoBehaviour` inherits from) implements custom equality operators that check if the underlying entities were destroyed. This operation is more complex than simply checking if the object reference is null because it invokes native code to check if the underlying entity was destroyed. As a consequence, it is also less performant than a vanilla C# null comparison. That’s why the Rider IDE displays a warning (“Comparison to ‘null’ is expensive”) whenever this null check is performed in a performance critical context. This custom implementation was [reconsidered](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/) a while ago by Unity developers, but it was kept and still exists. This tool gives us a way to safely and easily check the lifetime of a `MonoBehaviour`‘s underlying object, which was exactly what we were looking for. But there is one thing to keep in mind…
 
-# One little trap
+## One little trap
 
 Even though we can use Unity’s custom equality operators to check whether a `MonoBehaviour` has been destroyed, we need to be careful about when we perform this check. As it happens, Unity does not destroy an object exactly when `Destroy` in invoked. Instead, the given object is tagged for destruction, which will only happen after the end of the current Update loop, but [before rendering](https://docs.unity3d.com/ScriptReference/Object.Destroy.html). At that point, all objects that were tagged for destruction will be actually destroyed. As a consequence, a check for destruction invoked right after (within the same `Update` loop) the `Destroy` call will return false. For example:
 
@@ -113,7 +114,7 @@ The method above, when executed outputs “Is the dog null/destroyed? False”. 
 
 Not all C#’s equality operators implement this custom behavior. For a deeper look into Unity’s equality operators, check [this article](null_check_equality_unity) on the subject.
 
-# Conclusion
+## Conclusion
 
 Unity does a great job at hiding implementation details and at abstracting away the complexity of its native side by providing C# wrappers for developers. Although this abstraction layer can be often ignored, there are some nuances we should keep in mind, like the different lifetimes of managed and native entities. But once we understand what is going on behind the scenes, it becomes clear that some unexpected behaviors are just consequences of Unity’s scripting duality.
 
@@ -121,7 +122,7 @@ In this article, we learned how managed entities that inherit from `UnityEngine.
 
 That’s it for today. As always, feel free to leave a comment with questions, corrections, criticism or anything else that you want to add. See you next time!
 
-# Source
+## Source
 
 - [Unity Blog: Custom == operator, should we keep it?](https://blogs.unity3d.com/2014/05/16/custom-operator-should-we-keep-it/)
 - [Rider: Avoid null comparisons against UnityEngine.Object subclasses](https://github.com/JetBrains/resharper-unity/wiki/Avoid-null-comparisons-against-UnityEngine.Object-subclasses)

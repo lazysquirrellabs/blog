@@ -4,17 +4,18 @@ title:  "How Windows Mixed Reality’s poor reliability forced a kiosk game swit
 date:   2021/08/05 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "A tale on why we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution, and why we are happy we did it."
 ---
-In a [previous article](voedingscentrum_1), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution and we are happy we did it. Here’s the story behind that shift.
+In a [previous article](voedingscentrum_1), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution, and we are happy we did it. Here’s the story behind that shift.
 
 > **Disclaimer***:* Most of the events described in this article happened before the COVID-19 pandemic hit the Netherlands and the different testing stages happened either before the restrictions started, or after most of them had been lifted.
 {: .callout }
 
-# A small summary
+## A small summary
 
 The application had two released versions. Version 1.0 shipped as a full Windows Mixed Reality (hereafter referred as WMR), using both the headsets and controllers and it was deployed at [Boerhaave Museum](https://rijksmuseumboerhaave.nl/). We quickly concluded that there were some design flaws and the controllers had to be dropped. Version 1.1 brought Leap Motion support to enable interaction with objects without controllers and it was installed at [Open Air Museum](https://openluchtmuseum.nl/en). Read the [original article](voedingscentrum_1) for more detailed information about the development of the game.
 
-# The problems
+## The problems
 
 Some technical issues regarding the WMR headsets surfaced when version 1.1 was installed at Open Air Museum. Since version 1.0 failed early during the period it was available to the public, the application never ran for long periods of time. As a consequence, some reliability issues had never been a problem.
 
@@ -26,11 +27,11 @@ We went back to researching possible solutions to the problem, and that’s when
 
 Unfortunately, yet again, we received an email from the client a week later saying the connectivity problem had returned. At this point, both the client’s and our faith in the current solution were diminished by the repeated failed attempts to keep the game running uninterruptedly. We decided to try a platform switch, dropping the not-so-mature WMR in favor of a platform known for its reliability and robustness: the HTC VIVE running over SteamVR.
 
-# The platform switch
+## The platform switch
 
 We expected the switch to be a long and cumbersome process but – as described on the sections below – it went faster and smoother than we anticipated.
 
-## Software
+### Software
 
 A platform switch often hides unexpected problems that we never anticipate when planning it. Although we were prepared for many surprises when developing the new version for the VIVE and SteamVR, the switch was easier than we feared.
 
@@ -43,7 +44,7 @@ As a consequence, the application already run on top of SteamVR and no software 
 
 It is worth noting that since our game did not use the WMR controllers for interaction, we did not test it during the migration. Thus, we can not testify on the potential challenges regarding the controllers on such a switch.
 
-## Hardware
+### Hardware
 
 We had some previous development experience with the HTC VIVE and we owned a set for development purposes. We used this set during development but acquired another one to be used on the installation. HTC doesn’t sell new VIVE sets anymore, but they did sell certified pre-owned VIVE sets, which we ended up buying. The set worked flawlessly and met all our expectations.
 
@@ -51,7 +52,7 @@ The game used a Leap Motion as input device for interacting with VR objects. The
 
 The VIVE cables are longer than the WMR’s, but cable extensions were still necessary to meet the game demands. We replaced the short HDMI and USB cables that connect the VIVE’s setup box to the PC with the active HDMI and USB 3 extensions previously used with the WMR setup. Additionally, a long power extension was used to power the setup box.
 
-# The outcome
+## The outcome
 
 The main goal of the platform switch was to improve the game’s reliability over long periods of time. Accordingly, we ran preliminary tests in which we left the game running for hours (sometimes overnight) in the office and tried to play it randomly during the day. All of our testes played as expected: the headset always was tracked, its screen never flickered or turned off unexpectedly and the hand tracking performed satisfactorily. Summarizing: the game worked for long periods of time.
 
@@ -59,7 +60,7 @@ We then moved to the next stage in testing: a field test exposed to the public. 
 
 We are now confident that spending some time to migrate the solution from WMR to the HTC VICE paid off. The system’s robustness and reliability improved significantly, finally meeting our standards.
 
-# Some small interaction tweaks
+## Some small interaction tweaks
 
 During the test period at the museum, it became apparent that the hand grab interaction assisted by the Leap Motion was not as good as we expected. Most children initially struggled to grab items in the VR world because the VR hands would not close when their actual hands did. Some got used to the mechanics and how the sensor reacted to their movements, but others did not and it was clear that it harmed their experience.
 
@@ -78,6 +79,6 @@ We fixed the second interaction (grabbing and shooting balls) by eliminating the
 
 Internal tests showed that the new interactions allowed for a smoother, more effortless gameplay experience, without hurting the educational and fun aspects of the game. Preliminary external tests confirmed what we experienced in the office: the changes made interacting with VR items a joy instead of a hassle. As a consequence, children left the play session happy and amazed, instead of frustrated. Finally, once the pandemic numbers went down and the restrictions were lifted, we were able to test the game in the field. The entire structure was setup at Rosmalen’s Library and children were welcomed to play. After a few weeks running smoothly, with not hardware problems whatsoever, we were glad to find out that children (and some parents) loved the game and groups of children were visiting the library specifically to try out Voedingscentrum VR.
 
-# Conclusion
+## Conclusion
 
 In this article we saw how a platform switch from Windows Mixed Reality to HTC VIVE via SteamVR fixed some reliability problems in a VR game. We also saw how reimagining hand interactions by abandoning physical world constraints improved the gameplay experience. In the end of the journey described on these two articles, we can safely say we have built the game we’ve imagined in the beginning of the development process.

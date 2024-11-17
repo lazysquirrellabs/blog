@@ -4,10 +4,11 @@ title:  "How does Unity export to so many platforms?"
 date:   2014-02-19 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "The Unity engine exports to many platforms, from PC to mobile, XR, consoles and web. How is that possible? Let's find out!"
 ---
 So for my first article I picked a not so simple theme, but one that has been extremely intriguing to me lately. This week a friend, during a talk about game development and Unity, asked me: *“How does Unity export to so many and different platforms?”* I started to think and formulate my answer, struggled and I couldn’t really answer why. I never really thought about it. So I started researching about it.
 
-# Introduction
+## Introduction
 
 [Unity](http://unity3d.com/) is probably the most famous Game Development Engine on the market. It’s user friendly (15 y.o. kids can use it after a few tutorials, trust me), it’s available for both Windows and MacOS X (a Linux port is on experimental phase)  and finally and the most important in this article: it can export to basically any existing device. I’m not kidding, check the list at their [website](http://unity3d.com/unity/multiplatform):
 
@@ -35,23 +36,23 @@ It’s a legit myriad of devices and environments. If you don’t know Unity and
 
 **Update:** As pointed by Jashan in the comments section, I focused only on scripting in this article, so I decided to write a bit about how Unity exports other features to so many platforms. As you will notice whilst reading the next paragraphs, although Unity Technologies does a great job with Unity, it relies on several companies to help them to bring some features into it. When a new platform is announced, the UT developers check if every single one of these features are supported by one of their partners, and if so, the time dedicated to support it is reduced drastically. Now let’s take a look at some of the main features.
 
-# Graphics
+## Graphics
 
 Let’s start with graphics. A few graphics API are supported by Unity: OpenGL, OpenGL ES, WebGL, Metal and DirectX, each of these APIs targeting a different platform. OpenGL is widely used, from MacOS X and some iOS devices, to Linux and even Windows. OpenGL ES is compatible with mobile devices, mostly Android and some iOS. WebGL is the new promise on browser-based graphic application and games, eliminating the need of plugins like Flash and Unity web player. Metal is Apple’s new graphics API, compatible with the most recent iOS devices and computers from the Californian company. Finally, DirectX is Microsoft’s own graphics API solution, compatible with Windows, Windows Phone and Xbox. So even though the folks from UT dedicate a lot of time for graphics, most of the time is devoted to integrate these tools to the engine, and not to write their own API from scratch.
 
-# Physics
+## Physics
 
 When it comes to physics, Unity trusts solely in one tool: Nvidia’s PhysX, which supports every single platform Unity builds to. It is, hands down, one of the best physics engines in the market, and it’s been trustful and efficient since the first version of the game engine, when PhysX was called Novodex and didn’t belong to Nvidia yet. The main reason to have a single physics solution for all platforms is consistency: all collisions and movements must behave identically in every device you support, otherwise some platforms can be favored in game.
 
-# Lighting
+## Lighting
 
 Once again, Unity relies on externals tools to implement lighting, both baked and realtime. Before Unity 5, Autodesk’s Beast was used as a baked lighting tool, been replaced by Geomeric’s Enlighten, which is now used for both realtime GI and baked lighting on the new versions (5.x) of the engine.
 
-# Networking
+## Networking
 
 In 2014, Unity Technologies [announced](http://blogs.unity3d.com/2014/05/12/announcing-unet-new-unity-multiplayer-technology/) UNET (Unity Networking), which is their own networking and multiplayer solution, made in house. In the past, some networking solutions were common, the most famous being Photon. The new tool consists of two parts: the Networking APIs (with high and low level APIs) and the paid Multiplayer services. Since this is a internal project, UT has to port the code to all supported platforms, differently from graphics, physics and lighting described above.
 
-# Finally: Scripting
+## Finally: Scripting
 
 **STOP**: If you are a developer, is really confident about concepts like managed and native code, execution environments and different platforms, this section is for you. If you are an 3D artist, 2D artist or you are just curious about how this works, I’m really sorry but you may consider stopping here and accepting an awful answer: [it’s magic](http://www.reactiongifs.com/r/mgc.gif). Seriously, you may jump to the last two paragraphs of this section that summarizes it. If you are still curious, give it a try!
 

@@ -4,12 +4,13 @@ title:  "Unity serialization part 2: Defining a Serializable type"
 date:   2015/10/22 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "The second post on a series about Unity serialization. Learn about what serialization is, how Unity does it, serializable types and ScriptableObject."
 ---
 This post is part of a series about Unity serialization. Click [here](unity_serialization_1) for part 1: how it works and examples.
 
 On the [last article](unity_serialization_1), we discussed about serialization concepts and how Unity implements it, learning which types can be serialized and which cannot. But what if we want to define our own type? How can I make it serializable so I can keep its data stored?
 
-# Understanding the problem
+## Understanding the problem
 
 Let’s choose a (slight [biased](https://play.google.com/store/apps/details?id=cc.lumentech.operacaoabaporu&hl=en)) model to implement as our example: a script to keep all the data to an investigation game which contains numerous cities, each one containing several places. Sounds pretty easy and straightforward, so let’s do it naively by creating `MonoBehaviours`: one for the database, one for the cities and one for the places. That should work:
 
@@ -50,7 +51,7 @@ Now let’s add the `MyDatabase` script to an object in the scene. Something is 
 
 ![](/assets/images/post4/screen-shot-2015-09-20-at-7-47-14-pm.png)
 
-# Defining a Serializable Type
+## Defining a Serializable Type
 
 That happens because we didn’t define our type as serializable, so Unity won’t serialize it. We never faced that problem before because we usually deal with classes that inherit from `Unity.Object` (`Collider`, `RigidBody`, `Animation`, `MonoBehaviour`…), which is a serializable type. There is an easy way to do it: add the `System.Serializable` modifier to the class:
 
@@ -74,7 +75,7 @@ That gives us the expected result:
 
 By simply adding that modifier, we mark our class as serializable and solve our problem. The same process is also required when dealing with structs (serializable since Unity 4.5). In addition, Unity also serializes lists and arrays of serializable types by default.
 
-# Problems with that approach
+## Problems with that approach
 
 Although this looks like a great solution, there are a few problems with it. The first (but not biggest) is that even though `MyDatabase` only stores data, it still is a `MonoBehaviour` and needs a `GameObject` to exist. Ideally, it should be an asset that only holds data, but we can’t simply take the `MonoBehaviour` inheritance off the class, otherwise we wouldn’t have a way to serialize it. What if there was a serializable type just like `MonoBehaviour` that doesn’t need a `GameObject` to live on? Keep that in mind. The other problems doesn’t involve data-storing objects only like the first one, but are also valid.
 
@@ -128,7 +129,7 @@ How many allocations will be done to serialize an uninitialized `DepthTest` scri
 
 Each problem described above has a potential solution and It turns out that all four can be fixed with the same resource: `ScriptableObject`. It’s not an extremely elegant or ideal solution, but it’s the closest we get from one. Since it’s a fairly long subject, Scriptable Objects are described in depth on [my next article](unity_serialization_3). For now, let’s just acknowledge that those problems have a common way out and if you believe you may face one of those, take a look into it.
 
-# Modifiers and Serialization
+## Modifiers and Serialization
 
 Finally, let’s summarize the modifiers involved in serialization.
 
@@ -138,11 +139,11 @@ Finally, let’s summarize the modifiers involved in serialization.
 - Use `[NonSerialized]` if you want to avoid serialization on a public field.
 - Use `[HideInInspector]` if you want to serialize but not expose the field in the inspector.
 
-# Conclusion
+## Conclusion
 
 In this blog post we learnt how to define our own serializable types and acknowledged some problems that can emerge by doing it. [On the next article](unity_serialization_3), we will dive deep into a resource that can work out those problems: ScriptableObjects.
 
-# Reference
+## Reference
 
 - [Unity Manual: Script Serialization](http://docs.unity3d.com/Manual/script-Serialization.html)
 - [Unity Blog: Serialization in Unity](http://blogs.unity3d.com/2014/06/24/serialization-in-unity/)

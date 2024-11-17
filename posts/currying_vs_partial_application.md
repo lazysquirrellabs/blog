@@ -4,11 +4,12 @@ title:  "FP: Currying vs. partial application"
 date:   2017-10-26 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "Currying and partial application are two concepts usually found in functional languages that are often confused. In this post, we try to clear up that mishmash."
 ---
 While learning Functional Programming, there were two concepts that for me, were really hard set apart: currying and partial application. One day, I finally decided I would dig deeper and learn what each one represents and more importantly, why I mixed them up. In this article we’ll see what currying and partial application are, distinguish them, see how they’re used in functional languages, discuss why these concepts get mixed up so easily and present why they are so important.
 
 One tiny thing before we start. Even though the concepts we focus are widely used in functional languages, we won’t use a purely functional language to explain them – Python. You have to trust me on this.
-# Currying
+## Currying
 
 Currying is the process of transforming a function that takes many (N) arguments into a series of (N) functions, each one taking exactly one argument. Well, maybe doesn’t tell us much, but let’s take a look at the example code below and learn from example. The Python code above shows the definition of the `mult_pow` function, which takes 3 numbers, raises the first one to the power of the second, and multiplies the result by the third one. Pretty straight forward. The only way to evaluate this function is by calling it and providing the 3 arguments.
 
@@ -51,7 +52,7 @@ The first call (lines 1-2) demonstrates function application on the uncurried ve
 
 Well, well, well. It looks like we just created a super complicated way of defining functions. We need lambdas, unnecessary parenthesis when calling a function and there is a big knot in my head when I think of it. At first sight, it might look like a cumbersome way of doing simple things, but bare with me along the next section so we can understand why this is a powerful tool.
 
-# Partial Application
+## Partial Application
 
 Let’s again use a Python example to illustrate the concept of partial application. The following code defines a function to multiply two numbers – `mult` – and a function to double (multiply by two) a number – `double`. Easy peasy.
 
@@ -67,13 +68,13 @@ Notice that the `double` is defined in terms of `mult`. This is a pattern that w
 
 So that’s partial application. On a formal way, partially applying a function to X arguments is the process of transforming a N-arity function into a (N-X)-arity one by means of tying X arguments to values.
 
-# Currying vs. Partial Application
+## Currying vs. Partial Application
 
 Even though the general idea – and even the semi-formal definitions – might seem closely related, keep in mind that unlike currying, partial application does change the function expressiveness and its meaning. Another way of seeing this is to look at both as a function, where currying would be *Curry*(f) and partial application would be *PA*(f, x…xn). Currying only takes a function as input and returns another function, whilst partial application takes a function and N (N > 0) parameters.
 
 Also, remember the definitions previously introduced: currying is the process of transforming a function of N-arity into N functions of 1-arity. Partial application is the process of taking a N-arity function, **X parameters** and transforming it into a (N-X)-arity function. Now, let’s take a look on how these concepts are introduced in functional languages and why we mixed them up so easily.
 
-# Currying and Partial Application in Functional Languages
+## Currying and Partial Application in Functional Languages
 
 Even though we can manually curry a Python function (just like we did earlier), Python doesn’t support currying by default, which means that the following code doesn’t run, where `mult_pow` is the function we defined on the first section.
 
@@ -106,11 +107,11 @@ pMultPow :: Int -> Int -> Int
 
 One interesting fact is that you can notice that from the function’s type annotation itself. We’re used to read Haskell function type signatures in a non-curried manner. For example, we’d read `multPow`'s type signature as “it takes 3 integers and return an integer”, but we might as well read it as “it takes one integer and returns a function that takes 2 integers and returns an integer”. Both are equivalent in a language that is curried by default.
 
-# The Confusion
+## The Confusion
 
 As we saw, partial application really shines in languages that have functions curried by default because there’s no extra step necessary to define curried function as in most imperative languages. That’s exactly why we easily mix up those concepts: we don’t see the currying, it’s done automatically. So every time someone tries to give an example of currying in a functional language, they fail to point exactly what it represents without using partial application, and the confusion is born. We can avoid that by explaining both concepts using a non-functional language and then bring the discussion back to the shiny, fancy functional world. It’s also why I chose to start this article with Python instead of Clean or Haskell.
 
-# Why is it so important?
+## Why is it so important?
 
 The triad of higher-order functions, currying and partial application provides powerful benefits including expressiveness, higher level of abstraction and scalability, but there are two aspects that I want to focus: reusability and modularity.
 
@@ -138,13 +139,13 @@ Finally, let’s take a look on the second `map` example above. Instead of defin
 
 This is a small and naive example to illustrate one of the biggest advantages of pure functional programming. Since function outputs only depend on its inputs (and nothing else!), and since we have higher-order functions with default currying and partial application, functions are little building blocks. You can just plug them, pass them around, partially apply them, run them over a list and all. That allows a level of reusability and modularity that simply isn’t possible (and won’t ever be) in imperative languages. Functions like `map` and `foldr` are reused on a daily bases by functional programmers, along with many functions they’re written themselves. Reusing functions is the bread and butter of a functional programmer. Every time you see yourself writing code that somehow resembles some code you’ve written, you think “how can I generalize this and then specialize it when I need to so I don’t need to write many slightly different versions of the same code?”
 
-# Conclusion
+## Conclusion
 
 Even though currying and partial application are concepts that are related, they are not the same thing. Currying is a process of transforming a function into an equivalent one and partial application involves fixing a function to one of its arguments. Partial application really shines on functional languages where functions are curried by default, and that might be the reason why functional programmers get those concepts mixed up so easily. Allied with higher-order functions, these concepts increase modularity and reusability in an extraordinary way, and that’s one of the aspects where functional programming shines the most.
 
 If you have any comments, suggestions, corrections (especially corrections), please fell free to leave a comments below.
 
-# Sources
+## Sources
 
 - [Functional Programming For The Rest Of Us](http://www.defmacro.org/2006/06/19/fp)  
 - [What is the difference between currying and partial application?](https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application)  

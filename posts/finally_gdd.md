@@ -4,10 +4,11 @@ title:  "Finally, a proper Game Design Document (whatever that means)"
 date:   2022/09/10 20:38:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: "Game Design Documents (GDDs) are deemed essential by many developers, but are often neglected. In this article, we discuss why GDDs are so beneficial."
 ---
 A Game Design Document (GDD) is a famous and popular tool used by game developers to… well, to document the design of a game. Even though some say it's an essential part of the development process, most of the projects I've worked on didn't use GDDs during the entire development of the game (or at all). On my last project at [Fantazm](https://www.fantazm.com), I had the opportunity to make some decisions from the start. I took this opportunity to experiment with some concepts and ideas, and trying to properly use GDDs (whatever that means) was one of them. Here's my testimonial on the experience of using a GDD for that project.
 
-# The project
+## The project
 
 The project was commissioned by one of our clients. It was a turn-based, multiplayer, team strategy web game where each team controls their own company through a 10-year time period. Teams (between 3 and 15) compete against each other in different categories, tackling real world scenarios in order to establish a successful company. At the end of the 10 rounds, a winner is chosen based on some Key Points of Interest.
 
@@ -15,7 +16,7 @@ The development team consisted of one game developer (yours truly), a game artis
 
 As the solo developer in this project, I was responsible for making some decisions. Investing in a GDD was one of them.
 
-# Previous experience
+## Previous experience
 
 Although Game Design Documents are essential tools in the industry, all projects I've worked on fell into one of the following categories (some were are a mix of these) when analyzing their GDD usage:
 
@@ -24,7 +25,7 @@ Although Game Design Documents are essential tools in the industry, all projects
 
 With that in mind, I decided to try something new to me (but not really innovative): properly writing, using and maintaining a GDD during the entire development process. Here's how it went down.
 
-# The plan
+## The plan
 
 For this project, we've decided to:
 
@@ -35,7 +36,7 @@ For this project, we've decided to:
 
 With that in mind, we started writing the GDD before writing our very first line of code.
 
-# Initial writing
+## Initial writing
 
 The game in question was based on a previous project we've developed, so we already had a good idea of what it could be. We discussed it internally a couple of times before starting to write the GDD, and for that reason, we concluded that writing it would be a trivial task: just sit and type down everything we've discussed and we could call it a day.
 
@@ -43,7 +44,7 @@ Boy, we were wrong. As soon as we started writing down what we've discussed, the
 
 There was a lot of internal communication (and sometimes external, with the client) during this period, and it was clear that we were slowly closing the design gaps and reaching a clearer, more well-defined game design. We knew that a lot of questions would still surface during development, but at least now we had a clear specification of what we envisioned. At a given point, we've decided we had enough to get started with, and we moved to the development stage.
 
-# Outcome
+## Outcome
 
 In the end, the GDD usage following the rules presented above exceeded my expectations.  Even though writing and maintaining the document definitely took some time and effort (more than we anticipated), its benefits definitely paid off in later stages of development. 
 
@@ -60,7 +61,7 @@ In addition to helping during the development process of the relevant game, writ
 
 Personally, the benefits of writing and updating a good GDD are obvious and the necessary work involved certainly pays off. I will definitely invest in a good GDD on the next project I start.
 
-# Lessons learnt
+## Lessons learnt
 
 Despite the fact that the experience was great, we learned a few lessons:
 
@@ -68,6 +69,6 @@ Despite the fact that the experience was great, we learned a few lessons:
 - Completeness and succinctness are hard to balance. Ideally, the GDD should describe every little corner of the game, but doing so became impractical for two reasons. First, we did not have a full-time Game Designer in the team that could dedicate most of their time into it. Second — but most importantly — writing down every single detail turns the GDD into this massive document that's hard to navigate and consult. Having an easy to access GDD is crucial, otherwise people won't refer to and maintain it, which would be detrimental to the whole goal of keeping a GDD. In the end, we learnt to keep some tiny details of out the GDD, without compromising the goals we established for it.
 - Versioning a GDD should be as important as versioning game code. It became clear that tracking and discussing feature changes was crucial to the development process. The tool we chose to host the GDD (Google Docs) does provide a change history feature, but tracking changes made to a specific feature usually required a tedious and repetitive process of going back in history change by change, until you found what you were looking for. In addition, it would had been nice to be able to document the reasoning behind a change — but outside the GDD content itself. Next time, I will look for alternatives that offer better history browsing and that offer a way to externally document changes. Let me know in the comments section if you have a suggestion (is git an overkill?).
 
-# Conclusion
+## Conclusion
 
 Although Game Design Documents are an industry standard, my previous game development experience lacked proper use of them. I took an opportunity I had as the solo developer of a project to experiment with GDDs during the entire game development process. Although writing and maintaining the document required a lot of time and energy, the efforts put into it definitely paid off and I'm confident that using GDDs in my future projects will also be beneficial.
