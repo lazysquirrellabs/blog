@@ -4,6 +4,7 @@ title:  "Adding custom terrace heights to Terraced Terrain Generator"
 date:   2023/11/21 18:56:45 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: This post details how custom terrace heights were added to Terraced Terrain Generator (TTG). It's part of a series that documents TTG's development process.
 ---
 This blog post details how custom terrace heights were added to [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net). It is part of a series that documents the development process of TTG, containing the following posts:
 - [Developing a Terraced Terrain Generator](/posts/ttg) 

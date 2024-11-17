@@ -4,6 +4,7 @@ title:  "Game testing made easier: decoupling code"
 date:   2023/03/29 18:46:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: Decoupling logic from Unity's MonoBehaviour might be highly beneficial. In this post, we discuss the concept and how it can aid development and testing.
 ---
 Most (or close to none) of the game projects I've worked in the past implemented automated tests. I was aware of the benefits this type of testing could bring, but I was also knew that implementing them could be quite challenging. In this article, I describe a strategy that helped me to write automated tests in a video game I've developed: code decoupling.
 

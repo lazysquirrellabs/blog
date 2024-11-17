@@ -4,6 +4,7 @@ title:  "Unity serialization part 2: Defining a Serializable type"
 date:   2015/10/22 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: The second post on a series about Unity serialization. Learn about what serialization is, how Unity does it, serializable types and ScriptableObject.
 ---
 This post is part of a series about Unity serialization. Click [here](unity_serialization_1) for part 1: how it works and examples.
 

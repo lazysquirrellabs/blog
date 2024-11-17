@@ -4,8 +4,9 @@ title:  "How Windows Mixed Reality’s poor reliability forced a kiosk game swit
 date:   2021/08/05 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: A tale on why we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution, and why we are happy we did it.
 ---
-In a [previous article](voedingscentrum_1), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution and we are happy we did it. Here’s the story behind that shift.
+In a [previous article](voedingscentrum_1), I described the development of VoedingscentrumVR, an educational, kiosk, VR game for Windows Mixed Reality. Although at the time of writing it seemed like it was the end of that game’s development, some surprises crossed our path. Eventually, we ditched Windows Mixed Reality altogether and switched to a HTC VIVE, SteamVR-powered solution, and we are happy we did it. Here’s the story behind that shift.
 
 > **Disclaimer***:* Most of the events described in this article happened before the COVID-19 pandemic hit the Netherlands and the different testing stages happened either before the restrictions started, or after most of them had been lifted.
 {: .callout }

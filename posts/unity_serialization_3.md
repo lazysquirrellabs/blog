@@ -4,6 +4,7 @@ title:  "Unity serialization part 3: Scriptable Objects"
 date:   2015/10/22 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: The final post on a series about Unity serialization. Learn about what serialization is, how Unity does it, serializable types and ScriptableObject.
 ---
 This post is part of a series about Unity serialization. Click [here](unity_serialization_1) for part 1: how it works and examples or click [here](unity_serialization_2) for part 2: defining a serializable type.
 

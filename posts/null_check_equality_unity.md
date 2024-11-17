@@ -4,6 +4,7 @@ title:  "Null check and equality in Unity"
 date:   2020/04/01 20:36:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: A guide on how C#'s comparison operators and functions work (and how they might surprise you) in Unity, particularly when checking against null equality.
 ---
 In some programming languages – like C# – it is a common practice to use comparison operators and functions to check for null references. However, when programming in Unity, there are some particularities to keep in mind that the usual C# programmer usually does not take into consideration. This article is a guide on how these caveats work and how to properly use C#’s equality tools in Unity.
 

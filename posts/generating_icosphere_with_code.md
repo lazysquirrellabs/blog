@@ -4,6 +4,7 @@ title:  "Generating an icosphere with code"
 date:   2024/06/25 19:04:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code.
 ---
 In this article, we will walk through the process of generating icospheres (spheres based on a regular icosahedron) with code. I started looking into icospheres when working on [Terraced Terrain Generator (TTG)](https://ttg.matheusamazonas.net) version 2, which added support for spherical terrains. I dedicated some time to study different sphere types and ended up creating a small library to procedurally generate spheres (*ico-*, *cube-* and UV-spheres) in Unity: [Sphere Generator](https://github.com/lazysquirrellabs/sphere_generator). Building the library inspired me to write this piece.
 

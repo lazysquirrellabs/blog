@@ -4,6 +4,7 @@ title: "Tabs vs. spaces: the discussion that should not exist"
 date: 2024/07/14 19:11:00 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: I am a firm believer that the "tabs vs. spaces" discussion regarding code indentation should not even exist... because tabs is the only sane answer.
 ---
 I am a firm believer that the "tabs vs. spaces" discussion regarding code indentation should not even exist... because tabs is the only sane answer. 
 

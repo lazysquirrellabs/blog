@@ -4,6 +4,7 @@ title:  "Developing a Terraced Terrain Generator"
 date:   2023/04/08 10:01:12 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: A deep dive on the development process of a free Unity tool for procedural generation of terraced terrain meshes: Terraced Terrain Generator (TTG).
 ---
 In this blog post I will discuss some technical details and give a glimpse of [Terraced Terrain Generator's (TTG)](http://ttg.matheusamazonas.net) development process. TTG is a free Unity tool for procedural generation of terraced terrain meshes. It's open source and it's on [GitHub](https://github.com/lazysquirrellabs/TTG)! Here are some examples of the type of terrains TTG is able to generate:
 

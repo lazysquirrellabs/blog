@@ -4,6 +4,7 @@ title:  "Unity’s scripting duality and object destruction"
 date:   2020/04/01 20:35:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: Managed vs. native: how an example of an abstraction tool — Unity’s scripting solution — can accidentally expose the engine’s underlying mechanisms.
 ---
 The Unity engine provides users with tools and abstractions that ease its usage and hide its complexity. Although we often take these commodities for granted and completely forget they exist, we often face a situation in which they become apparent, usually due to an unexpected behavior. In this article, I discuss how an example of such an abstraction tool — Unity’s scripting solution — can accidentally expose the engine’s underlying mechanisms.
 

@@ -4,6 +4,7 @@ title:  "FP: Currying vs. partial application"
 date:   2017-10-26 20:33:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
+description: Currying and partial application are two concepts usually found in functional languages that are often confused. In this post, we try to clear up that mishmash.
 ---
 While learning Functional Programming, there were two concepts that for me, were really hard set apart: currying and partial application. One day, I finally decided I would dig deeper and learn what each one represents and more importantly, why I mixed them up. In this article we’ll see what currying and partial application are, distinguish them, see how they’re used in functional languages, discuss why these concepts get mixed up so easily and present why they are so important.
 
