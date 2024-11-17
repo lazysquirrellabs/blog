@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Creating and using a native iOS/iPadOS (Swift) library in Unity"
-date:   2024/11/05 20:36:38 +0200
+date:   2024/11/17 12:18:38 +0200
 author: Matheus Amazonas
 categories: jekyll update
 ---
