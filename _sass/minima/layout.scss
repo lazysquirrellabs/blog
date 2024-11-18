@@ -256,30 +256,6 @@
   h1, h2, h3 { margin-top: $spacing-unit }
   h4, h5, h6 { margin-top: $spacing-unit }
 
-  h1 {
-    @include relative-font-size(1.9);
-  }
-
-  h2 {
-    @include relative-font-size(1.9);
-  }
-
-  h3 {
-    @include relative-font-size(1.5);
-  }
-
-  h4 {
-    @include relative-font-size(1.3);
-  }
-
-  h5 {
-    @include relative-font-size(1.25);
-  }
-
-  h6 {
-    @include relative-font-size(1.125);
-  }
-
   aside{
     background-color: #252525;
     padding: 18px;
@@ -337,4 +313,29 @@
   .one-half {
     width: calc(50% - (#{$spacing-unit} / 2));
   }
+}
+
+/* Headers */
+h1 {
+  @include relative-font-size(2.3);
+}
+
+h2 {
+  @include relative-font-size(1.9);
+}
+
+h3 {
+  @include relative-font-size(1.5);
+}
+
+h4 {
+  @include relative-font-size(1.3);
+}
+
+h5 {
+  @include relative-font-size(1.25);
+}
+
+h6 {
+  @include relative-font-size(1.125);
 }
