@@ -16,7 +16,7 @@ navigation:
 - text: Home
   url: /
 - text: Archive
-  url: /archive/
+  url: /archive
 - text: About
   url: https://lslabs.dev
 
