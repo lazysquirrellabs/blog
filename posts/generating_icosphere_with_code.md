@@ -81,7 +81,7 @@ Where `a` is `height/2` and `c` is `width/2`. The white rectangle above represen
 
 Therefore, in order to find the vertices coordinates, we need to find the values of `a` and `c`. We already have enough information to do so, since:
 - The golden ratio determines that `width = height * goldenRatio`, and therefore `c = a * goldenRatio`.
-- The `a/b/1` triangle (represented by dotted lines in the first rectangle image) is equilateral, and therefore we can use [Pythagoras' Theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem).
+- The `a/b/1` triangle (represented by dotted lines in the first rectangle image) is right, and therefore we can use [Pythagoras' Theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem).
 
 With that in mind:
 
