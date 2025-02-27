@@ -1,0 +1,10 @@
+_id: 4249e020-f519-11ef-9e74-0d9a55fa8c5e
+_parent: 'https://blog.lslabs.dev/posts/null_check_equality_unity'
+replying_to: ''
+message: >-
+  Interesting to see the underlying differences between `==` and `Equals`,
+  especially in relation to `Destroyed` objects.
+name: Nathan Thus
+email: ''
+hp: ''
+date: '2025-02-27T14:43:51.093Z'
