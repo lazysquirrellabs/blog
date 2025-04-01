@@ -146,12 +146,12 @@ One of the aspects that convinced me to use .NET on the servers was the possibil
 Once again, most (or close to none) of the game projects I've worked in the past implemented automated tests. I was aware of the benefits automated tests could bring, but I also knew that implementing them could be quite challenging. In the end, I was able to implement a small test suite (277 automated tests) that proved to be extremely valuable. These are the topics I would like to highlight from my experience of using automated tests in this project.
 
 <details open>
-  <summary><h4 style="display:inline">Code decoupling</h3></summary>
+  <summary><h4 style="display:inline">Code decoupling</h4></summary>
 Writing automated tests for video games can be quite challenging due to their interactive nature. In this project, I leveraged the decoupling of game logic and interactive code to let me write more and better automated tests. I described the technique and the experience in a [separate blog post](https://matheusamazonas.net/blog/2023/03/29/decoupling-code).
 </details>
 
 <details open>
-  <summary><h4 style="display:inline">TDD sneak peek</h3></summary>
+  <summary><h4 style="display:inline">TDD sneak peek</h4></summary>
 I wanted to give Test-driven Development a try and started working on features by writing the automated tests before spending some time actually implementing them. This proved to be a good practice because:
 
 - It forced me to write more automated tests. If the tests come before the feature, it's less likely they will be left for later in development—and then forgotten. More tests led to a better and more stable game.
@@ -159,17 +159,17 @@ I wanted to give Test-driven Development a try and started working on features b
 </details>
 
 <details open>
-  <summary><h4 style="display:inline">Regression bugs</h3></summary>
+  <summary><h4 style="display:inline">Regression bugs</h4></summary>
 In a nutshell, regressions bugs are bugs that broke a featured that used to work correctly. If the feature in question was sufficiently covered by automated tests, the regression bug could be easily spotted and eliminated before being committed. As a consequence, the number of regression bugs found during playtests was considerably low. Most of the ones we've encountered affected portions of the codebase that were not covered by automated tests, like the UI.
 </details>
 
 <details open>
-  <summary><h4 style="display:inline">Better commit history</h3></summary>
+  <summary><h4 style="display:inline">Better commit history</h4></summary>
 I adopted the habit of running most of the test suite before committing code. Doing so unearthed some bugs that would've made to the git history otherwise. In the end, not only the repository was cleaner (because there were less revert and bug fix commits), but it was also more stable; even feature branches.
 </details>
 
 <details open>
-  <summary><h4 style="display:inline">Build automation</h3></summary>
+  <summary><h4 style="display:inline">Build automation</h4></summary>
 Although I was the only developer working on the project, I decided to make use of Continuous Integration with Unity Cloud Build. Automated tests were added to the build pipeline and builds would fail if tests did. The project benefited from this addition in the following ways:
 
 - Only builds that passed all tests were used for playtests, increasing the number of bugs found earlier—during development—rather than later, during the test sessions.
@@ -177,7 +177,7 @@ Although I was the only developer working on the project, I decided to make use 
 </details>
 
 <details open>
-  <summary><h4 style="display:inline">Game logic isn't everything</h3></summary>
+  <summary><h4 style="display:inline">Game logic isn't everything</h4></summary>
 When I decided to write automated tests in this project, I had game logic in mind. In the end, most of the test suite focused on that aspect of the codebase, but others naturally popped up during development. Here are some:
 
 - **Serialization**. The game is played online, thus messages must be sent over the network. All messages needed to be serialized on one side and deserialized on the other one (byte representation, not textual). Automated tests proved to be a crucial tool that often exposed serialization bugs.
