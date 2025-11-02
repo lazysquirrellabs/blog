@@ -1,0 +1,13 @@
+_id: ef60d530-b1ab-11f0-a806-53922e5842d3
+_parent: 'https://blog.lslabs.dev/posts/coroutines_async_await'
+replying_to: ''
+message: >-
+  Great post. I especially appreciate the description of differing mindsets on
+  async between game dev and business because that's the whole reason I ended up
+  here. Async was confusing me because I'm just trying to fire and forget stuff
+  like Unreal Engine's Timer class but every example on async is sitting there
+  waiting.
+name: Glimpse
+email: ''
+hp: ''
+date: '2025-10-25T14:07:26.598Z'
