@@ -40,6 +40,7 @@ Here are the blogs posts published so far, grouped by category and subject. We w
 
 ## Software Development
 - [Tabs vs. spaces: the discussion that should not exist](/posts/tabs_vs_spaces) (Jul. 2024)
+- [My first impressions of Rust](/posts/rust_first_impressions) (Jun. 2026)
 
 ## Functional Programming
 - [FP: Currying vs. partial application](/posts/currying_vs_partial_application) (Oct. 2017)
