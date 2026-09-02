@@ -63,6 +63,7 @@ collections:
 feed:
   collections:
     - articles
+  posts_limit: 15
 
 #Staticman
 staticman_url: https://matheus-blog-comments.fly.dev/v2/entry/lazysquirrellabs/blog/master/comments
