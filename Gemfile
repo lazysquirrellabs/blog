@@ -10,7 +10,7 @@ gem "jekyll-sass-converter", "~>2.2.0"
 
 gem "jekyll", "~> 4.2"
 
-gem "jekyll-remote-theme", "~> 0.4.3"
+gem "jekyll-remote-theme", "~> 0.6.2"
 
 gem "jekyll-feed", "~> 0.17.0"
 
